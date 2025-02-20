@@ -1,0 +1,166 @@
+#awards_Baaner {
+  background: url(../../../shared/imgAwards/awardsBaaner.png) no-repeat center center;
+  background-size: cover;
+  padding: 80px 20px;
+  margin: 0 auto 130px;
+  min-height: 950px;
+
+  h1 {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 120px 0 0 0;
+    color: rgba(0, 95, 75, 1);
+    text-align: start;
+  }
+
+  .p {
+    border-left: 4px solid rgba(0, 95, 75, 1);
+    padding-left: 20px;
+    min-height: 211px;
+
+    p {
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+  }
+
+  button {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    padding: 14px 28px;
+    width: 100%;
+    max-width: 354px;
+    background: rgba(0, 95, 75, 1);
+    border: none;
+    border-radius: 3px;
+  }
+
+  .awards_Baaner_text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 0 10px;
+    margin-top: -100px;
+
+    img {
+      max-width: 400px;
+      width: 100%;
+      height: 500px;
+    }
+  }
+
+  .awards_BaanerTwo_img {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  #awards_Baaner {
+    .awards_Baaner_text {
+      margin-top: 10px;
+
+      h1 {
+        font-size: 40px;
+        margin: 50px 0;
+      }
+
+      div {
+        padding-left: 15px;
+
+        p {
+          font-size: 25px;
+        }
+      }
+
+      button {
+        font-size: 18px;
+      }
+
+      img {
+        width: 400px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  #awards_Baaner {
+    padding: 40px 0 40px 10px;
+    min-height: auto;
+
+    h1 {
+      font-size: 40px;
+      margin: 50px 0 0 0;
+    }
+
+    .awards_Baaner_img {
+      display: none;
+    }
+
+    .awards_BaanerTwo_img {
+      display: block;
+      max-width: 400px;
+      width: 100%;
+      height: 500px;
+    }
+
+    .awards_Baaner_text {
+      display: flex;
+      align-items: start;
+
+      div {
+        margin-top: 50px;
+
+        p {
+          font-size: 22px;
+        }
+      }
+
+     
+    }
+    button {
+      font-size: 16px;
+      margin-top: 50px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  #awards_Baaner {
+    h1 {
+      font-size: 35px;
+    }
+
+    .awards_Baaner_text {
+      div {
+        p {
+          font-size: 18px;
+        }
+      }
+
+      .awards_BaanerTwo_img {
+        width: 90%;
+        height: 500px;
+        margin-left: -100px;
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  #awards_Baaner {
+    .awards_Baaner_text {
+      div {
+        height: auto;
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
