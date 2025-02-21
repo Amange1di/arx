@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './navigations.scss';
+import openIcon from "../../shared/images/hideIcon.svg";
+import hideIcon from "../../shared/images/openIcon.svg";
 
 export const Navigations = ({
   list,
@@ -9,9 +11,12 @@ export const Navigations = ({
   setSelectedSub,
   page
 }) => {
+  const [openEventId, setOpenEventId] = useState(null);
+
   const handleMainCategoryClick = (index) => {
     setSelected(index);
-    setSelectedSub(null); 
+    setSelectedSub(null);
+    setOpenEventId(openEventId === index ? null : index);
   };
 
   return (
@@ -20,7 +25,8 @@ export const Navigations = ({
         className='awardsNavigations_btn'
         onClick={() => {
           setSelected(null);
-          setSelectedSub(null); 
+          setSelectedSub(null);
+          setOpenEventId(null);
         }}
       >
         {page}
@@ -32,8 +38,12 @@ export const Navigations = ({
               onClick={() => handleMainCategoryClick(index)}
               className={`nav-element ${selected === index ? 'active' : ''}`}
             >
-             {item.link}
-             
+              {item.link}
+              {item.twoLink && item.twoLink.length > 0 && (
+                <img   className='open'
+                  src={openEventId === index ? hideIcon : openIcon}
+                />
+              )}
             </button>
 
             {selected === index && item.twoLink && item.twoLink.length > 0 && (

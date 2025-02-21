@@ -6,12 +6,7 @@ import "./awardsPage.scss";
 export const Awards = () => {
   const navElements = [
     {
-      link: 'Воспитательная',
-      twoLink: [
-        { link: 'aman' },
-        { link: 'amangeldi' }
-      ]
-    },
+      link: 'Воспитательная'},
     { link: 'Просветительская' },
     { link: 'Издательская' }
   ];

@@ -9,16 +9,20 @@ export const HomePage = () => {
     { link: 'Научно - методический центр развития образования' },
     {
       link: 'Научные Труды',
+    
+    },
+    {
+      link: 'Научные Журнал', 
       twoLink: [
         { link: 'Журнал исламской академии' },
         { link: 'Журнал партнерских ВУЗов' }
       ]
     },
-    { link: 'Научные Журна' },
+   
   ];
 
-  const [selected, setSelected] = useState(null); 
-  const [selectedSub, setSelectedSub] = useState(null); 
+  const [selected, setSelected] = useState(null);
+  const [selectedSub, setSelectedSub] = useState(null);
 
   const page = "Наука";
 
@@ -37,7 +41,7 @@ export const HomePage = () => {
   };
 
   const renderSubComponents = {
-    '2-0':<AwardsBaner />,
+    '3-0': <AwardsBaner />,
     '2-1': <AwardsCard />,
   };
 
@@ -58,6 +62,7 @@ export const HomePage = () => {
               <AwardsBaner />
               <h2 className='title'>{title}</h2>
               <AwardsCard />
+              <AwardsCardTwo />
               <Aw />
             </>
           ) : selectedSub !== null ? (
