@@ -1,0 +1,57 @@
+.awardsNavigations {
+    margin-right: 20px;
+    height: auto;
+    width: 40%;
+
+    &_btn {
+        font-weight: 400;
+        font-size: 40px;
+        color: #fff;
+        background: #005F4B;
+        padding: 10px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+    }
+
+    .nav-container {
+        background: rgb(3, 65, 52);
+        padding: 0 50px;
+        height: 100%;
+        width: 100%;
+
+        .nav-element {
+            background: transparent;
+            border: none;
+            margin: 12px 0;
+            min-width: 400px;
+            text-align: start;
+            font-weight: 400;
+            font-size: 34px;
+            color: #fff;
+        }
+
+        .sub-links {
+            padding-left: 20%;
+
+            button {
+                background: transparent;
+                border: none;
+                text-align: start;
+                font-weight: 400;
+                font-size: 26px;
+                color: #fff;
+                cursor: pointer;
+                position: relative;
+                margin: 12px 0;
+
+                &::before {
+                    content: '•';
+                    font-size: 26px;
+                    color: #fff;
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.awardsNavigations {
+    width: 30% ;
+    margin-right: 20px;
+    height: auto;
+    h2 {
+        font-weight: 400;
+        font-size: 40px;
+        color: #fff;
+        background: #005F4B;
+        padding: 10px 100px;
+    }
+    .nav-container {
+        background: rgb(3, 65, 52);
+        padding: 0 100px;
+        height: 100%;
+
+        
+
+        button {
+            background: transparent;
+            border: none;
+            margin: 12px 0;
+
+            p {
+                font-weight: 400;
+                font-size: 34px;
+                color: #fff;
+            }
+        }
+
+    }
+}

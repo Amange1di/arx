@@ -7,13 +7,14 @@ import {
 import { Footer, Header, } from '../../widgets';
 
 const routesArr = [
+
   {
     path: '/',
-    element: <HomePage />
+    element: <Awards />
   },
   {
-    path: '/awards',
-    element: <Awards />
+    path: '/home',
+    element: <HomePage />
   },
 
 ];
