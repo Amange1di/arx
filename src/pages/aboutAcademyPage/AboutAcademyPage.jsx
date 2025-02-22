@@ -3,21 +3,19 @@ import { AwardsCard, Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
 import "../awardsPage/awardsPage.scss";
 
-export const HomePage = () => {
+export const AboutAcademyPage = () => {
 
   const [navElements, setNavElements] = useState([]);
   const [selected, setSelected] = useState(null);
   const [selectedSub, setSelectedSub] = useState(null);
-  const [page, setPage] = useState("Наука");
+
+  const page = "About";
 
   useEffect(() => {
-    fetch('http://localhost:5000/science')
+    fetch('http://localhost:5000/about-academy')
       .then(response => response.json())
-      .then(data => {
-        setNavElements(data.navElements);
-        setPage(data.page);
-        console.log(data);
-      })
+      .then(data => setNavElements(data.navElements)) 
+      .catch(error => console.error('Error fetching data:', error));
   }, []);
 
   const title =
@@ -71,3 +69,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+

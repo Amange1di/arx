@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AwardsCard,  Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
-import "./awardsPage.scss";
+import "./activityPage.scss"
 
-export const Awards = () => {
+export const ActivityPage = () => {
   const navElements = [
     {
       link: 'Воспитательная'},

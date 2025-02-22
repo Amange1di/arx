@@ -1,24 +1,37 @@
-import { useState, useEffect } from 'react';
-import { AwardsCard, Navigations } from '../../features';
+import { useState } from 'react';
+import { AwardsCard,  Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
 import "../awardsPage/awardsPage.scss";
+import { Table } from '../../widgets/educationSection';
 
-export const HomePage = () => {
+export const EducationPage = () => {
+  const navElements = [
+    { link: 'Среднее профессиональное образование' },
+    { link: 'Высшее профессиональное образование' },
+    {
+      link: 'Магистатура',
+    
+    },
+    {
+      link: 'Докторантура', 
+      twoLink: [
+        { link: '?' },
+        { link: '?' }
+      ]
+    },{
+      link:"Дополнительная профессиональное образование"
+    },{
+      link:"Курсы"
+    },{
+      link:"Библиотека"
+    }
+   
+  ];
 
-  const [navElements, setNavElements] = useState([]);
   const [selected, setSelected] = useState(null);
   const [selectedSub, setSelectedSub] = useState(null);
-  const [page, setPage] = useState("Наука");
 
-  useEffect(() => {
-    fetch('http://localhost:5000/science')
-      .then(response => response.json())
-      .then(data => {
-        setNavElements(data.navElements);
-        setPage(data.page);
-        console.log(data);
-      })
-  }, []);
+  const page = "Образование";
 
   const title =
     selected === null
@@ -28,8 +41,9 @@ export const HomePage = () => {
         : navElements[selected]?.link;
 
   const renderComponents = {
-    0: <AwardsCard />,
+    0: <Table />,
     1: <AwardsCard />,
+  
   };
 
   const renderSubComponents = {
@@ -53,7 +67,9 @@ export const HomePage = () => {
             <>
               <AwardsBaner />
               <h2 className='title'>{title}</h2>
+              <Table/>
               <AwardsCard />
+             
             </>
           ) : selectedSub !== null ? (
             <>

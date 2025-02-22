@@ -1,0 +1,40 @@
+.header {
+    background: #005F4B;
+
+    &_bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        &_item {
+            display: flex;
+            flex-wrap: wrap;
+
+            &_link {
+                margin: 0 10px;
+            }
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            font-weight: 400;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        &_select {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+
+        }
+    }
+}
