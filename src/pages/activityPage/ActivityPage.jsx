@@ -1,28 +1,45 @@
-import { useState } from 'react';
-import { AwardsCard,  Navigations } from '../../features';
+
+  import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
+import { AwardsCard, Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
-import "./activityPage.scss"
-
+import "../awardsPage/awardsPage.scss";
 export const ActivityPage = () => {
-  const navElements = [
-    {
-      link: 'Воспитательная'},
-    { link: 'Просветительская' },
-    { link: 'Издательская' }
-  ];
+  const dispatch = useDispatch();
+  const { navElements, selected, selectedSub, page, } = useSelector(state => state.nav);
 
-  const [selected, setSelected] = useState(null);
-  const page = "Деятельность";
+  useEffect(() => {
+    dispatch(fetchPageData('activity'));
+  }, [dispatch]);
 
-  const title = selected === null ? "Все" : navElements[selected]?.link;
+  const title =
+    selected === null
+      ? "Все"
+      : selectedSub !== null
+        ? navElements[selected]?.twoLink[selectedSub]?.link
+        : navElements[selected]?.link;
 
   const renderComponents = {
     0: <AwardsCard />,
+    1: <AwardsCard />,
+  };
+
+  const renderSubComponents = {
+    '3-0': <AwardsBaner />,
+    '2-1': <AwardsCard />,
   };
 
   return (
     <div className='awards'>
-      <Navigations page={page} selected={selected} setSelected={setSelected} list={navElements} />
+         <Navigations
+        page={page}
+        selected={selected}
+        setSelected={(selected) => dispatch(setSelected(selected))}
+        selectedSub={selectedSub}
+        setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
+        list={navElements}
+      />
       <div>
         <div className="content">
           {selected === null ? (
@@ -31,10 +48,15 @@ export const ActivityPage = () => {
               <h2 className='title'>{title}</h2>
               <AwardsCard />
             </>
+          ) : selectedSub !== null ? (
+            <>
+              <h2 className='title'>{title}</h2>
+              {renderSubComponents[`${selected}-${selectedSub}`] || <AwardsCard />}
+            </>
           ) : (
             <>
-              <h2 className='title' >{title}</h2>
-              {renderComponents[selected]}
+              <h2 className='title'>{title}</h2>
+              {renderComponents[selected] || <AwardsCard />}
             </>
           )}
         </div>

@@ -1,24 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
 import { AwardsCard, Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
 import "../awardsPage/awardsPage.scss";
 
 export const HomePage = () => {
-
-  const [navElements, setNavElements] = useState([]);
-  const [selected, setSelected] = useState(null);
-  const [selectedSub, setSelectedSub] = useState(null);
-  const [page, setPage] = useState("Наука");
+  const dispatch = useDispatch();
+  const { navElements, selected, selectedSub, page, } = useSelector(state => state.nav);
 
   useEffect(() => {
-    fetch('http://localhost:5000/science')
-      .then(response => response.json())
-      .then(data => {
-        setNavElements(data.navElements);
-        setPage(data.page);
-        console.log(data);
-      })
-  }, []);
+    dispatch(fetchPageData('science'));
+  }, [dispatch]);
 
   const title =
     selected === null
@@ -39,12 +32,12 @@ export const HomePage = () => {
 
   return (
     <div className='awards'>
-      <Navigations
+         <Navigations
         page={page}
         selected={selected}
-        setSelected={setSelected}
+        setSelected={(selected) => dispatch(setSelected(selected))}
         selectedSub={selectedSub}
-        setSelectedSub={setSelectedSub}
+        setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
         list={navElements}
       />
       <div>
@@ -58,12 +51,12 @@ export const HomePage = () => {
           ) : selectedSub !== null ? (
             <>
               <h2 className='title'>{title}</h2>
-              {renderSubComponents[`${selected}-${selectedSub}`]}
+              {renderSubComponents[`${selected}-${selectedSub}`] || <AwardsCard />}
             </>
           ) : (
             <>
               <h2 className='title'>{title}</h2>
-              {renderComponents[selected]}
+              {renderComponents[selected] || <AwardsCard />}
             </>
           )}
         </div>

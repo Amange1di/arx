@@ -1,12 +1,22 @@
-import React from 'react'
-import "./awardsBaner.scss"
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getActivityBanner } from '../../../app/redux/slices/activityBannerSlice';
+import "./awardsBaner.scss";
+
 export const AwardsBaner = () => {
+    const dispatch = useDispatch();
+    const { banner } = useSelector(state => state.activityBanner);
+
+    useEffect(() => {
+        dispatch(getActivityBanner());
+    }, [dispatch]);
+
     return (
         <div className='awardsBaner'>
-            <h1>Наследие Успеха Наши Достижения</h1>
-            <div className="">
-                <p>Исламская Академия гордится тем, что предоставляет своим студентам уникальные возможности для роста и развития. Мы стремимся не только к передаче знаний, но и к формированию личностей, готовых внести вклад в общество. </p>
+            <h1>{banner?.title}</h1>
+            <div>
+                <p>{banner?.description}</p>
             </div>
         </div>
-    )
-}
+    );
+};

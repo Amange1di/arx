@@ -1,22 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
 import { AwardsCard, Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
 import "../awardsPage/awardsPage.scss";
-
 export const AboutAcademyPage = () => {
-
-  const [navElements, setNavElements] = useState([]);
-  const [selected, setSelected] = useState(null);
-  const [selectedSub, setSelectedSub] = useState(null);
-
-  const page = "About";
+  const dispatch = useDispatch();
+  const { navElements, selected, selectedSub, page, } = useSelector(state => state.nav);
 
   useEffect(() => {
-    fetch('http://localhost:5000/about-academy')
-      .then(response => response.json())
-      .then(data => setNavElements(data.navElements)) 
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+    dispatch(fetchPageData('aboutacademy'));
+  }, [dispatch]);
 
   const title =
     selected === null
@@ -37,15 +31,15 @@ export const AboutAcademyPage = () => {
 
   return (
     <div className='awards'>
-      <Navigations
+         <Navigations
         page={page}
         selected={selected}
-        setSelected={setSelected}
+        setSelected={(selected) => dispatch(setSelected(selected))}
         selectedSub={selectedSub}
-        setSelectedSub={setSelectedSub}
+        setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
         list={navElements}
       />
-      <div>
+      <div className>
         <div className="content">
           {selected === null ? (
             <>
@@ -56,12 +50,12 @@ export const AboutAcademyPage = () => {
           ) : selectedSub !== null ? (
             <>
               <h2 className='title'>{title}</h2>
-              {renderSubComponents[`${selected}-${selectedSub}`]}
+              {renderSubComponents[`${selected}-${selectedSub}`] || <AwardsCard />}
             </>
           ) : (
             <>
               <h2 className='title'>{title}</h2>
-              {renderComponents[selected]}
+              {renderComponents[selected] || <AwardsCard />}
             </>
           )}
         </div>
@@ -69,5 +63,3 @@ export const AboutAcademyPage = () => {
     </div>
   );
 };
-
-
