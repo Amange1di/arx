@@ -1,38 +1,32 @@
-
-  import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
 import { AwardsCard, Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
 import "../awardsPage/awardsPage.scss";
+
 export const ActivityPage = () => {
   const dispatch = useDispatch();
-  const { navElements, selected, selectedSub, page, } = useSelector(state => state.nav);
+  const { navElements, selected, selectedSub, page } = useSelector(state => state.nav);
 
   useEffect(() => {
     dispatch(fetchPageData('activity'));
   }, [dispatch]);
 
-  const title =
-    selected === null
-      ? "Все"
-      : selectedSub !== null
-        ? navElements[selected]?.twoLink[selectedSub]?.link
-        : navElements[selected]?.link;
+  const title = selected === null
+    ? "Все"
+    : navElements[selected]?.link;
 
-  const renderComponents = {
-    0: <AwardsCard />,
-    1: <AwardsCard />,
-  };
-
-  const renderSubComponents = {
-    '3-0': <AwardsBaner />,
-    '2-1': <AwardsCard />,
+  const getCards = () => {
+    if (selected === null) {
+      return navElements.flatMap(item => item.cards || []);
+    }
+    return navElements[selected]?.cards || [];
   };
 
   return (
     <div className='awards'>
-         <Navigations
+      <Navigations
         page={page}
         selected={selected}
         setSelected={(selected) => dispatch(setSelected(selected))}
@@ -42,23 +36,9 @@ export const ActivityPage = () => {
       />
       <div>
         <div className="content">
-          {selected === null ? (
-            <>
-              <AwardsBaner />
-              <h2 className='title'>{title}</h2>
-              <AwardsCard />
-            </>
-          ) : selectedSub !== null ? (
-            <>
-              <h2 className='title'>{title}</h2>
-              {renderSubComponents[`${selected}-${selectedSub}`] || <AwardsCard />}
-            </>
-          ) : (
-            <>
-              <h2 className='title'>{title}</h2>
-              {renderComponents[selected] || <AwardsCard />}
-            </>
-          )}
+          {selected === null && <AwardsBaner />}
+          <h2 className='title'>{title}</h2>
+          <AwardsCard cards={getCards()} />
         </div>
       </div>
     </div>

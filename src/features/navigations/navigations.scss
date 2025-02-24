@@ -20,7 +20,9 @@
         transition:  0.3s ease;
 
         &:hover {
-            background: darken(#005F4B, 5%);
+            // background: darken(#005F4B, 5%);
+            background: linear-gradient(180deg, rgb(3, 65, 52) 0%, rgba(3, 65, 52, 0.95) 100%);
+
         }
 
         .open {
@@ -123,15 +125,6 @@
     .navigations {
         min-width: 100%;
         max-width: 100%;
-        margin-right: 0;
-        margin-bottom: 20px;
-        min-height: auto;
-
-        .nav-container {
-            min-height: 10vh;
-            height: auto;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
+    //   display: none;
     }
 }

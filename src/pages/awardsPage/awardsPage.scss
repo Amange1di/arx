@@ -18,5 +18,9 @@
     .awards {
         display: flex;
         flex-direction: column;
+        .title{
+            margin: 25px;
+        }
     }
+    
 }
