@@ -26,14 +26,14 @@ export const ActivityPage = () => {
 
   return (
     <div className='awards'>
-      <Navigations
-        page={page}
-        selected={selected}
-        setSelected={(selected) => dispatch(setSelected(selected))}
-        selectedSub={selectedSub}
-        setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
-        list={navElements}
-      />
+        <Navigations
+          page={page}
+          selected={selected}
+          setSelected={(selected) => dispatch(setSelected(selected))}
+          selectedSub={selectedSub}
+          setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
+          list={navElements}
+        />
       <div>
         <div className="content">
           {selected === null && <AwardsBaner />}

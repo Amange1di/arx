@@ -38,40 +38,37 @@ export const Navigations = ({
         <img className='open' src={isNavOpen ? hideIcon : openIcon} />
       </button>
 
-      {isNavOpen && ( 
-        <aside className='nav-container'>
-          {list.map((item, index) => (
-            <div key={index} className='nav-item'>
-              <button
-                onClick={() => handleMainCategoryClick(index)}
-                className={`nav-element ${selected === index ? 'active' : ''}`}
-              >
-                {item.link}
-                {item.twoLink && item.twoLink.length > 0 && (
-                  <img className='open' src={openEventId === index ? hideIcon : openIcon} />
-                )}
-              </button>
-
-              {openEventId === index && item.twoLink && item.twoLink.length > 0 && (
-                <ul className='sub-links'>
-                  {item.twoLink.map((subItem, subIndex) => (
-                    <li key={subIndex}>
-                      <button
-                        onClick={() => setSelectedSub(subIndex)}
-                        className={`sub-nav-element ${
-                          selectedSub === subIndex ? 'active' : ''
-                        }`}
-                      >
-                        {subItem.link}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+      <aside className={`nav-container ${isNavOpen ? 'visible' : ''}`}>
+        {list.map((item, index) => (
+          <div key={index} className='nav-item'>
+            <button
+              onClick={() => handleMainCategoryClick(index)}
+              className={`nav-element ${selected === index ? 'active' : ''}`}
+            >
+              {item.link}
+              {item.twoLink && item.twoLink.length > 0 && (
+                <img className='open' src={openEventId === index ? hideIcon : openIcon} />
               )}
-            </div>
-          ))}
-        </aside>
-      )}
+            </button>
+
+            {openEventId === index && item.twoLink && item.twoLink.length > 0 && (
+              <ul className="sub-links">
+                {item.twoLink.map((subItem, subIndex) => (
+                  <li key={subIndex}>
+                    <button
+                      onClick={() => setSelectedSub(subIndex)}
+                      className={`sub-nav-element ${selectedSub === subIndex ? 'active' : ''
+                        }`}
+                    >
+                      {subItem.link}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </aside>
     </div>
   );
 };
