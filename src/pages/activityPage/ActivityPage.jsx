@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
 import { AwardsCard, Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
-import "../awardsPage/awardsPage.scss";
 
 export const ActivityPage = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ export const ActivityPage = () => {
   const title = selected === null
     ? "Все"
     : navElements[selected]?.link;
-
   const getCards = () => {
     if (selected === null) {
       return navElements.flatMap(item => item.cards || []);
@@ -25,7 +23,7 @@ export const ActivityPage = () => {
   };
 
   return (
-    <div className='awards'>
+    <div className='pageNavigation'>
         <Navigations
           page={page}
           selected={selected}
@@ -37,7 +35,7 @@ export const ActivityPage = () => {
       <div>
         <div className="content">
           {selected === null && <AwardsBaner />}
-          <h2 className='title'>{title}</h2>
+          <h2 className='title_h2'>{title}</h2>
           <AwardsCard cards={getCards()} />
         </div>
       </div>

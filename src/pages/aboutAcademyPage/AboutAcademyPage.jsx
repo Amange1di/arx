@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
 import { AwardsCard, Navigations } from '../../features';
 import { AwardsBaner } from '../../widgets/awardsSection';
-import "../awardsPage/awardsPage.scss";
 export const AboutAcademyPage = () => {
   const dispatch = useDispatch();
   const { navElements, selected, selectedSub, page, } = useSelector(state => state.nav);
@@ -30,7 +29,7 @@ export const AboutAcademyPage = () => {
   };
 
   return (
-    <div className='awards'>
+    <div className='pageNavigation'>
          <Navigations
         page={page}
         selected={selected}
@@ -44,17 +43,17 @@ export const AboutAcademyPage = () => {
           {selected === null ? (
             <>
               <AwardsBaner />
-              <h2 className='title'>{title}</h2>
+              <h2 className='title_h2'>{title}</h2>
               <AwardsCard />
             </>
           ) : selectedSub !== null ? (
             <>
-              <h2 className='title'>{title}</h2>
+              <h2 className='title_h2'>{title}</h2>
               {renderSubComponents[`${selected}-${selectedSub}`] || <AwardsCard />}
             </>
           ) : (
             <>
-              <h2 className='title'>{title}</h2>
+              <h2 className='title_h2'>{title}</h2>
               {renderComponents[selected] || <AwardsCard />}
             </>
           )}

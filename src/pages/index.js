@@ -1,5 +1,4 @@
 export { HomePage } from "./homePage/HomePage"
-export {Awards } from "./awardsPage/Awards"
 export {AboutAcademyPage} from "./aboutAcademyPage/AboutAcademyPage"
 export {GuidePage} from "./guidePage/GuidePage"
 export {EducationPage} from "./educationPage/EducationPage"

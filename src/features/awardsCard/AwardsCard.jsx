@@ -1,12 +1,13 @@
 import "./awardsCard.scss";
 
 export const AwardsCard = ({ cards = [] }) => {
-
-
   return (
     <div className="awardsCard">
-      {cards.map((item) => (
-        <div className="awardsCard_bloc" key={item.id}>
+      {cards.map((item, index) => (
+        <div
+          className="awardsCard_bloc"
+          key={`${item.id}-${index}`} 
+        >
           <div className="awardsCard_bloc_img">
             <img src={item.image} alt={`${item.title}`} />
           </div>

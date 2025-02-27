@@ -1,9 +1,11 @@
 .navigations {
     margin-right: 30px;
     min-height: 100vh;
+    height: auto;
     min-width: 25%;
     max-width: 25%;
     font-family: "Lato", sans-serif;
+    background: linear-gradient(180deg, rgb(3, 65, 52) 0%, rgba(3, 65, 52, 0.95) 100%);
 
     &_btn {
         font-weight: 500;
@@ -20,7 +22,6 @@
         transition: 0.3s ease;
 
         &:hover {
-            // background: darken(#005F4B, 5%);
             background: linear-gradient(180deg, rgb(3, 65, 52) 0%, rgba(3, 65, 52, 0.95) 100%);
 
         }
@@ -33,24 +34,27 @@
     }
 
     .nav-container {
-        background: linear-gradient(180deg, rgb(3, 65, 52) 0%, rgba(3, 65, 52, 0.95) 100%);
-        padding: 20px;
+        padding: 20px 40px;
         width: 100%;
-        box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.1);
-        transform-origin: top;
-        transform: scaleY(0);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 1s ease;
+        // transform-origin: top;
+        // transform: scaleY(0);
+        // max-height: 0;
+        // opacity: 0;
+        // // visibility: hidden;
+        // transition: transform 0.3s ease,
+        //     opacity 0.3s ease,
+        //     visibility 0.3s ease,
+        //     max-height 0.5s ease;
+        overflow: hidden;
         pointer-events: none;
-        height: 0;
 
         &.visible {
             transform: scaleY(1);
+            // height: auto;
+            // height: auto;
             opacity: 1;
             visibility: visible;
             pointer-events: all;
-            height: calc(100% - 70px);
         }
 
         .nav-element {
@@ -70,10 +74,7 @@
             position: relative;
             cursor: pointer;
 
-            &:hover {
-                color: #F7ECCF;
-                transform: translateX(10px);
-            }
+          
 
             &.active {
                 color: #F7ECCF;
@@ -90,14 +91,6 @@
         .sub-links {
             padding-left: 15%;
             list-style: none;
-
-
-            &.visible {
-                transform: scaleY(1);
-                opacity: 1;
-                height: auto;
-                margin: 10px 0;
-            }
 
             button {
                 background: transparent;
@@ -146,8 +139,12 @@
 @media (max-width: 768px) {
 
     .navigations {
+        margin: 0;
         min-height: auto;
         min-width: 100%;
         max-width: 100%;
+        .nav-container {
+            padding: 0 20px;
+        }
     }
 }
