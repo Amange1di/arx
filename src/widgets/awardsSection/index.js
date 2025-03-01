@@ -1,1 +1,0 @@
-export {AwardsBaner} from  "./awardsBaner/AwardsBaner"

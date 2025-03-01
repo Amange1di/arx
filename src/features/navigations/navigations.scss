@@ -36,22 +36,13 @@
     .nav-container {
         padding: 20px 40px;
         width: 100%;
-        // transform-origin: top;
-        // transform: scaleY(0);
-        // max-height: 0;
-        // opacity: 0;
-        // // visibility: hidden;
-        // transition: transform 0.3s ease,
-        //     opacity 0.3s ease,
-        //     visibility 0.3s ease,
-        //     max-height 0.5s ease;
+       
         overflow: hidden;
         pointer-events: none;
 
         &.visible {
             transform: scaleY(1);
-            // height: auto;
-            // height: auto;
+          
             opacity: 1;
             visibility: visible;
             pointer-events: all;

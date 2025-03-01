@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
 import { AwardsCard, Navigations } from '../../features';
-import { AwardsBaner } from '../../widgets/awardsSection';
+import { ActivetyBaner } from '../../widgets';
 
 export const ActivityPage = () => {
   const dispatch = useDispatch();
@@ -34,8 +34,7 @@ export const ActivityPage = () => {
         />
       <div>
         <div className="content">
-          {selected === null && <AwardsBaner />}
-          <h2 className='title_h2'>{title}</h2>
+        {selected === null && <ActivetyBaner />}          <h2 className='title_h2'>{title}</h2>
           <AwardsCard cards={getCards()} />
         </div>
       </div>

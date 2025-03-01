@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getActivityBanner } from '../../../app/redux/slices/activityBannerSlice';
-import "./awardsBaner.scss";
+import "./activetyBaner.scss";
 
-export const AwardsBaner = () => {
+export const ActivetyBaner = () => {
     const dispatch = useDispatch();
     const { banner } = useSelector(state => state.activityBanner);
 
@@ -12,7 +12,7 @@ export const AwardsBaner = () => {
     }, [dispatch]);
 
     return (
-        <div className='awardsBaner'>
+        <div className='activetyBaner'>
             <h1>{banner?.title}</h1>
             <div>
                 <p>{banner?.description}</p>
