@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import '../styles/app.scss';
+import '../style/app.scss';
 import {
   HomePage,
   AboutAcademyPage,
@@ -9,7 +9,6 @@ import {
   ActivityPage,
   StudentsPage,
   ApplicantsPage,
-  GalleryPage
 } from "../../pages";
 
 import { Footer, Header, } from '../../widgets';
@@ -23,7 +22,6 @@ const routesArr = [
   { path: '/activity', element: <ActivityPage /> },
   { path: '/students', element: <StudentsPage /> },
   { path: '/applicants', element: <ApplicantsPage /> },
-  { path: '/gallery', element: <GalleryPage /> },
 ];
 
 function App() {

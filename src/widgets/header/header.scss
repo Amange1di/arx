@@ -1,26 +1,100 @@
+.header {
+    &_top {
+        background: #008000;
 
-
-    .header{
-        background: #005F4B;
-        width: 100%;
-        padding: 20px 0;
-    
-    
-    &_bottom {
-      
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
 
         
+        &>div {
+            color: #fff;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-        button {
-            background: transparent;
-            border: none;
-            font-weight: 400;
-            font-size: 20px;
+            &>div {
+                display: flex;
+                align-items: center;
+
+                &>a {
+                    color: #fff;
+                    text-decoration: none;
+                    margin-right: 10px;
+                    transition: opacity 0.2s;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+
+        &_icon {
+            font-size: 18px;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &_bottom {
+        background: #005F4B;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
             color: #fff;
         }
 
-    }}
+        img {
+            height: 50px;
+            width: 50px;
+        }
+
+        &_link {
+            text-decoration: none;
+            color: #fff;
+
+            &_btn {
+                border: none;
+                background: transparent;
+                color: #fff;
+                padding: 8px 15px;
+                cursor: pointer;
+                transition: background-color 0.2s;
+                font-size: 15px;
+
+
+            }
+
+
+
+
+
+        }
+
+        select {
+            background: transparent;
+            color: #fff;
+            border: none;
+            padding: 5px;
+            margin-right: 15px;
+            cursor: pointer;
+
+            option {
+                background: #005F4B;
+            }
+        }
+
+        &_icon {
+            font-size: 22px;
+            margin: 0 8px;
+        }
+    }
+}
