@@ -2,8 +2,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 import Slider from "react-slick";
 import { HomeJurnalVuz } from "./HomeJurnalVuz";
-export default function JurnalVuzSl() {
-    const settings = {
+export const JurnalVuzSl = () => {
+  const settings = {
         centerMode: false, 
         arrows: false,
         infinite: true, 

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import '../style/app.scss';
+import '../styles/app.scss';
 import {
   HomePage,
   AboutAcademyPage,
@@ -9,6 +9,7 @@ import {
   ActivityPage,
   StudentsPage,
   ApplicantsPage,
+  GalleryPage
 } from "../../pages";
 
 import { Footer, Header, } from '../../widgets';
@@ -22,6 +23,7 @@ const routesArr = [
   { path: '/activity', element: <ActivityPage /> },
   { path: '/students', element: <StudentsPage /> },
   { path: '/applicants', element: <ApplicantsPage /> },
+  { path: '/gallery', element: <GalleryPage /> },
 ];
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
           <Route key={index} path={item.path} element={item.element} />
         ))}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

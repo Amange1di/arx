@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './navigations.scss';
-import openIcon from "../../shared/images/hideIcon.svg";
-import hideIcon from "../../shared/images/openIcon.svg";
-import { animate, AnimatePresence, motion } from 'framer-motion';
+import hideIcon from "../../shared/images/hideIcon.svg";
+import openIcon from "../../shared/images/openIcon.svg";
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const Navigations = ({
-  list,
-  selected,
+  list = [],
+  selected = null,
   setSelected,
-  selectedSub,
-  setSelectedSub,
-  page
+  selectedSub = null,
+  setSelectedSub = null,
+  page = ''
 }) => {
   const [openEventId, setOpenEventId] = useState(null);
   const [isNavOpen, setIsNavOpen] = useState(true);
@@ -22,17 +22,39 @@ export const Navigations = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    if (selected !== null && list[selected]?.twoLink?.length > 0) {
+      setOpenEventId(selected);
+    }
+  }, [selected, list]);
+
   const handleMainCategoryClick = (index) => {
-    setSelected(index);
-    setSelectedSub(null);
-    setOpenEventId(openEventId === index ? null : index);
+    const hasSubMenu = list[index].twoLink?.length > 0;
+
+    if (hasSubMenu) {
+      setOpenEventId(openEventId === index ? null : index);
+      setSelected(index);
+      if (setSelectedSub) {
+        setSelectedSub(0);
+      }
+    } else {
+      setSelected(index);
+      if (setSelectedSub) {
+        setSelectedSub(null);
+      }
+      setOpenEventId(null);
+    }
+
     if (isMobile) {
-      setIsNavOpen(false);
+      setIsNavOpen(!isNavOpen);
     }
   };
 
-  const handleSubClick = (subIndex) => {
-    setSelectedSub(subIndex);
+  const handleSubClick = (subIndex, mainIndex) => {
+    setSelected(mainIndex);
+    if (setSelectedSub) {
+      setSelectedSub(subIndex);
+    }
     if (isMobile) {
       setIsNavOpen(false);
     }
@@ -41,56 +63,61 @@ export const Navigations = ({
   return (
     <div className='navigations'>
       <button
+        type="button"
         className='navigations_btn'
-        onClick={() => {
-          const shouldClose = isNavOpen;
-          setIsNavOpen(!isNavOpen);
-          if (shouldClose) {
-            setSelected(null);
-            setSelectedSub(null);
-            setOpenEventId(null);
-          }
-        }}
+        onClick={() => setIsNavOpen(!isNavOpen)}
       >
         {page}
-        <img className='open' src={isNavOpen ? hideIcon : openIcon} />
+        <img
+          src={isNavOpen ? hideIcon : openIcon}
+          alt={isNavOpen ? 'Hide menu' : 'Show menu'}
+        />
       </button>
 
-        <AnimatePresence>
-        {
-          isNavOpen ? (
-            <motion.aside 
-              className='nav-container visible'
-              initial={{height: 0}}
-              animate={{ height: 'auto' }}
-              exit={{height: 0}}
-              transition={{all: 0.5}}
-              >
-              {list.map((item, index) => (
-                <div key={index} className='nav-item'>
-                  <button
-                    onClick={() => handleMainCategoryClick(index)}
-                    className={`nav-element ${selected === index ? 'active' : ''}`}
-                  >
-                    {item.link}
-                    {item.twoLink && item.twoLink.length > 0 && (
-                      <img className='open' src={openEventId === index ? hideIcon : openIcon} />
-                    )}
-                  </button>
+      <AnimatePresence>
+        {isNavOpen && (
+          <motion.aside
+            className='nav-container visible'
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {list.map((item, index) => (
+              <div key={index} className='nav-item'>
+                <button
+                  type="button"
+                  onClick={() => handleMainCategoryClick(index)}
+                  className={`nav-element ${item.twoLink?.length > 0
+                    ? selected === index && selectedSub === null ? 'active' : ''
+                    : selected === index ? 'active' : ''
+                    }`}
+                >
+                  {item.link}
+                  {item.twoLink?.length > 0 && (
+                    <img
+                      className='open'
+                      src={openEventId === index ? openIcon : hideIcon}
+                      alt={openEventId === index ? 'Hide submenu' : 'Show submenu'}
+                    />
+                  )}
+                </button>
 
-                  {openEventId === index && item.twoLink && item.twoLink.length > 0 && (
-                    <motion.ul 
+                <AnimatePresence>
+                  {openEventId === index && item.twoLink?.length > 0 && (
+                    <motion.ul
                       className='sub-links'
-                      initial={{height: 0}}
-                      animate={{ height: 'auto' }}
-                      exit={{height: 0}}
-                      transition={{all: 0.5}}
-                      >
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       {item.twoLink.map((subItem, subIndex) => (
                         <li key={subIndex}>
                           <button
-                            onClick={() => handleSubClick(subIndex)}
-                            className={`sub-nav-element ${selectedSub === subIndex ? 'active' : ''
+                            type="button"
+                            onClick={() => handleSubClick(subIndex, index)}
+                            className={`sub-nav-element ${selected === index && selectedSub === subIndex ? 'active' : ''
                               }`}
                           >
                             {subItem.link}
@@ -99,15 +126,12 @@ export const Navigations = ({
                       ))}
                     </motion.ul>
                   )}
-                </div>
-              ))}
-            </motion.aside>
-          ) 
-          : ''
-        }
-        </AnimatePresence>
-       
-      
+                </AnimatePresence>
+              </div>
+            ))}
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

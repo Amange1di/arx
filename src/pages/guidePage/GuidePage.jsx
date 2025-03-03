@@ -1,6 +1,41 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchGuideData, setSelected, setSelectedSub } from '../../app/redux/slices/guideSlice';
+import { Navigations } from '../../features';
+import { Rector, Departments, Vacancies } from '../../widgets';
 
 export const GuidePage = () => {
+  const dispatch = useDispatch();
+  const { navElements, selected, selectedSub, page, isLoading } = useSelector(state => state.guide);
+
+  useEffect(() => {
+    dispatch(fetchGuideData());
+  }, [dispatch]);
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
-    <div>GuidePage</div>
-  )
-}
+    <div className='pageNavigation'>
+      <Navigations
+        page={page}
+        selected={selected}
+        setSelected={(value) => dispatch(setSelected(value))}
+        selectedSub={selectedSub}
+        setSelectedSub={(value) => dispatch(setSelectedSub(value))}
+        list={navElements}
+      />
+      <div className="content">
+        <h2 className='title_h2'>
+          {selectedSub !== null && navElements?.[selected]?.twoLink?.[selectedSub]?.link
+            ? navElements[selected].twoLink[selectedSub].link
+            : navElements?.[selected]?.link
+          }
+        </h2>
+
+        {selected === 0 && selectedSub !== null && <Rector />}
+        {selected === 1 && selectedSub !== null && <Departments />}
+        {selected === 2 && <Vacancies />}
+      </div>
+    </div>
+  );
+};

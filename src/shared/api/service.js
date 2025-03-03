@@ -8,9 +8,27 @@ class StoreService {
   getActivityBanner() {
     return axios.get(`/banner`);
   }
+  getActivity() {
+    return axios.get(`/activity`);
+  }
+  async getActivityData() {
+    const response = await axios.get('/activity');
+    return response.data;
+  }
+  async getApplicantsData() {
+    const response = await axios.get('/applicants');
+    return response.data;
+  }
 
-  getActivityCard() {
-    return axios.get(`/cards`); // Изменено с /card на /cards
+
+  async getGuideData() {
+    const response = await axios.get('/guide');
+    return response.data;
+  }
+
+  async getStudentsData() {
+    const response = await axios.get('/students');
+    return response.data;
   }
 }
 

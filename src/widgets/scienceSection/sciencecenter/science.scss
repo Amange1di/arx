@@ -1,0 +1,67 @@
+
+.sciense {
+
+    .container {
+        max-width: 1300px;
+        margin: 0;
+        padding: 20px;
+
+   
+
+        .title {
+            color: #015c3f;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-top: 50px;
+            font-family: Lato;
+            font-weight: 300;
+            font-size: 35px;
+            line-height: 35px;
+            letter-spacing: 0%;
+
+        }
+
+        .subtitle {
+            color: #015c3f;
+            // font-size: 20px;
+            font-weight: bold;
+            margin-top: 100px;
+            font-family: Lato;
+            font-weight: 700;
+            font-size: 60px;
+            line-height: 60px;
+            letter-spacing: -2%;
+
+        }
+
+        .list {
+            margin: 10px 0;
+            padding-left: 20px;
+            font-family: Lato;
+            font-weight: 400;
+            font-size: 35px;
+            line-height: 35px;
+            letter-spacing: 0%;
+        
+
+            li {
+                margin-bottom: 20px;
+               
+            }
+        }
+
+        .contact {
+            font-weight: bold;
+            color: #015c3f;
+            font-family: Lato;
+            font-weight: 400;
+            font-size: 35px;
+            line-height: 35px;
+            letter-spacing: 0%;
+
+        }
+    }
+}

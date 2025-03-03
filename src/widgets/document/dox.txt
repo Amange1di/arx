@@ -1,9 +1,0 @@
-
-HomeSection -Глаяная 
-AboutAcademySection - Об академии
-GuideSection -Руководство
-EducationSection - Образование
-ScienceSection -Наука
-ActivitySection -Деятельность
-StudentsSection -  Студенты
-ApplicantsSection - Абитуриентам

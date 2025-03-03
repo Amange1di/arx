@@ -1,4 +1,13 @@
-import { HomeBaaner, HomeEvents, HomeJurnal, HomeNews, HomeStepen } from "../../widgets"
+import {
+  HomeBaaner,
+  HomeEvents,
+  HomeJurnal,
+  HomeNews,
+  HomeStepen,
+  JurnalVuzSl,
+  LinkSlider,
+  SliderHome
+} from "../../widgets"
 
 export const HomePage = () => {
   return (
@@ -8,10 +17,9 @@ export const HomePage = () => {
       <HomeStepen />
       <HomeEvents />
       <HomeJurnal />
-      
-      {/* <JurnalVuz />
+       <JurnalVuzSl />
       <LinkSlider />
-      <SliderHome />  */}
+      <SliderHome /> 
     </div>
   )
 }
