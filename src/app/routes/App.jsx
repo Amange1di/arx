@@ -8,9 +8,10 @@ import {
   SciencePage,
   ActivityPage,
   StudentsPage,
-  ApplicantsPage,
+  ApplicantsPage, 
   GalleryPage
 } from "../../pages";
+  
 
 import { Footer, Header, } from '../../widgets';
 
