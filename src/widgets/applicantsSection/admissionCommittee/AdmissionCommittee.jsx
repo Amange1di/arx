@@ -22,11 +22,11 @@ export const AdmissionCommittee = () => {
       </div>
 
       <div className="location">
-        <h3>Расположение</h3>
-        <p>Адрес: {data.location.address}</p>
-        <p>Время работы: {data.location.workingHours}</p>
+        <h3>Контакты:</h3>
+        <p> Адрес приёмной комиссии: {data.location.address}</p>
+        <p>Часы работы: {data.location.workingHours}</p>
         <div className="contacts">
-          <p>Телефон: {data.location.contacts.phone}</p>
+          <p>Горячая линия: {data.location.contacts.phone}</p>
           <p>Email: {data.location.contacts.email}</p>
         </div>
       </div>

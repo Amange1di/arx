@@ -1,4 +1,3 @@
-import React from "react";
 import "./academy.scss";
 
 export const Academy = () => {

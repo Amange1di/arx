@@ -43,12 +43,13 @@ export const EnrollAcademy = () => {
 
         <div className="enrollment">
           <h4>{data.admissionSteps.enrollment.title}</h4>
-          <p>Дата: {data.admissionSteps.enrollment.dates}</p>
-          <div className="education-forms">
+          <p>Сроки подачи документов: {data.admissionSteps.enrollment.dates}</p>
+          <p>Форма обучения:  {data.admissionSteps.enrollment.educationForms}</p>
+          {/* <div className="education-forms">
             {data.admissionSteps.enrollment.educationForms.map((form, index) => (
               <span key={index}>{form}</span>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -56,7 +57,6 @@ export const EnrollAcademy = () => {
         <h3>Контакты</h3>
         <p>Телефон: {data.contacts.phone}</p>
         <p>Email: {data.contacts.email}</p>
-        <p>График работы: {data.contacts.schedule}</p>
       </div>
     </div>
   );

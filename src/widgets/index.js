@@ -4,9 +4,6 @@ export { ActivStudents } from "./studentsSection/activStudents/ActivStudents"
 export { ParlamentStudents } from "./studentsSection/parlamentStudents/ParlamentStudents"
 export { StudentsHostel } from "./studentsSection/studentsHostel/StudentsHostel"
 export { StudentsLife } from "./studentsSection/studentsLife/StudentsLife"
-export { Academy } from "./scienceSection/academiccouncil/Academy"
-export { ScienceCenter } from "./scienceSection/sciencecenter/ScienceCenter"
-export { Scientific } from "./scienceSection/scientificjournals/Scientific"
 export { Cpo } from "./educationSection/cpo/Cpo"
 export { ActivetyBaner } from "./activetySection/activetyBaner/ActivetyBaner"
 export { Rector } from "./guideSection/rector/Rector"
@@ -34,3 +31,8 @@ export { AdmissionCommittee } from './applicantsSection/admissionCommittee/Admis
 
 export { GalleryBanner } from "./gallerySection/galleryBanner/GalleryBanner"
 export { GalleryImg } from "./gallerySection/galleryImg/GalleryImg"
+
+
+export {Academy} from "./scienceSection/academiccouncil/Academy"
+export {ScienceCenter} from "./scienceSection/sciencecenter/ScienceCenter"
+export {Scientific} from "./scienceSection/scientificjournals/Scientific"

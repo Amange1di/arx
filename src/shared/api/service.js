@@ -30,6 +30,10 @@ class StoreService {
     const response = await axios.get('/students');
     return response.data;
   }
+  async getScienceData() {
+    const response = await axios.get('/science');
+    return response.data;
+  }
 }
 
 export default new StoreService();

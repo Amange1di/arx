@@ -19,12 +19,12 @@ const additionalCourses = [
 export const HomeStepen = () => {
     return (
         <div className="container">
-            <div className="stepen">
-                <div className="stepen_top">
-                    <h2 className="stepen_top_title">Научные степени</h2>
-                    <div className="stepen_top_group">
+            <div className="stepen-container">
+                <div className="head-stepen">
+                    <h2 className="op" id="title-stepen">Научные степени</h2>
+                    <div className="stepen">
                         {academicDegrees.map((item, index) => (
-                            <div key={index} className="stepen_top_group_bloc" style={{ backgroundColor: "rgba(241, 255, 212, 1)", color: "rgba(0, 95, 75, 1)" }}>
+                            <div key={index} className="circle" style={{ backgroundColor: "rgba(241, 255, 212, 1)", color: "rgba(0, 95, 75, 1)" }}>
                                 <img src={item.icon} alt="" />
                                 <p>{item.text}</p>
                             </div>
@@ -32,17 +32,17 @@ export const HomeStepen = () => {
                     </div>
                 </div>
 
-                <div className="stepen_bottom">
-                    <div className="stepen_bottom_text">
-                        <h3>
+                <div className="head-dop">
+                    <div className="dop-title">
+                        <h3 className="op" id="title-dop">
                             <span>Дополнительное</span>
                             <span>профессиональное образование</span>
                         </h3>
                         <h4 className="op" id="kursy">Курсы</h4>
                     </div>
-                    <div className="stepen_bottom_group">
+                    <div className="dop-info">
                         {additionalCourses.map((item, index) => (
-                            <div key={index} className="stepen_bottom_group_bloc" style={{ backgroundColor: item.bgColor }}>
+                            <div key={index} className="circled" style={{ backgroundColor: item.bgColor }}>
                                 <img src={item.icon} alt="" />
                                 <p>{item.text}</p>
                             </div>

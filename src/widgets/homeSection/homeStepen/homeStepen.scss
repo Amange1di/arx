@@ -1,162 +1,350 @@
-.stepen {
+.stepen-container {
+  text-align: center;
   width: 100%;
   margin: 0 auto;
 
-  &_top {
-    &_title {
-      font-size: 50px;
-      margin-top: 40px;
-      margin-bottom: 40px;
-      width: auto;
-      padding-left: 60px;
-      text-align: start;
-      color: rgba(0, 95, 75, 1);
-      font-family: sans-serif, "Lato";
-    }
+  h3 span {
+    margin-bottom: 10px;
+    font-size: 30px;
+    display: block;
+    text-align: left;
+    color: rgba(0, 95, 75, 1);
+    font-family: sans-serif, "Lato";
+  }
 
-    &_group {
+  #kursy{
+    font-family: sans-serif, "Lato";
+  }
+
+  h4 {
+    margin-bottom: 10px;
+    color: rgba(0, 95, 75, 1);
+    font-size: 30px;
+    margin-left: 30%;
+  }
+
+  #title-stepen {
+    font-size: 50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: auto;
+    padding-left: 60px;
+    text-align: start;
+    color: rgba(0, 95, 75, 1);
+    font-family: sans-serif, "Lato";
+  }
+
+  .dop-title {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .stepen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+
+    .circle {
+      width: 250px;
+      height: 250px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 50%;
+      color: white;
+      border: 1px solid black;
+      text-align: center;
+      padding: 10px;
 
-      &_bloc {
-        width: 280px;
-        height: 280px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        border-radius: 50%;
-        color: white;
-        border: 1px solid black;
-        text-align: center;
-        padding: 10px;
+      img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 15px;
+        margin-top: 10px;
+        font-family: sans-serif, "Lato";
       }
     }
   }
 
-  &_bottom {
-    &_text {
+
+  .dop-info {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    justify-content: space-between;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+
+    .circled {
+      width: 250px;
+      height: 250px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 100px 0 40px 0;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 50%;
+      color: white;
+      border: 1px solid black;
+      text-align: center;
+      padding: 10px;
 
-      h3 {
-        span {
-          margin-bottom: 10px;
-          font-size: 30px;
-          display: block;
-          text-align: left;
-          color: rgba(0, 95, 75, 1);
-          font-family: sans-serif, "Lato";
-        }
+      img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 5px;
       }
 
-      h4 {
-        margin-bottom: 10px;
-        color: rgba(0, 95, 75, 1);
-        font-size: 30px;
+      p {
+        font-size: 15px;
+        margin-top: 10px;
+        font-family: sans-serif, "Lato";
       }
     }
+  }
 
-    &_group {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
 
-      &_bloc {
-        width: 280px;
-        height: 280px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        border-radius: 50%;
-        color: white;
-        border: 1px solid black;
-        text-align: center;
-        padding: 10px;
-      }
+  .dop-info {
+
+    .circle:nth-child(1),
+    .circle:nth-child(2) {
+      background-color: rgba(0, 95, 75, 1);
+    }
+
+    .circle:nth-child(3),
+    .circle:nth-child(4) {
+      background-color: rgba(26, 66, 119, 1);
     }
   }
 
   @media (max-width: 1200px) {
 
-    &_top,
-    &_bottom {
-      &_group {
-        // flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
+    h3 span {
+      font-size: 30px;
+    }
 
-        &_bloc {
-          width: 250px;
-          height: 250px;
+    h4 {
+      margin-left: 5%;
+    }
+
+    .dop-title {
+      margin-left: 5%;
+    }
+
+    #title-stepen {
+      margin-left: -1%;
+      font-size: 35px;
+    }
+
+    .stepen {
+      .circle {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    .dop-info {
+      .circled {
+        width: 200px;
+        height: 200px;
+
+
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+
+    #title-dop span {
+      font-size: 30px;
+    }
+
+    h4 {
+      margin-left: 5%;
+    }
+
+    .dop-title {
+      margin-left: 5%;
+      width: 60%;
+    }
+
+    #title-stepen {
+      margin-left: -3%;
+      font-size: 35px;
+    }
+
+    .stepen {
+      .circle {
+        width: 150px;
+        height: 150px;
+
+        img {
+          width: 60px;
+          height: 60px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .dop-info {
+      .circled {
+        width: 150px;
+        height: 150px;
+
+        img {
+          width: 60px;
+          height: 60px;
+        }
+
+        p {
+          font-size: 12px;
         }
       }
     }
   }
 
   @media (max-width: 768px) {
-    &_top {
-      &_title {
-        font-size: 35px;
-        padding-left: 20px;
-      }
-
-      &_group {
-        flex-wrap: wrap;
-
-        &_bloc {
-          width: 200px;
-          height: 200px;
-        }
-      }
+    .dop-title{
+      width: 80%;
     }
 
-    &_bottom {
-      &_text {
-        padding: 50px 0 20px 0;
-        text-align: center;
-
-        h3 span,
-        h4 {
-          font-size: 25px;
-        }
+      #title-stepen{
+        font-size: 40px;
+        width: 100%;
+        text-align: left;
+        padding-left: 8%;
       }
+    
+      .stepen {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
 
-      &_group {
-        flex-wrap: wrap;
+        .circle {
+          width: 250px;
+          height: 250px;
 
-        &_bloc {
-          width: 200px;
-          height: 200px;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-
-    &_top,
-    &_bottom {
-      &_group {
-        &_bloc {
-          width: 150px;
-          height: 150px;
-          padding: 5px;
+          img {
+            width: 80px;
+            height: 80px;
+          }
 
           p {
-            font-size: 14px;
+            font-size: 15px;
           }
+        }
+      }
+
+      .dop-info {
+        grid-template-columns: repeat(2, 1fr);
+        
+
+        .circled {
+          width: 250px;
+          height: 250px;
+
+          img {
+            width: 80px;
+            height: 80px;
+          }
+
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    
+  }
+
+  @media (max-width: 576px) {
+
+    h4{
+      font-size: 25px;
+    }
+      
+      h3 span{
+        font-size: 25px;
+      }
+ 
+  
+
+
+    
+    .dop-title{
+      width: 50%;
+
+
+      #kursy{
+        font-size: 20px;
+      }
+
+      h3 span{
+        font-size: 20px !important;
+      }
+    }
+
+      #title-stepen{
+        font-size: 30px;
+        width: 100%;
+        text-align: left;
+      }
+    
+
+
+      .stepen {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: auto;
+
+        .circle {
+          width: 150px;
+          height: 150px;
+          margin: 0 auto;
 
           img {
             width: 40px;
-            height: auto;
+            height: 40px;
+          }
+
+          p {
+            font-size: 15px;
           }
         }
       }
-    }
+
+      .dop-info {
+        grid-template-columns: repeat(2, 1fr);
+
+        width: auto;
+        
+
+        .circled {
+          width: 150px;
+          height: 150px;
+          margin: 0 auto;
+          
+
+
+          img {
+            width: 40px;
+            height: 40px;
+          }
+
+          p {
+            font-size: 12px;
+          }
+        }
+      }
+    
   }
 }

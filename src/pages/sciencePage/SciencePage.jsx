@@ -1,56 +1,46 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchScienceData, setSelected, setSelectedSub } from '../../app/redux/slices/scienceSlice';
+import { Navigations } from '../../features';
+import { Academy, ScienceCenter, Scientific } from '../../widgets';
 
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchPageData, setSelected, setSelectedSub , } from '../../app/redux/slices/navSlice';
-// import { Navigations } from '../../features';
-// import {  Scientific, ScienceCenter, Academy } from '../../widgets';
-
-// export const SciencePage = () => {
-//     const dispatch = useDispatch();
-//     const { navElements, selected, selectedSub, page } = useSelector(state => state.nav);
-
-//     useEffect(() => {
-//         dispatch(fetchPageData('science'));
-//     }, [dispatch]);
-
-//     const title =
-//         selected === null
-//             ? "Все"
-//             : selectedSub !== null
-//                 ? navElements[selected]?.twoLink[selectedSub]?.link
-//                 : navElements[selected]?.link;
-
-//     const renderComponents = {
-//         0: <Academy />,
-//         1: <ScienceCenter />,
-//         3: <Scientific />,
-//     };
-
-//     return (
-//         <div className='pageNavigation'>
-//             <Navigations
-//                 page={page}
-//                 selected={selected}
-//                 setSelected={(selected) => dispatch(setSelected(selected))}
-//                 selectedSub={selectedSub}
-//                 setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
-//                 list={navElements}
-//             />
-//             <div className="content">
-//                 {selected !== null && (
-//                     <>
-//                         {/* <h2 className='title_h2'>{title}</h2> */}
-//                         {renderComponents[selected]}
-//                     </>
-//                 )}
-//             </div>
-//         </div>
-//     );
-// };
 
 
 export const SciencePage = () => {
+  const dispatch = useDispatch();
+  const { navElements, selected, selectedSub, page, isLoading } = useSelector(state => state.science);
+
+  useEffect(() => {
+    dispatch(fetchScienceData());
+  }, [dispatch]);
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
-    <div>SciencePage</div>
-  )
-}
+    <div className='pageNavigation'>
+      <Navigations
+        page={page}
+        selected={selected}
+        setSelected={(value) => dispatch(setSelected(value))}
+        selectedSub={selectedSub}
+        setSelectedSub={(value) => dispatch(setSelectedSub(value))}
+        list={navElements}
+      />
+      <div className="content">
+        <h2 className='title_h2'>
+          {selectedSub !== null && navElements?.[selected]?.twoLink?.[selectedSub]?.link
+            ? navElements[selected].twoLink[selectedSub].link
+            : navElements?.[selected]?.link
+          }
+        </h2>
+
+        {selected === 0 &&  <Academy />}
+        {selected === 1 && selectedSub !== null && <ScienceCenter />}
+        {selected === 2 && selectedSub !== null && <ScienceCenter />}
+        {selected === 3 && <Scientific/>}
+        {selected === 4 && selectedSub !== null && <ScienceCenter />}
+      </div>
+    </div>
+  );
+};
+
