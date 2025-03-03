@@ -4,13 +4,6 @@ class StoreService {
   getPageData(page) {
     return axios.get(`/${page}`);
   }
-
-  getActivityBanner() {
-    return axios.get(`/banner`);
-  }
-  getActivity() {
-    return axios.get(`/activity`);
-  }
   async getActivityData() {
     const response = await axios.get('/activity');
     return response.data;
@@ -32,6 +25,11 @@ class StoreService {
   }
   async getScienceData() {
     const response = await axios.get('/science');
+    return response.data;
+  }
+
+  async getEducationData() {
+    const response = await axios.get('/education');
     return response.data;
   }
 }

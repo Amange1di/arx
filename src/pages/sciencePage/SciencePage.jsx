@@ -8,13 +8,12 @@ import { Academy, ScienceCenter, Scientific } from '../../widgets';
 
 export const SciencePage = () => {
   const dispatch = useDispatch();
-  const { navElements, selected, selectedSub, page, isLoading } = useSelector(state => state.science);
+  const { navElements, selected, selectedSub, page,  } = useSelector(state => state.science);
 
   useEffect(() => {
     dispatch(fetchScienceData());
   }, [dispatch]);
 
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className='pageNavigation'>
@@ -34,11 +33,10 @@ export const SciencePage = () => {
           }
         </h2>
 
-        {selected === 0 &&  <Academy />}
-        {selected === 1 && selectedSub !== null && <ScienceCenter />}
-        {selected === 2 && selectedSub !== null && <ScienceCenter />}
-        {selected === 3 && <Scientific/>}
-        {selected === 4 && selectedSub !== null && <ScienceCenter />}
+        {selected === 0 && <Academy />}
+        {selected === 1 &&<ScienceCenter />}
+        {selected === 2 && <Scientific/>}
+        {selected === 3 && selectedSub !== null && <ScienceCenter />}
       </div>
     </div>
   );

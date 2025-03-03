@@ -1,50 +1,57 @@
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
-// import { Cpo } from '../../widgets';
-// import { Navigations } from '../../features/navigations/Navigations';
-
-// export const EducationPage  = () => {
-//   const dispatch = useDispatch();
-//   const { navElements, selected, selectedSub, page } = useSelector(state => state.nav);
-
-//   useEffect(() => {
-//     dispatch(fetchPageData('education'));
-//   }, [dispatch]);
-
-//   const title = selected === null
-//     ? "Все"
-//     : navElements[selected]?.link;
-//   const getCards = () => {
-//     if (selected === null) {
-//       return navElements.flatMap(item => item.cards || []);
-//     }
-//     return navElements[selected]?.cards || [];
-//   };
-
-//   return (
-//     <div className='pageNavigation'>
-//         <Navigations
-//           page={page}
-//           selected={selected}
-//           setSelected={(selected) => dispatch(setSelected(selected))}
-//           selectedSub={selectedSub}
-//           setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
-//           list={navElements}
-//         />
-//       <div>
-//         <div className="content">
-//           <Cpo cards={getCards()} />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-import React from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEducationData, setSelected, setSelectedSub } from '../../app/redux/slices/educationSlice';
+import { Navigations } from '../../features';
+import { Obraz, Cpo } from '../../widgets';
 
 export const EducationPage = () => {
+  const dispatch = useDispatch();
+  const { navElements, selected, selectedSub, page, isLoading } = useSelector(state => state.education);
+
+  useEffect(() => {
+    dispatch(fetchEducationData());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!navElements?.length) {
+    return <div>No data available</div>;
+  }
+
+  const renderContent = () => {
+    switch (selected) {
+      case 0:
+        return <Cpo />;
+      case 1:
+        return <Cpo />;
+      case 2:
+        return <Obraz />;
+      case 3:
+        return <Obraz />;
+      case 4:
+        return <Obraz />;
+      case 5:
+        return <Cpo />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div>EducationPage</div>
-  )
-}
+    <div className='pageNavigation'>
+      <Navigations
+        page={page}
+        selected={selected}
+        setSelected={(value) => dispatch(setSelected(value))}
+        selectedSub={selectedSub}
+        setSelectedSub={(value) => dispatch(setSelectedSub(value))}
+        list={navElements}
+      />
+      <div className="content">
+        {renderContent()}
+      </div>
+    </div>
+  );
+};

@@ -1,7 +1,12 @@
 import React from "react";
+import { useSelector } from 'react-redux';
 import "./cpo.scss";
 
 export const Cpo = () => {
+    const { navElements, selected, selectedSub } = useSelector(state => state.education);
+    const currentSection = navElements[selected];
+    const currentSubSection = selectedSub !== null ? currentSection?.twoLink[selectedSub] : null;
+
     const displayedData = [
        {
         id:1,
@@ -92,7 +97,10 @@ export const Cpo = () => {
     return (
         <div className="container">
             <div className="content">
-                <h1 className="textTOne">Среднее профессиональное образование.</h1>
+                <h1 className="textTOne">{currentSection?.link}</h1>
+                {currentSubSection && (
+                    <h2 className="subTitle">{currentSubSection.link}</h2>
+                )}
                 <p className="textT">
                     Высшее профессиональное образование — это ваш первый шаг к успешной карьере и глубоким знаниям в выбранной области. Наша академия предлагает программы, которые сочетают теоретические основы и практические навыки, готовя студентов к профессиональной деятельности и дальнейшему обучению.
                 </p>
@@ -136,4 +144,3 @@ export const Cpo = () => {
 };
 
 
- 

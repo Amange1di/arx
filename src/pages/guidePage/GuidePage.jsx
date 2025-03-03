@@ -6,13 +6,12 @@ import { Rector, Departments, Vacancies } from '../../widgets';
 
 export const GuidePage = () => {
   const dispatch = useDispatch();
-  const { navElements, selected, selectedSub, page, isLoading } = useSelector(state => state.guide);
+  const { navElements, selected, selectedSub, page,  } = useSelector(state => state.guide);
 
   useEffect(() => {
     dispatch(fetchGuideData());
   }, [dispatch]);
 
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className='pageNavigation'>
