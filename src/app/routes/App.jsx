@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import '../styles/app.scss';
+import '../styles/App.scss';
 import {
   HomePage,
   AboutAcademyPage,
