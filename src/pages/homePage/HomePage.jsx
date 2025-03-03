@@ -8,6 +8,7 @@ export const HomePage = () => {
       <HomeStepen />
       <HomeEvents />
       <HomeJurnal />
+      
       {/* <JurnalVuz />
       <LinkSlider />
       <SliderHome />  */}
