@@ -6,19 +6,12 @@ import { Obraz, Cpo } from '../../widgets';
 
 export const EducationPage = () => {
   const dispatch = useDispatch();
-  const { navElements, selected, selectedSub, page, isLoading } = useSelector(state => state.education);
+  const { navElements, selected, selectedSub, page,  } = useSelector(state => state.education);
 
   useEffect(() => {
     dispatch(fetchEducationData());
   }, [dispatch]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!navElements?.length) {
-    return <div>No data available</div>;
-  }
 
   const renderContent = () => {
     switch (selected) {

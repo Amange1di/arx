@@ -5,9 +5,11 @@ import guideReducer from './slices/guideSlice';
 import applicantsReducer from './slices/applicantsSlice';
 import studentsReducer from './slices/studentsSlice';
 import scienceReducer from "./slices/scienceSlice"
+import navReducer from './slices/navSlice';
 
 const store = configureStore({
   reducer: {
+    nav: navReducer,
     education: educationReducer,
     activity: activityReducer,
     guide: guideReducer,
