@@ -7,7 +7,7 @@ import {
   News, 
   SliderHome 
 } from "../../widgets"
-import { HomeLinkSlider } from "../../widgets/homeSection/sliderLinks/HomeLinkSlider"
+// import { HomeLinkSlider } from "../../widgets/homeSection/sliderLinks/HomeLinkSlider"
 
 export const HomePage = () => {
   return (
@@ -18,7 +18,7 @@ export const HomePage = () => {
       <Events />
       <Jurnal />
       <JurnalVuzSl />
-      <HomeLinkSlider/>
+      {/* <HomeLinkSlider/> */}
       <SliderHome />
     </div>
   )
