@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import './sliderLinks.scss'
 import LinkSliderLinks from "./LinkSliderLinks"
-export const LinkSlider = () => {
+export const HomeLinkSlider = () => {
     const settings = {
         centerMode: true,
         arrows: false,
