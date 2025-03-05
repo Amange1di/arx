@@ -3,7 +3,7 @@ import phone from "../../features/images/phone.svg";
 import email from "../../features/images/email.svg";
 import adress from "../../shared/images/footer/adres.png";
 import logo from '../../features/images/logo_footer.png';
-import "./Footer.scss";
+import "./footer.scss";
 
 export const Footer = () => {
   return (
