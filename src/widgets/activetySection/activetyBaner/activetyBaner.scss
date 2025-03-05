@@ -33,7 +33,7 @@
 }
 
 @media (max-width: 768px) {
-    .awardsBaner {
+    .activetyBaner {
         margin: 40px auto;
         padding: 0 20px;
 
@@ -45,9 +45,9 @@
         div {
             margin-top: 40px;
             padding-left: 20px;
-
+border-left: none;
             p {
-                text-align: left;
+                font-size: clamp(18px, 2.5vw, 35px);
             }
         }
     }
