@@ -1,9 +1,9 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 import Slider from "react-slick";
-import "./homeJurnal.scss";
-import { HomeJurnalComp } from "./HomeJurnalComp";
-export const HomeJurnal = () => {
+import { JurnalComp } from "./JurnalComp";
+
+export const Jurnal = () => {
     const settings = {
         centerMode: false, 
         arrows: false,
@@ -36,12 +36,10 @@ export const HomeJurnal = () => {
             <h1 className='op' id='title-sl'>журнал исламской академии</h1>
             <Slider {...settings}>
             {JurnalCards.map((_, index) => (
-                    <HomeJurnalComp key={index} />
+                    <JurnalComp key={index} />
                 ))}
             </Slider>
         </div>
         </div>
     )
 }
-
-

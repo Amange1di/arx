@@ -1,6 +1,6 @@
-import Iko from "../../../shared/images/homeiko.png";
-import Whiteiko from "../../../shared/images/whiteiko.png";
-import './homeStepen.scss'
+import Iko from "../../../shared/images/homeImages/homeiko.png";
+import Whiteiko from "../../../shared/images/homeImages/whiteiko.png";
+import './stepeni.scss'
 
 const academicDegrees = [
     { text: "Среднее профессиональное образование", icon: Iko },
@@ -16,7 +16,7 @@ const additionalCourses = [
     { text: "Индивидуальные курсы", icon: Whiteiko, bgColor: "rgba(26, 66, 119, 1)" },
 ];
 
-export const HomeStepen = () => {
+export const Education = () => {
     return (
         <div className="container">
             <div className="stepen-container">
@@ -53,4 +53,3 @@ export const HomeStepen = () => {
         </div>
     );
 };
-

@@ -1,47 +1,78 @@
-.about-carousel {
+.info-carousel {
+  max-width: 70%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2%;
+
+  &-title {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 50px 0;
+    line-height: 40px;
+    letter-spacing: -4%;
+    color: #005f4b;
+  }
+
+  &__wrapper {
     width: 100%;
+    position: relative;
+    max-width: 100%;
     overflow: hidden;
+  }
 
-    &__slide {
-        height: 200px;
-        padding: 0 20px;
-        box-sizing: border-box;
-        transition: all 0.3s ease;
-    }
+  &__swiper {
+    width: 100%;
+    overflow: hidden !important;
+  }
 
-    &__slide__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
-}
-
-.slick-slide {
+  &__slide {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-}
-
-.inactive-slide {
+    width: 300px;
+    height: 220px;
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
     filter: blur(2px);
+    transform: scale(0.8);
+
+    &.swiper-slide-active {
+      transform: scale(1.2);
+      filter: blur(0px);
+      opacity: 1;
+      z-index: 1;
+      height: 170px;
+    }
+  }
+
+  &__image {
+    width: 300px; 
+    height: 200px;
+    object-fit: cover;
+    border-radius: 2%;
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+  }
+
+  &__pagination {
+    margin-top: 1%;
+    text-align: center;
+
+    .swiper-pagination-bullet {
+      background: #fff;
+      width: 0.8%;
+      height: 0.8%;
+      margin: 0 0.5%;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: #007bff;
+    }
+  }
 }
 
-.active-slide {
-    opacity: 1;
-    filter: none;
-    transform: scale(1.1);
-    width: 350px !important;
-    height: 240px !important;
-    z-index: 1;
-}
-
-.slick-track {
-    display: flex !important;
-    align-items: center;
-    padding: 0 20px;
+@media (max-width: 576px) {
+  .info-carousel{
+    max-width: 100%;
+  }
 }

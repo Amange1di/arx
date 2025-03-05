@@ -43,7 +43,7 @@ export const Header = () => {
   }, [isOpen, isSearchVisible]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen || isSearchVisible) { // Изменено условие
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -52,7 +52,7 @@ export const Header = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen]);
+  }, [isOpen, isSearchVisible]); 
 
   const handleMenuItemClick = () => {
     setIsOpen(false);
@@ -68,12 +68,13 @@ export const Header = () => {
     headerMenu.map((page) => (
       <NavLink
         key={page.name}
-        className="header_bottom_link"
         to={page.path}
-        target={page?.target}
+        className={({ isActive }) =>
+          isActive ? "header_bottom_link nav-active" : "header_bottom_link"
+        }
         onClick={handleMenuItemClick}
       >
-        <button className="header_bottom_link_btn">{page.name}</button>
+        {page.name}
       </NavLink>
     ))
   );
@@ -120,12 +121,17 @@ export const Header = () => {
               <option value="kg">Kg</option>
               <option value="ru">Ru</option>
             </select>
-            <IoSearch
-              className="header_bottom_group_icon"
-              onClick={handleSearchOpen}
-            />
-            <FaEyeSlash className="header_bottom_icon" />
+            <div className="header-desktop-controls-icon">
+
+
+              <IoSearch
+                className="header_bottom_group_icon"
+                onClick={handleSearchOpen}
+              />
+              <FaEyeSlash className="header_bottom_icon" />
+            </div>
           </div>
+
           <div className="burger-menu">
             <input
               id="menu__toggle"

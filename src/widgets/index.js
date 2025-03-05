@@ -14,16 +14,18 @@ export { AboutDocument } from "./aboutSection/aboutDocument/AboutDocument"
 export { AboutTexts } from "./aboutSection/aboutTexts/AboutTexts"
 export { AboutNavigate } from "./aboutSection/aboutNavigate/AboutNavigate"
 
-export { HomeBaaner } from "./homeSection/homeBanner/HomeBanner"
-export { HomeNews } from "./homeSection/homeNews/HomeNews"
-export { HomeStepen } from "./homeSection/homeStepen/HomeStepen"
-export { HomeEvents } from "./homeSection/homeEvents/HomeEvents"
-export { HomeJurnal } from "./homeSection/homeJurnal/HomeJurnal"
-export { HomeJurnalComp } from "./homeSection/homeJurnal/HomeJurnalComp"
-export { HomeJurnalVuz } from "./homeSection/homeJurnalVuz/HomeJurnalVuz"
-export { JurnalVuzSl } from "./homeSection/homeJurnalVuz/JurnalVuzSl"
-export { LinkSlider } from "./homeSection/sliderlinks/LinkSlider"
-export { SliderHome } from "./homeSection/homeSlider/SliderHome"
+
+export  {Banner} from "./homeSection/banner/Banner"
+export {Events} from "./homeSection/events/Events"
+export {News} from "./homeSection/news/News"
+export { Jurnal } from './homeSection/sliderAcademy/Jurnal';
+export { JurnalComp } from "./homeSection/sliderAcademy/JurnalComp"
+export { SliderHome } from "./homeSection/sliderHome/SliderHome"
+export {JurnalVuzSl} from "./homeSection/sliderPartner/JurnalVuzSl"
+export { LinkSlider } from './homeSection/sliderLinks/LinkSlider';
+export { LinkSliderLinks } from "./homeSection/sliderLinks/LinkSliderLinks"
+export { JurnalVuz } from "./homeSection/sliderPartner/JurnalVuz"
+export { Education } from "./homeSection/stepeni/Education"
 
 export { EnrollAcademy } from './applicantsSection/enrollAcademy/EnrollAcademy';
 export { AdmissionCommittee } from './applicantsSection/admissionCommittee/AdmissionCommittee';

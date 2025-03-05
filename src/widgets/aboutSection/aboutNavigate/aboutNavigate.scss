@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 .about-navigate {
+  margin-top: 90px;
+  max-width: 90%;
   &__content {
     display: flex;
     gap: 10px;
@@ -51,10 +53,102 @@
 
   &__map {
     width: 30%;
-
+    
     iframe {
       width: 100%;
       height: 100%;
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .about-navigate{
+    width: 100%;
+    &__content{
+      gap: 40px;
+    }
+    &__info{
+      width: 55%;
+    }
+    &__map{
+      width: 45%;
+    }
+  }
+}
+
+
+@media (max-width: 992px) {
+  .about-navigate{
+    width: 100%;
+    &__content{
+      gap: 40px;
+    }
+    &__info{
+      width: 50%;
+    }
+    &__map{
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-navigate{
+    width: 100%;
+    margin: 40px 5px;
+    &__item{
+      &-title{
+        font-size: 25px;
+        line-height: 25px;
+      }
+      &-description{
+        font-size: 20px;
+        line-height: 20px;
+      }
+    }
+    &__content{
+      flex-direction: column;
+      gap: 40px;
+    }
+    &__info{
+      width: 100%;
+    }
+    &__map{
+      width: 100%;
+      height: 300px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .about-navigate{
+    width: 100%;
+    // margin: 40px auto;
+    &__content{
+      flex-direction: column;
+      gap: 40px;
+    }
+    &__info{
+      width: 100%;
+    }
+    &__item{
+      &-icon{
+        width: 28px;
+        height: 28px;
+      }
+        &-title{
+          font-size: 23px;
+          line-height: 23px;
+        }
+        &-description{
+          font-size: 19px;
+          line-height: 19px;
+        }
+    }
+    &__map{
+      width: 100%;
+      height: 230px;
     }
   }
 }

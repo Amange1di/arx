@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import './aboutTexts.scss';
 
-export const AboutTexts = ( { items } ) => {
+export const AboutTexts = ({ items }) => {
   return (
     <section className="about-texts">
             <div className="about-texts__content">
@@ -12,7 +12,6 @@ export const AboutTexts = ( { items } ) => {
                     </article>
                 ))}
             </div>
-            AboutTexts
         </section>
   )
 }

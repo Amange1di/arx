@@ -1,32 +1,56 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
-import './aboutCarousel.scss'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import PropTypes from "prop-types";
+import "swiper/css";
+import "swiper/css/pagination";
+import "./aboutCarousel.scss";
 
-export const  AboutCarousel = ({ items }) => {
-
-    const settings = {
-        arrows: false,
-        centerMode: true,
-        infinite: true,
-        centerPadding: "0px",
-        slidesToShow: 3,
-        speed: 500,
-        autoplay: true,
-        autoplaySpeed: 2000,
-    };
-
+export const AboutCarousel = ({ items }) => {
+    
     return (
-        <div className="container">
-            <div className="slider-container">
-                <Slider {...settings}>
+        <section className="info-carousel">
+
+            <h2></h2>
+            <div className="info-carousel__wrapper">
+                <Swiper
+                    modules={[Autoplay, Pagination]}
+                    loop={true}
+                    centeredSlides={true}
+                    slidesPerView={3}
+                    spaceBetween={40}
+                    autoplay={{
+                        delay: 2000,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                        el: ".info-carousel__pagination",
+                    }}
+                    className="info-carousel__swiper"
+                >
                     {items.map((item, index) => (
-                        <div className="slide" key={index}>
-                            <img src={item.image} alt={`Слайд ${index + 1}`} className="slide-image" />
-                        </div>
+                        <SwiperSlide key={index} className="info-carousel__slide">
+                            <img
+                                src={item.image}
+                                alt={`Слайд ${index + 1}`}
+                                className="info-carousel__image"
+                            />
+                        </SwiperSlide>
                     ))}
-                </Slider>
+                </Swiper>
+                <div className="info-carousel__pagination"></div>
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};      
+
+AboutCarousel.propTypes = {
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            title: PropTypes.string.isRequired,
+            link_open: PropTypes.string.isRequired,
+            link_download: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+};

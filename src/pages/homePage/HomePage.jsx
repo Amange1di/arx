@@ -1,25 +1,25 @@
-import {
-  HomeBaaner,
-  HomeEvents,
-  HomeJurnal,
-  HomeNews,
-  HomeStepen,
-  JurnalVuzSl,
-  LinkSlider,
-  SliderHome
+import { 
+  Banner, 
+  Education, 
+  Events, 
+  Jurnal, 
+  JurnalVuzSl, 
+  LinkSlider, 
+  News, 
+  SliderHome 
 } from "../../widgets"
 
 export const HomePage = () => {
   return (
     <div>
-      <HomeBaaner />
-      <HomeNews />
-      <HomeStepen />
-      <HomeEvents />
-      <HomeJurnal />
-       <JurnalVuzSl />
+      <Banner />
+      <News />
+      <Education />
+      <Events />
+      <Jurnal />
+      <JurnalVuzSl />
       <LinkSlider />
-      <SliderHome /> 
+      <SliderHome />
     </div>
   )
 }

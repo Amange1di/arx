@@ -1,114 +1,213 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPageData, setSelected, setSelectedSub } from '../../app/redux/slices/navSlice';
-import {  Navigations } from '../../features';
-import { AboutDocument,AboutTexts, AboutCarousel , AboutNavigate,  } from '../../widgets';
+import { Navigations } from '../../features';
+import { AboutDocument, AboutTexts, AboutCarousel, AboutNavigate } from '../../widgets';
 
 export const AboutAcademyPage = () => {
   const dispatch = useDispatch();
-  const { navElements, selected, selectedSub, page, } = useSelector(state => state.nav);
+  const { navElements, selected, selectedSub, page } = useSelector(state => state.nav);
 
   useEffect(() => {
     dispatch(fetchPageData('aboutacademy'));
   }, [dispatch]);
 
-  const [itemsHeaderAbout] = useState([
-      {    
-          id: 1,
-          title: 'Исламская академия: освещая путь знаний и духовного роста.'
-      }
-  ]);
+  const academyBody = [{
+    id: 1,
+    title: 'Факультет исламского права (фикх)',
+    description: 'Факультет предоставляет знания в области исламского права, правовых систем и судебных практик в странах с исламской традицией. Студенты изучают основы исламского права, семейное право в исламе, а также гражданское и уголовное право в исламском контексте. По завершении программы выпускники получают квалификацию правоведа или юриста в исламских странах. Этот факультет предлагает курсы по арабскому языку для всех уровней, от начального до среднего, а также изучение арабской литературы и культуры. Программы включают классическую арабскую литературу, а также знакомят студентов с арабской культурой и традициями. Выпускники могут стать переводчиками или преподавателями арабского языка. Факультет направлен на углубленное изучение исламской теологии, философии и религиозных учений. Студенты изучают основы исламской акъиды (теологии), исламскую философию и логику, а также мистицизм и суфизм. Выпускники получают квалификацию исламского теолога, философа или проповедника. Этот факультет обучает основам педагогики и методике преподавания исламских дисциплин. В рамках программы студенты осваивают педагогические методы с исламским уклоном, изучают воспитание и этику в исламе. По завершении программы выпускники становятся преподавателями или воспитателями в исламских образовательных учреждениях.'
+  }];
 
-  const [itemsBodyAbout] = useState([
-      {
-          id: 1,
-          title: 'Факультет исламского права (фикх)',
-          description: 'Факультет предоставляет знания в области исламского права, правовых систем и судебных практик в странах с исламской традицией. Студенты изучают основы исламского права, семейное право в исламе, а также гражданское и уголовное право в исламском контексте. По завершении программы выпускники получают квалификацию правоведа или юриста в исламских странах. Этот факультет предлагает курсы по арабскому языку для всех уровней, от начального до среднего, а также изучение арабской литературы и культуры. Программы включают классическую арабскую литературу, а также знакомят студентов с арабской культурой и традициями. Выпускники могут стать переводчиками или преподавателями арабского языка. Факультет направлен на углубленное изучение исламской теологии, философии и религиозных учений. Студенты изучают основы исламской акъиды (теологии), исламскую философию и логику, а также мистицизм и суфизм. Выпускники получают квалификацию исламского теолога, философа или проповедника. Этот факультет обучает основам педагогики и методике преподавания исламских дисциплин. В рамках программы студенты осваивают педагогические методы с исламским уклоном, изучают воспитание и этику в исламе. По завершении программы выпускники становятся преподавателями или воспитателями в исламских образовательных учреждениях.'
-      }
-  ]);
+  const itemsNavigate = [
+    { id: 1, name: 'Телефон номер', property: '+996704589591', type: 'phone' },
+    { id: 2, name: 'Адрес', property: 'г.Бишкек-ул. А.Юнусова 134', type: 'location' },
+    { id: 3, name: 'Режим работы', property: 'Пн-Сб | 10:00-22:00', type: 'hours' }
+  ];
 
-  const [itemsNavigateAbout] = useState([
-      {
-          id: 1,
-          name: 'Телефон номер',
-          property: '+996704589591'
-      },
-      {
-          id: 2,
-          name: 'Адрес',
-          property: 'г.Бишкек-ул. А.Юнусова 134'
-      },
-      {
-          id: 3,
-          name: 'Режим работы',
-          property: 'Пн-Сб | 10:00-22:00'
-      }
-  ]);
+  const itemsSwiper = [
+    {
+      id: 1,
+      image: 'https://s3-alpha-sig.figma.com/img/8cd4/4ad8/ab79addbf9023e26fd5825ee8d27ec8e?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=LMqj1WfvXMAGsWpC74i4Qu3uJwVypjgVb9E6Jc4~mTBm9HBxTUg2koDDp--JOuoxN8gf6uQ0Ri-RNlwemh1GtwbmpIb0Si~oNYjIjCWQCYYQPeX1oxNtX5bx9fMg92p~SJU6w10yWzR61EPuCkY~BcSf-jIpJcxaMC6uTiHVhERyyCpep4Oo~Lq0C8v3k8~kHo6KPcyPE~1yvaFmTjP3opUwzP5wzLrz51xBIaCcKZNwnIZCvPvfg5NU9YjpYUoPEMqAeFFyC9vEcYTlob4tYbP7ha2OBF-vsO1lXMNRS7RWCo-MF9KUUkkoNo2OlMgXoz4NDXIHpj3-7rPvk0X~vw__'
+    },
+    {
+      id: 2,
+      image: 'https://s3-alpha-sig.figma.com/img/8cd4/4ad8/ab79addbf9023e26fd5825ee8d27ec8e?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=LMqj1WfvXMAGsWpC74i4Qu3uJwVypjgVb9E6Jc4~mTBm9HBxTUg2koDDp--JOuoxN8gf6uQ0Ri-RNlwemh1GtwbmpIb0Si~oNYjIjCWQCYYQPeX1oxNtX5bx9fMg92p~SJU6w10yWzR61EPuCkY~BcSf-jIpJcxaMC6uTiHVhERyyCpep4Oo~Lq0C8v3k8~kHo6KPcyPE~1yvaFmTjP3opUwzP5wzLrz51xBIaCcKZNwnIZCvPvfg5NU9YjpYUoPEMqAeFFyC9vEcYTlob4tYbP7ha2OBF-vsO1lXMNRS7RWCo-MF9KUUkkoNo2OlMgXoz4NDXIHpj3-7rPvk0X~vw__'
+    },
+    {
+      id: 3,
+      image: 'https://s3-alpha-sig.figma.com/img/8cd4/4ad8/ab79addbf9023e26fd5825ee8d27ec8e?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=LMqj1WfvXMAGsWpC74i4Qu3uJwVypjgVb9E6Jc4~mTBm9HBxTUg2koDDp--JOuoxN8gf6uQ0Ri-RNlwemh1GtwbmpIb0Si~oNYjIjCWQCYYQPeX1oxNtX5bx9fMg92p~SJU6w10yWzR61EPuCkY~BcSf-jIpJcxaMC6uTiHVhERyyCpep4Oo~Lq0C8v3k8~kHo6KPcyPE~1yvaFmTjP3opUwzP5wzLrz51xBIaCcKZNwnIZCvPvfg5NU9YjpYUoPEMqAeFFyC9vEcYTlob4tYbP7ha2OBF-vsO1lXMNRS7RWCo-MF9KUUkkoNo2OlMgXoz4NDXIHpj3-7rPvk0X~vw__'
+    },
+    {
+      id: 4,
+      image: 'https://s3-alpha-sig.figma.com/img/8cd4/4ad8/ab79addbf9023e26fd5825ee8d27ec8e?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=LMqj1WfvXMAGsWpC74i4Qu3uJwVypjgVb9E6Jc4~mTBm9HBxTUg2koDDp--JOuoxN8gf6uQ0Ri-RNlwemh1GtwbmpIb0Si~oNYjIjCWQCYYQPeX1oxNtX5bx9fMg92p~SJU6w10yWzR61EPuCkY~BcSf-jIpJcxaMC6uTiHVhERyyCpep4Oo~Lq0C8v3k8~kHo6KPcyPE~1yvaFmTjP3opUwzP5wzLrz51xBIaCcKZNwnIZCvPvfg5NU9YjpYUoPEMqAeFFyC9vEcYTlob4tYbP7ha2OBF-vsO1lXMNRS7RWCo-MF9KUUkkoNo2OlMgXoz4NDXIHpj3-7rPvk0X~vw__'
+    },
+  ];
 
-  const [itemsCouruselAbout] = useState([
-        {
-            id: 1,
-            image: 'https://s3-alpha-sig.figma.com/img/039f/f383/e554a39a5ba10833e2875522083a993c?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cn6GygJxVjJ2dzYf1IHXocuZsq4t1ogRwZvGgnca3sgIwpxTcN53n1hD3CCJ6Odnvt5mOCOfaom8NVIAnejcsC9ufu-Z2wlz367CASU2XzkFR3u9FwOj07gk~~yyyF5jMeHCx1GsBS~fe-kQQmkylxZot2hC4GQjHRx~T839LrASmFD3-wvf4dazR2Su3orSb2HKU4ja70HiZh2-cp1DHa7NUl7YcxtO1QPSn5yggPANg3iP4H~wrQKWptfQ7jp5ZcN1BwaUJf7~tT32IUP47gi87CFC~2K0q5eY~vx022GRtQkaPKsv5~GNUBlXJV0FB7VrstmCkJXqSZU8Pebtiw__'
-        },
-        {
-            id: 2,
-            image: 'https://s3-alpha-sig.figma.com/img/039f/f383/e554a39a5ba10833e2875522083a993c?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cn6GygJxVjJ2dzYf1IHXocuZsq4t1ogRwZvGgnca3sgIwpxTcN53n1hD3CCJ6Odnvt5mOCOfaom8NVIAnejcsC9ufu-Z2wlz367CASU2XzkFR3u9FwOj07gk~~yyyF5jMeHCx1GsBS~fe-kQQmkylxZot2hC4GQjHRx~T839LrASmFD3-wvf4dazR2Su3orSb2HKU4ja70HiZh2-cp1DHa7NUl7YcxtO1QPSn5yggPANg3iP4H~wrQKWptfQ7jp5ZcN1BwaUJf7~tT32IUP47gi87CFC~2K0q5eY~vx022GRtQkaPKsv5~GNUBlXJV0FB7VrstmCkJXqSZU8Pebtiw__'
-        },
-        {
-            id: 3,
-            image: 'https://s3-alpha-sig.figma.com/img/039f/f383/e554a39a5ba10833e2875522083a993c?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cn6GygJxVjJ2dzYf1IHXocuZsq4t1ogRwZvGgnca3sgIwpxTcN53n1hD3CCJ6Odnvt5mOCOfaom8NVIAnejcsC9ufu-Z2wlz367CASU2XzkFR3u9FwOj07gk~~yyyF5jMeHCx1GsBS~fe-kQQmkylxZot2hC4GQjHRx~T839LrASmFD3-wvf4dazR2Su3orSb2HKU4ja70HiZh2-cp1DHa7NUl7YcxtO1QPSn5yggPANg3iP4H~wrQKWptfQ7jp5ZcN1BwaUJf7~tT32IUP47gi87CFC~2K0q5eY~vx022GRtQkaPKsv5~GNUBlXJV0FB7VrstmCkJXqSZU8Pebtiw__'
-        },
-        {
-            id: 4,
-            image: 'https://s3-alpha-sig.figma.com/img/039f/f383/e554a39a5ba10833e2875522083a993c?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cn6GygJxVjJ2dzYf1IHXocuZsq4t1ogRwZvGgnca3sgIwpxTcN53n1hD3CCJ6Odnvt5mOCOfaom8NVIAnejcsC9ufu-Z2wlz367CASU2XzkFR3u9FwOj07gk~~yyyF5jMeHCx1GsBS~fe-kQQmkylxZot2hC4GQjHRx~T839LrASmFD3-wvf4dazR2Su3orSb2HKU4ja70HiZh2-cp1DHa7NUl7YcxtO1QPSn5yggPANg3iP4H~wrQKWptfQ7jp5ZcN1BwaUJf7~tT32IUP47gi87CFC~2K0q5eY~vx022GRtQkaPKsv5~GNUBlXJV0FB7VrstmCkJXqSZU8Pebtiw__'
-        },
-        {
-            id: 5,
-            image: 'https://s3-alpha-sig.figma.com/img/039f/f383/e554a39a5ba10833e2875522083a993c?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cn6GygJxVjJ2dzYf1IHXocuZsq4t1ogRwZvGgnca3sgIwpxTcN53n1hD3CCJ6Odnvt5mOCOfaom8NVIAnejcsC9ufu-Z2wlz367CASU2XzkFR3u9FwOj07gk~~yyyF5jMeHCx1GsBS~fe-kQQmkylxZot2hC4GQjHRx~T839LrASmFD3-wvf4dazR2Su3orSb2HKU4ja70HiZh2-cp1DHa7NUl7YcxtO1QPSn5yggPANg3iP4H~wrQKWptfQ7jp5ZcN1BwaUJf7~tT32IUP47gi87CFC~2K0q5eY~vx022GRtQkaPKsv5~GNUBlXJV0FB7VrstmCkJXqSZU8Pebtiw__'
-        },
-    ]);
+  const document = [{ id: 1, title: 'Лицензия', link_open: '...', link_download: '...' }];
 
   const renderComponents = {
-    0: <> <AboutTexts items={itemsBodyAbout} />,<AboutNavigate items={itemsNavigateAbout} /></>,
-    1: <> <AboutTexts items={itemsBodyAbout} />,<AboutCarousel items={itemsCouruselAbout} /></>,
-    2: <AboutDocument items={itemsBodyAbout} />,
-    3: <AboutDocument items={itemsBodyAbout} />,
+    0: (
+      <>
+        <AboutTexts items={academyBody} />
+        <AboutNavigate items={itemsNavigate} />
+      </>
+    ),
+    1: <AboutTexts items={academyBody} />,
+    2: <AboutDocument items={document} />,
+    3: (
+      <>
+        <AboutTexts items={academyBody} />
+        <AboutCarousel items={itemsSwiper} />
+      </>
+    )
   };
 
   const renderSubComponents = {
-    '3-1': <AboutDocument items={itemsBodyAbout} />,
-    '2-0': <AboutDocument items={itemsBodyAbout} />,
+    '0-0': (
+      <>
+        <AboutTexts items={[
+          {
+            id: 1,
+            title: 'Основными направлениями стратегии являются:',
+            description: 'Мы активно внедряем современные методы преподавания, включая онлайн-курсы и электронные платформы, что позволяет студентам учиться в удобное время и в любом месте. Мы продолжим разрабатывать образовательные программы, соответствующие мировым стандартам, и расширять возможности для международного обмена студентами и преподавателями.'
+          },
+          {
+            id: 2,
+            title: 'Укрепление научной базы',
+            description: 'Мы продолжаем развивать научные исследования в области исламских наук, философии, права и культуры. В наших планах — создание исследовательских центров и лабораторий для проведения значимых научных проектов и публикаций, а также активное участие в международных научных форумах и конференциях.'
+          },
+          {
+            id: 3,
+            title: 'Духовное и нравственное воспитание',
+            description: 'Наша академия ориентирована на духовное развитие студентов, поэтому мы проводим лекции, мастер-классы и программы наставничества. Мы уделяем особое внимание воспитанию ценностей справедливости, милосердия и уважения. Мы также поддерживаем молодёжные инициативы и волонтёрские проекты в сфере исламской культуры.'
+          },
+          {
+            id: 4,
+            title: 'Развитие инфраструктуры',
+            description: 'Мы планируем расширять кампус, обновлять учебные корпуса и создавать новые современные учебные пространства. Важной частью стратегии является обновление библиотеки и создание онлайн-ресурсов для доступа к научным материалам. Мы также уделяем внимание развитию спортивных и культурных объектов для студентов.'
+          },
+          {
+            id: 5,
+            title: 'Социальная ответственность и взаимодействие с обществом',
+            description: 'Особое внимание уделяется укреплению партнёрских отношений с другими образовательными учреждениями и организациями. Мы разрабатываем социальные программы для поддержки малообеспеченных студентов и активно участвуем в благотворительных проектах. Взаимодействие с международными организациями будет способствовать расширению влияния академии на мировую образовательную арену.'
+          }
+        ]} />,
+        <AboutCarousel title={[
+          {
+            id: 1,
+            title: 'Наши цели и достижения на пути к будущему.'
+          }
+        ]} items={itemsSwiper} />
+      </>
+
+    ),
+    '0-1': (
+      <AboutTexts items={[
+        {
+          id: 1,
+          title: 'Миссия нашей Академии',
+          description: 'Наша миссия состоит в том, чтобы предоставлять качественное образование, вдохновляя студентов на изучение исламской науки и культуры, а также формируя высоконравственных и ответственных лидеров, способных внести значимый вклад в развитие общества. Мы стремимся создавать пространство для глубоких исследований, где студенты могут развивать свои интеллектуальные и духовные способности, объединяя традиционные ценности ислама с современными подходами к образованию.'
+        },
+        {
+          id: 2,
+          title: 'Цели и ценности',
+          description: 'Образование и просвещение: мы стремимся к тому, чтобы каждый студент, завершивший обучение, был не только высококвалифицированным специалистом, но и человеком, способным передавать ценности справедливости, милосердия и умиротворения в обществе. Духовное развитие: Академия не только обучает научным дисциплинам, но и помогает развивать духовные качества, создавая пространство для самопознания и глубоких размышлений. Инновации и традиции: мы находим баланс между сохранением традиций исламской науки и внедрением инновационных методов в образовательный процесс, обеспечивая студентам возможность быть конкурентоспособными на мировой арене. Социальная ответственность: мы активно работаем над тем, чтобы каждый выпускник мог влиять на позитивные изменения в обществе, решать актуальные социальные проблемы и работать на благо своей общины.'
+        },
+      ]} />
+    ),
+    '0-2': (
+      <>
+        <AboutTexts items={[{ id: 1, title: 'Основание и становление', description: 'История Академии берёт своё начало в [указать год основания], когда группа учёных и богословов поставила перед собой задачу создать образовательное учреждение, сочетающее лучшие традиции исламского богословия и современные методики преподавания. С первых дней Академия поставила перед собой цель обеспечить глубокую подготовку студентов, формируя в них не только знания, но и нравственные качества, основанные на исламских ценностях. В первые годы своего существования Академия открыла базовые образовательные программы, включающие изучение шариатских наук, арабского языка, исламской философии и истории. Уже тогда Академия привлекала преподавателей высокого уровня, а студенты, обучавшиеся здесь, становились востребованными специалистами в различных сферах.' }]} />,
+        <AboutCarousel items={itemsSwiper} />,
+        <AboutTexts items={[{ id: 1, title: 'Развитие образовательных программ', description: 'С каждым годом Академия расширяла свои горизонты. Были разработаны новые учебные курсы, появились магистратура и докторантура, охватывающие широкий спектр исламских наук. Образовательный процесс стал включать исследовательскую деятельность, международные стажировки и участие в крупных научных конференциях. Важным этапом стало открытие Научно-методического центра, который стал площадкой для подготовки новых учебных пособий, научных изданий и разработки образовательных стандартов.' }]} />,
+        <AboutCarousel items={itemsSwiper} />,
+      </>
+    ),
+    '0-3': (
+      <>
+        <AboutTexts items={[{ id: 1, title: 'Основание и становление', description: 'История Академии берёт своё начало в [указать год основания], когда группа учёных и богословов поставила перед собой задачу создать образовательное учреждение, сочетающее лучшие традиции исламского богословия и современные методики преподавания. С первых дней Академия поставила перед собой цель обеспечить глубокую подготовку студентов, формируя в них не только знания, но и нравственные качества, основанные на исламских ценностях. В первые годы своего существования Академия открыла базовые образовательные программы, включающие изучение шариатских наук, арабского языка, исламской философии и истории. Уже тогда Академия привлекала преподавателей высокого уровня, а студенты, обучавшиеся здесь, становились востребованными специалистами в различных сферах.' }]} />,
+        <AboutCarousel items={itemsSwiper} />,
+        <AboutTexts items={[{ id: 1, title: 'Развитие образовательных программ', description: 'С каждым годом Академия расширяла свои горизонты. Были разработаны новые учебные курсы, появились магистратура и докторантура, охватывающие широкий спектр исламских наук. Образовательный процесс стал включать исследовательскую деятельность, международные стажировки и участие в крупных научных конференциях. Важным этапом стало открытие Научно-методического центра, который стал площадкой для подготовки новых учебных пособий, научных изданий и разработки образовательных стандартов.' }]} />,
+        <AboutCarousel items={itemsSwiper} />,
+        <AboutTexts items={[{ id: 1, title: 'Расширение и международное сотрудничество', description: 'Со временем Академия начала активное сотрудничество с ведущими исламскими университетами и образовательными центрами мира. Были заключены соглашения с партнёрами из [указать страны], организованы обменные программы для студентов и преподавателей. Сегодня Академия не только сохраняет лучшие традиции исламского образования, но и внедряет инновационные подходы к обучению, делая знания доступными для широкого круга студентов.' }]} />,
+        <AboutCarousel items={itemsSwiper} />,
+        <AboutTexts items={[{ id: 1, title: 'Сегодня Исламская академия — это:', description: 'Современный образовательный центр, сочетающий исламские традиции и современные методики преподавания Научно-исследовательская площадка, где создаются новые труды по исламоведению Место, где формируются духовные лидеры, учёные и преподаватели, способные внести вклад в развитие общества Мы продолжаем развиваться, открывая новые горизонты знаний и просвещения!' }]} />,
+        <AboutCarousel items={itemsSwiper} />,
+      </>
+    ),
+    '2-0': (
+      <AboutDocument items={[
+        {
+          id: 1,
+          title: 'Лицензия',
+          link_open: '...',
+          link_download: '...'
+        },
+        {
+          id: 1,
+          title: 'Свидетельство о государственной аккредитации',
+          link_open: '...',
+          link_download: '...'
+        },
+        {
+          id: 1,
+          title: 'Устав Академии',
+          link_open: '...',
+          link_download: '...'
+        },
+        {
+          id: 1,
+          title: 'Правила приёма в Академию',
+          link_open: '...',
+          link_download: '...'
+        },
+        {
+          id: 1,
+          title: 'Образовательные программы и стандарты',
+          link_open: '...',
+          link_download: '...'
+        },
+        {
+          id: 1,
+          title: 'Положение об Учёном совете',
+          link_open: '...',
+          link_download: '...'
+        },
+      ]} />
+    ),
+    '2-1': (
+      <AboutDocument items={[{ id: 1, title: 'Аккредитация', link_open: '...', link_download: '...' }]} />
+    )
   };
 
   return (
     <div className='pageNavigation'>
-         <Navigations
-            page={page}
-            selected={selected}
-            setSelected={(selected) => dispatch(setSelected(selected))}
-            selectedSub={selectedSub}
-            setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
-            list={navElements}
-          />
-
-          
-      <div>
-        <div className="content  ">
-          {selectedSub !== null ? (
-            <>
-              {/* <h2 className='title_h2'>{title}</h2> */}
-              {renderSubComponents[`${selected}-${selectedSub}`]}
-            </>
-          ) : (
-            <>
-              {/* <h2 className='title_h2'>{title}</h2> */}
-              {renderComponents[selected] || <AboutDocument items={itemsBodyAbout} />}
-            </>
-          )}
-        </div>
+      <Navigations
+        page={page}
+        selected={selected}
+        setSelected={(selected) => dispatch(setSelected(selected))}
+        selectedSub={selectedSub}
+        setSelectedSub={(selectedSub) => dispatch(setSelectedSub(selectedSub))}
+        list={navElements}
+      />
+      <div className="container">
+        {selectedSub !== null ? (
+          <div>
+            <h1 className="title_h2">
+              {navElements?.[selected]?.twoLink?.[selectedSub]?.link || navElements?.[selected]?.link}
+            </h1>
+            {renderSubComponents[`${selected}-${selectedSub}`] || <p>Контент отсутствует</p>}
+          </div>
+        ) : (
+          <>
+            <h1 className="title_h2">
+              {navElements?.[selected]?.link || 'Исламская академия: освещая путь знаний и духовного роста'}
+            </h1>
+              {renderComponents[selected] || <AboutTexts items={academyBody} />}
+              <AboutNavigate items={itemsNavigate} />
+          </>
+        )}
       </div>
     </div>
   );
 };
-
-

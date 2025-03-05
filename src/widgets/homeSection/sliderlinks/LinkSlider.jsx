@@ -1,8 +1,8 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 import Slider from "react-slick";
-import LinkSliderLinks from './LinkSliderLinks';
 import './sliderLinks.scss'
+import { LinkSliderLinks } from "./LinkSliderLinks";
 
 export const LinkSlider = () => {
     const settings = {

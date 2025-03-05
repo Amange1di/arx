@@ -4,10 +4,13 @@
   position: relative;
   overflow: hidden; 
   margin-bottom: 30px;
+  margin-top: 5%;
 
   #title-home-slider{
+    font-size: 40px;
     font-family: sans-serif, "Lato";
     margin-left: 10%;
+    color: rgba(0, 95, 75, 1);
   }
 
 
@@ -63,7 +66,7 @@
 
     .slide{
         .slide-image{
-            width: 320px;
+            width: 300px;
             height: 220px;
         }
     }
@@ -78,7 +81,7 @@
     .slide{
 
         .slide-image{
-            width: 240px;
+            width: 220px;
             height: 200px;
         }
     }

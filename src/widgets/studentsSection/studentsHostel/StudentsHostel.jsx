@@ -63,7 +63,7 @@ export const StudentsHostel = () => {
         <div className="studentsHostel">
             {dataActiv.map((item) => (
                 <div className="conditions" key={item.id}>
-                    {item.name2 && <h1>{item.name2}</h1>}
+                    {/* {item.name2 && <h1>{item.name2}</h1>} */}
                     {item.name && <h3>{item.name}</h3>}
                     {item.description && <p>{item.description}</p>}
                     {item.description2 && <p>{item.description2}</p>}

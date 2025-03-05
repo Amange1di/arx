@@ -1,18 +1,31 @@
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa6";
+import { FaClock } from "react-icons/fa6";
 import PropTypes from 'prop-types';
 import './aboutNavigate.scss';
 
 export const AboutNavigate = ({ items }) => {
+  
+  const getIcon = (type) => {
+    switch (type) {
+      case 'phone':
+        return <FaPhone className="about-navigate__item-icon" />;
+      case 'location':
+        return <FaLocationDot className="about-navigate__item-icon" />;
+      case 'hours':
+        return <FaClock className="about-navigate__item-icon" />;
+      default:
+        return <FaLocationDot className="about-navigate__item-icon" />;
+    }
+  };
+
   return (
     <section className="about-navigate">
       <div className="about-navigate__content">
         <article className="about-navigate__info">
           {items.map((item) => (
             <div key={item.id} className="about-navigate__item">
-              {/* <img 
-                src={item.icon} 
-                alt={`${item.name} icon`} 
-                className="about-navigate__item-icon"
-              /> */}
+              {getIcon(item.type)}
               <div className="about-navigate__item-details">
                 <h3 className="about-navigate__item-title">{item.name}</h3>
                 <p className="about-navigate__item-description">{item.property}</p>
@@ -42,6 +55,7 @@ AboutNavigate.propTypes = {
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       name: PropTypes.string.isRequired,
       property: PropTypes.string.isRequired,
+      type: PropTypes.oneOf(['phone', 'location', 'hours']).isRequired 
     })
   ).isRequired
 };

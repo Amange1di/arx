@@ -1,5 +1,5 @@
-import "./homeEvents.scss"
-import Mer from "../../../shared/images/mer.jpg";
+import Mer from "../../../shared/images/homeImages/mer.jpg";
+import "./events.scss"; 
 
 const eventData = [
   {
@@ -12,7 +12,8 @@ const eventData = [
     image: Mer,
   },
 ];
-export const HomeEvents = () => {
+
+export const Events = () => {
   return (
     <section className="events-section">
       <div className="container">
@@ -35,5 +36,5 @@ export const HomeEvents = () => {
         </div>
       </div>
     </section>
-  )
+  );
 }

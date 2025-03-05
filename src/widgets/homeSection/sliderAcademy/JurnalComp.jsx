@@ -1,9 +1,10 @@
+import Naws from '../../../shared/images/homeImages/news.jpg';
+import './sliderAcademy.scss'
+import Flg from '../../../shared/images/homeImages/greenFlower.png'
 
-import Naws from '../../../shared/images/news.jpg';
-import Flg from '../../../shared/images/greenFlower.png'
-import './homeJurnal.scss'
 
-export const HomeJurnalComp = () => {
+export const JurnalComp = () => {
+
   const newsData = [
     {
       title: 'День открытых дверей',

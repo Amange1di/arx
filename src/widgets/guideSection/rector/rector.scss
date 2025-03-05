@@ -25,15 +25,14 @@
 
                 h3 {
                     padding: 20px 0;
-                    font-size: clamp(18px, 2.5vw, 35px);
+                    font-size: 1.5rem;
                     font-weight: 700;
                     color: #005F4B;
                     border-top: 2px solid #000;
                 }
 
                 h4 {
-                    font-size: clamp(18px, 2.5vw, 35px);
-
+                    font-size: 1.4rem;
                     border-top: 2px solid #000;
                     border-bottom: 2px solid #000;
                     font-weight: 600;
@@ -53,8 +52,7 @@
             width: 90%;
 
             h4 {
-                font-size: clamp(25px, 2.5vw, 35px);
-
+                font-size: 28px;
                 color: #005F4B;
                 margin: 30px 0 15px;
             }
@@ -97,8 +95,7 @@
 
                 .tel a {
                     font-weight: 900;
-                    font-size: clamp(18px, 2.5vw, 35px);
-
+                    font-size: 25px;
                     color: #333;
                 }
             }

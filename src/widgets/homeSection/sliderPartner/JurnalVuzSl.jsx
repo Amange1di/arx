@@ -1,9 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
 import Slider from "react-slick";
-import { HomeJurnalVuz } from "./HomeJurnalVuz";
+import './sliderPartner.scss'
+import { JurnalVuz } from "./JurnalVuz";
+
 export const JurnalVuzSl = () => {
-  const settings = {
+    const settings = {
         centerMode: false, 
         arrows: false,
         infinite: true, 
@@ -34,10 +36,13 @@ export const JurnalVuzSl = () => {
             <h1 className='op' id='title-sl'>журналы <br />партнерских вузов</h1>
             <Slider {...settings}>
             {JurnalCards.map((_, index) => (
-                    <HomeJurnalVuz key={index} />
+                    <JurnalVuz key={index} />
                 ))}
             </Slider>
         </div>
         </div>
     )
 }
+
+
+

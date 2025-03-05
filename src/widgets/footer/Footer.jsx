@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import phone from "../../features/images/phone.svg";
 import email from "../../features/images/email.svg";
-import adress from "../../features/images/Vector.svg";
+import adress from "../../shared/images/footer/adres.png";
 import logo from '../../features/images/logo_footer.png';
-import "./footer.scss";
+import "./Footer.scss";
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container container">
+        <div className="footer-flex">
         <div className="footer-navigation">
           <div className="footer-list">
-            <div>
+          
               <h3 className="footer-title">Навигация</h3>
               <li className="link-li">
                 <Link to="/about">О нас</Link>
@@ -20,17 +21,18 @@ export const Footer = () => {
                 <Link to="/gallery">Галерея</Link>
               </li>
               <li className="link-li">
-                <Link to="/academy">Об академии</Link>
+                <Link to="/about-academy">Об академии</Link>
               </li>
               <li className="link-li">
                 <Link to="/events">Мероприятия</Link>
               </li>
               <li className="link-li">
-                <Link to="/awards">Награды</Link>
+                <Link to="/activity">Награды</Link>
               </li>
-            </div>
+           
           </div>
         </div>
+        
         <div className="footer-navigation-2">
             <h3 className="footer-title">ㅤ</h3>
             <li className="link-li">
@@ -46,9 +48,11 @@ export const Footer = () => {
               <Link to="/research">Иследование</Link>
             </li>
             <li className="link-li">
-              <Link to="/back">Вернуться обратно</Link>
+              <Link to="/">Вернуться обратно</Link>
             </li>
         </div>
+        </div>
+        
         <div className="footer-contact">
           <h3 className="footer-title-2">Контакты</h3>
           <ul className="contact-info">
@@ -65,7 +69,7 @@ export const Footer = () => {
         </div>
         <div className="footer-logo">
           <div className="logo-circle">
-            <img src={logo} alt="" />
+            <img src={logo} alt="" className="logo-circle"/>
           </div>
         </div>
       </div>

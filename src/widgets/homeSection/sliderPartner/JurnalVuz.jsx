@@ -1,10 +1,9 @@
-import "./homeJurnalVuz.scss"
+import Naws from '../../../shared/images/homeImages/news.jpg';
+import './sliderPartner.scss'
+import Flg from '../../../shared/images/homeImages/greenFlower.png'
 
-import Naws from '../../../shared/images/news.jpg';
-import Flg from '../../../shared/images/greenFlower.png'
 
-
-export const HomeJurnalVuz = () => {
+export const JurnalVuz = () => {
 
   const newsData = [
     {

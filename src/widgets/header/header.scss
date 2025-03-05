@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .header {
-  font-family: Montserrat sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
   .logo {
     max-width: 100px;
@@ -74,10 +76,11 @@
         border: none;
         background: transparent;
         color: #fff;
-        padding: 8px 15px;
+        padding: 8px 12px;
         cursor: pointer;
         transition: background-color 0.2s;
-        font-size: 15px;
+        font-size: 12px;
+        font-family: "Montserrat", sans-serif;
 
         &:hover {
           color: #ffcc00;
@@ -86,10 +89,33 @@
       }
     }
 
-    &.active {
-      .header_bottom_link_btn {
-        color: #ffcc00;
-        font-weight: bold;
+    .desktop-menu,
+    .mobile-menu {
+      .header_bottom_link {
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: #ffcc00;
+        }
+
+        &.nav-active {
+          color: #ffcc00 !important;
+          font-weight: 600;
+          list-style: decimal-leading-zero;
+
+        }
+      }
+    }
+
+    .header-desktop-controls {
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        display: flex;
+        align-items: center;
       }
     }
 
@@ -295,7 +321,18 @@
     }
 
     .header-desktop-controls {
-      display: none;
+      position: static;
+
+      select {
+        display: none;
+      }
+
+      &-icon {
+        top: 70px;
+        right: 60px;
+        position: absolute;
+
+      }
     }
 
     .burger-menu {
@@ -325,9 +362,22 @@
       }
     }
 
-    .header-controls {
-      display: none;
+    .header-desktop-controls {
+      position: static;
+
+      select {
+        display: none;
+      }
+
+      &-icon {
+        top: 30px;
+        right: 60px;
+        position: absolute;
+
+      }
     }
+
+
   }
 
   .menu__btn {
