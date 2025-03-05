@@ -42,6 +42,18 @@ export const Header = () => {
     };
   }, [isOpen, isSearchVisible]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const handleMenuItemClick = () => {
     setIsOpen(false);
     setIsSearchVisible(false)

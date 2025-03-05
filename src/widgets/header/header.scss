@@ -125,7 +125,7 @@
   // Burger Menu 
   .burger-menu {
     position: static;
-        display: none;
+    display: none;
 
     #menu__toggle {
       opacity: 0;
@@ -205,6 +205,7 @@
       box-shadow: -1px 0px 6px rgba(0, 0, 0, 0.2);
       transition: right 0.3s ease;
       z-index: 998;
+      overflow-y: auto;
 
       &.open {
         visibility: visible;
@@ -330,7 +331,7 @@
   }
 
   .menu__btn {
-    top: 40px !important; 
+    top: 40px !important;
     right: 20px;
   }
 }

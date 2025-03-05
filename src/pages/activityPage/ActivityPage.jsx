@@ -29,8 +29,8 @@ export const ActivityPage = () => {
         setSelectedSub={null}
         list={navElements}
       />
-      <div>
-        <div className="content">
+      <div> 
+        <div className="content container ">
           {selected === null && <ActivetyBaner />}
           <h2 className='title_h2'>{selected === null ? "Все" : navElements[selected]?.link}</h2>
           <AwardsCard

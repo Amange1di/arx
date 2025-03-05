@@ -93,7 +93,7 @@ export const AboutAcademyPage = () => {
 
           
       <div>
-        <div className="content">
+        <div className="content  ">
           {selectedSub !== null ? (
             <>
               {/* <h2 className='title_h2'>{title}</h2> */}
