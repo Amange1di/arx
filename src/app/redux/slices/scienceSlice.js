@@ -10,8 +10,29 @@ export const fetchScienceData = createAsyncThunk(
 );
 
 const initialState = {
-    page: '',
-    navElements: [],
+    page: 'Наука',
+    "navElements": [
+        {
+            "link": "Ученый Совет"
+        },
+        {
+            "link": "Научно -  центр развития образования"
+        },
+        {
+            "link": "Научные Труды"
+        },
+        {
+            "link": "Научные Журнал",
+            "twoLink": [
+                {
+                    "link": "Журнал исламской академии"
+                },
+                {
+                    "link": "Журнал партнерских ВУЗов"
+                }
+            ]
+        }
+    ],
     selected: 0,
     selectedSub: null,
     isLoading: false,

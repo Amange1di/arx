@@ -12,7 +12,102 @@ export const fetchEducationData = createAsyncThunk(
 
 const initialState = {
     page: 'Образование',
-    navElements: [],
+  navElements: [
+            {
+                "id": 1,
+                "link": "Среднее профессиональное образование",
+                "twoLink": [
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "link": "Высшее профессиональное образование",
+                "twoLink": [
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "link": "Магистатура",
+                "twoLink": [
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "link": "Докторантура",
+                "twoLink": [
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "link": "Дополнительная профессиональное образование",
+                "twoLink": [
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "link": "Курсы",
+                "twoLink": [
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    },
+                    {
+                        "link": "?"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "link": "Библиотека"
+            }
+        ],
     selected: 0,
     selectedSub: null,
     isLoading: false,
