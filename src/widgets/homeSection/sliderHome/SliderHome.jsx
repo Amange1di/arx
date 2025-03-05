@@ -1,6 +1,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; 
-import Nutr from '../../../shared/images/homeImages/nutr.jpg';
+import Nutr from '../../../shared/images/homeImages/Nutr.jpg';
 import Pex from '../../../shared/images/homeImages/pex.jpg';
 import Mer from '../../../shared/images/homeImages/mer.jpg';
 import Naws from '../../../shared/images/homeImages/news.jpg'
