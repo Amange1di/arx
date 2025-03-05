@@ -1,5 +1,6 @@
 
-export const LinkSliderLinks = () => {
+
+const LinkSliderLinks = () => {
     const Links =[
         {
             link: 'название ссылки '
@@ -17,3 +18,5 @@ export const LinkSliderLinks = () => {
     </div>
   )
 }
+
+export default LinkSliderLinks

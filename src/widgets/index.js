@@ -23,7 +23,6 @@ export { JurnalComp } from "./homeSection/sliderAcademy/JurnalComp"
 export { SliderHome } from "./homeSection/sliderHome/SliderHome"
 export {JurnalVuzSl} from "./homeSection/sliderPartner/JurnalVuzSl"
 export { LinkSlider } from "./homeSection/sliderLinks/LinkSlider.jsx";
-export { LinkSliderLinks } from "./homeSection/sliderLinks/LinkSliderLinks"
 export { JurnalVuz } from "./homeSection/sliderPartner/JurnalVuz"
 export { Education } from "./homeSection/stepeni/Education"
 
