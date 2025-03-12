@@ -1,59 +1,67 @@
-import { useSelector } from 'react-redux';
-import './enrollAcademy.scss';
+import "./enrollAcademy.scss"
+export const EnrollAcademy = ({ applicants }) => {
+  const { data } = applicants;
 
-export const EnrollAcademy = () => {
-  const { navElements, selected } = useSelector(state => state.applicants);
-  const data = navElements[selected]?.data;
+  const renderContent = (data) => {
+    if (!data) return null;
+
+    return Object.entries(data).map(([key, value]) => {
+      if (typeof value === 'string') {
+        if (key === 'address') {
+          return <p key={key}>Адрес: {value}</p>;
+        }
+        if (key === 'phone') {
+          return <p key={key}>Горячая линия:<a href={`tel:${value}`}>{value}</a></p>;
+        }
+        if (key === 'email') {
+          return <p key={key}>Email:<a href={`mailto:${value}`}>{value}</a></p>;
+        }
+
+        return <p key={key}>{value}</p>;
+      }
+
+      if (Array.isArray(value)) {
+        return (
+          <ul key={key}>
+            {value.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        );
+      }
+
+      if (typeof value === 'object' && value !== null) {
+        return (
+          <div key={key}>
+            {value.title && <h3>{value.title}</h3>}
+            {value.title1 && <h4>{value.title1}</h4>}
+            {value.address && <p>Адрес: {value.address}</p>}
+            {value.workingHours && <p>Часы работы: {value.workingHours}</p>}
+            {value.contacts && renderContent(value.contacts)}
+            {value.items && (
+              <ul>
+                {value.items.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            )}
+            {Object.entries(value).map(([subKey, subValue]) => {
+              if (!['title', 'title1', 'items', 'contacts', 'address', 'workingHours'].includes(subKey)) {
+                return renderContent({ [subKey]: subValue });
+              }
+              return null;
+            })}
+          </div>
+        );
+      }
+
+      return null;
+    });
+  };
 
   return (
     <div className="enrollAcademy">
-      <div className="intro">
-        <p>{data.intro}</p>
-      </div>
-
-      <div className="requirements">
-        <h3>{data.requirements.title}</h3>
-        <ul>
-          {data.requirements.items.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="admission-steps">
-        <h3>{data.admissionSteps.title}</h3>
-
-        <div className="documents">
-          <h4>{data.admissionSteps.documents.title}</h4>
-          <ul>
-            {data.admissionSteps.documents.items.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="exams">
-          <h4>{data.admissionSteps.exams.title}</h4>
-          <ul>
-            {data.admissionSteps.exams.items.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="enrollment">
-          <h4>{data.admissionSteps.enrollment.title}</h4>
-          <p>Сроки подачи документов: {data.admissionSteps.enrollment.dates}</p>
-          <p>Форма обучения:  {data.admissionSteps.enrollment.educationForms}</p>
-          
-        </div>
-      </div>
-
-      <div className="contacts">
-        <h3>Контакты</h3>
-        <p>Телефон: {data.contacts.phone}</p>
-        <p>Email: {data.contacts.email}</p>
-      </div>
+      {renderContent(data)}
     </div>
   );
 };

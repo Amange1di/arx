@@ -1,9 +1,4 @@
-import React from "react";
 import './scientific.scss';
-
-import { Link } from "react-router-dom";
-
-
 export const Scientific = () => {
 
     const InvestigationPublic = [

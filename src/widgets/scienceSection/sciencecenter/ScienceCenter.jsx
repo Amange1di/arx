@@ -1,4 +1,3 @@
-import React from "react";
 import "./science.scss";
 
 export const ScienceCenter = () => {
@@ -31,5 +30,3 @@ export const ScienceCenter = () => {
     </div>
   );
 };
-
-export default ScienceCenter;

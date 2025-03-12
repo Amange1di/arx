@@ -15,7 +15,7 @@ export const JurnalVuz = () => {
   ]
 
   return (
-    <div className="container"> 
+    <div> 
 
       <section className="JurnalCompv">
         <div className="comp-grid">

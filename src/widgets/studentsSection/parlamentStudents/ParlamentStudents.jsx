@@ -1,31 +1,29 @@
-import  diralan  from "../../../shared/images/diralan.png";
-import { useSelector } from 'react-redux';
 import "./parlamentStudents.scss";
 
-export const ParlamentStudents = () => {
-    const members = useSelector(state =>
-        state.students.navElements?.find(el => el.id === 1)?.data
-    ) || [];
-
-    return (
-        <div className='Conteiner'>
-            {members.map((item, index) => (
-                <div className="block" key={index}>
-                    <div className="minBlock">
-                        <img className='img' src={diralan} alt={item.name} />
-                        <div className="text">
-                            <h1>{item.name}</h1>
-                            <div className="line"></div>
-                            <p>{item.description}</p>
-                            <p>{item.description2}</p>
-                            <div className="line"></div>
+    export const ParlamentStudents = ({ data }) => {
+        if (!data?.length) return null;
+    
+        return (
+            <div className='parlamentStudents'>
+                {data.map((item) => (
+                    <div className="parlamentStudents_block" key={item.id}>
+                        {item.img && (
+                            <div className="parlamentStudents_block_imggroup">
+                                <img src={item.img} alt={item.name} />
+                            </div>
+                        )}
+                        <div className="parlamentStudents_block_text">
+                            <h3>{item.name}</h3>
+                            <div className="line">
+                                <p>{item.description}</p>
+                                {item.description2 && <p>{item.description2}</p>}
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
-        </div>
-    );
-};
-
+                ))}
+            </div>
+        );
+    };
+    
 
 

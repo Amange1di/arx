@@ -5,7 +5,6 @@
   .text-jurnal-comp-head {
     display: flex;
 
-
     .title-head-comp {
       color: rgba(0, 95, 75, 1);
       font-size: 40px;
@@ -14,19 +13,19 @@
   }
 
   .comp-grid {
-    width: 90%;
+    width: 100%;
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
 
     .comp-card {
       margin-left: -50%;
       color: rgba(0, 95, 75, 1);
-      width: 200%;
       border-radius: 5px;
       background-color: #fff;
       font-family: sans-serif, "Lato";
       margin: 0;
-
+      padding: 7px;
+      width: 100%;
       
       .comp-image {
         width: 100%;
@@ -92,7 +91,7 @@
 
     .comp-grid {
       .comp-card {
-        width: 190%;
+        // width: 190%;
 
         .view-all {
           font-size: 13px;
@@ -106,7 +105,7 @@
 
     .comp-grid {
       .comp-card {
-        width: 200%;
+        // width: 200%;
 
         .view-all {
           font-size: 11px;
@@ -128,7 +127,7 @@
 
     .comp-grid{
       .comp-card{
-        width: 180%;
+        // width: 180%;
 
         .view-all{
           font-size: 10px;
@@ -152,8 +151,8 @@
 
   .comp-grid{
     .comp-card{
-      margin-left:  150%;
-      width: 180%;
+      // margin-left:  150%;
+      // width: 180%;
       max-width: 150%;
 
       .view-all{
@@ -180,8 +179,8 @@
 
   .comp-grid{
     .comp-card{
-      margin-left: 50%;
-      width: 180%;
+      // margin-left: 50%;
+      // width: 180%;
       max-width: 150%;  
 
       .flex-i{
@@ -216,7 +215,7 @@
   #title-sl {
     margin-bottom: 2%;
     margin-top: 3%;
-    margin-left: 10%;
+    
     font-family: sans-serif, "Lato";
     color: rgba(0, 95, 75, 1);
     font-size: 35px;
@@ -224,7 +223,7 @@
 
   .slick-slide {
     width: auto;
-    margin: 0 80px;
+    // margin: 0 80px;
     display: flex;
     justify-content: center;
     align-items: center;

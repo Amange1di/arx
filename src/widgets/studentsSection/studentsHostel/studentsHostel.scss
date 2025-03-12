@@ -1,55 +1,35 @@
 .studentsHostel {
     margin: 0 auto;
+    width: 100%;
 
     .conditions {
-        margin-top: 70px;
-
-        h1 {
-            width: 750px;
-            height: 140px;
-            font-family: Lato;
-            font-weight: 900;
-            font-size: 65px;
-            line-height: 65px;
-            letter-spacing: -4%;
-            color: rgba(0, 95, 75, 1);
-        }
 
         p {
-            font-family: Lato;
             font-weight: 400;
-            font-size: 28px;
-            line-height: 22px;
-            max-width: 880px;
-            background: transparent;
+            font-size: clamp(18px, 2.5vw, 28px);
             color: rgba(36, 36, 36, 1);
         }
 
         h3 {
-            width: 500px;
-            height: 30px;
-            font-family: Lato;
             font-weight: 500;
-            font-size: 28px;
-            line-height: 30px;
-            letter-spacing: -2%;
+            font-size: clamp(18px, 3.5vw, 35px);
             color: rgba(0, 95, 75, 1);
+            margin: 15px 0;
         }
 
-        .li {
-            width: 900px;
-            height: 220px;
-            top: 700px;
-            left: 480px;
-            font-family: Lato;
+        &-list {
+            margin-top: 20px;
+            width: 90%;
             font-weight: 300;
-            font-size: 28px;
-            line-height: 38px;
-            letter-spacing: 0%;
+            font-size: clamp(18px, 2.5vw, 28px);
             color: rgba(36, 36, 36, 1);
 
             li {
-                list-style: inside;
+                position: relative;
+                padding-left: 10px;
+                margin-bottom: 10px;
+                list-style-type: disc;
+                margin-left: 20px;
             }
         }
     }

@@ -28,7 +28,7 @@
     margin-top: 40px;
     margin-bottom: 40px;
     width: auto;
-    padding-left: 60px;
+  
     text-align: start;
     color: rgba(0, 95, 75, 1);
     font-family: sans-serif, "Lato";
@@ -36,7 +36,6 @@
 
   .dop-title {
     display: flex;
-    width: 90%;
     margin: 0 auto;
  
   }
@@ -46,7 +45,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     justify-content: center;
-    width: 90%;
+   
     margin: 0 auto;
 
     .circle {
@@ -78,12 +77,14 @@
 
 
   .dop-info {
-    width: 90%;
+   
     margin: 0 auto;
     display: grid;
     justify-content: space-between;
     gap: 10px;
     grid-template-columns: repeat(4, 1fr);
+
+
 
     .circled {
       width: 250px;
@@ -132,13 +133,6 @@
       font-size: 30px;
     }
 
-    h4 {
-      margin-left: 5%;
-    }
-
-    .dop-title {
-      margin-left: 5%;
-    }
 
     #title-stepen {
       margin-left: -1%;
@@ -282,7 +276,8 @@
 
     
     .dop-title{
-      width: 50%;
+      
+      justify-content: space-around;
 
 
       #kursy{
@@ -293,6 +288,7 @@
         font-size: 20px !important;
       }
     }
+  
 
       #title-stepen{
         font-size: 30px;
@@ -325,7 +321,7 @@
 
       .dop-info {
         grid-template-columns: repeat(2, 1fr);
-
+        justify-content: center;
         width: auto;
         
 

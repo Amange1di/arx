@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchActivityData, setSelected } from '../../app/redux/slices/activitySlice';
-import { AwardsCard, Navigations } from '../../features';
-import { ActivetyBaner } from '../../widgets';
+import { Navigations } from '../../features';
+import { ActivetyBaner, ActivetyCard } from '../../widgets';
 
 export const ActivityPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,10 @@ export const ActivityPage = () => {
     };
   }, [dispatch]);
 
+  const cards = selected === null
+    ? navElements.reduce((acc, item) => [...acc, ...(item.cards || [])], [])
+    : (navElements[selected]?.cards || []);
+
   return (
     <div className='pageNavigation'>
       <Navigations
@@ -29,17 +33,12 @@ export const ActivityPage = () => {
         setSelectedSub={null}
         list={navElements}
       />
-      <div> 
-        <div className="container ">
-          {selected === null && <ActivetyBaner />}
-          <h2 className='title_h2'>{selected === null ? "Все" : navElements[selected]?.link}</h2>
-          <AwardsCard
-            cards={selected === null
-              ? navElements.flatMap(item => item.cards || [])
-              : navElements[selected]?.cards || []
-            }
-          />
-        </div>
+      <div className="container">
+        {selected === null && <ActivetyBaner banner={banner} />}
+        <h2 className='title_h2'>
+          {selected === null ? "Все" : (navElements[selected]?.link || "Не найдено")}
+        </h2>
+        <ActivetyCard cards={cards} />
       </div>
     </div>
   );

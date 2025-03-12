@@ -1,118 +1,27 @@
+.cpo {
+    font-family: "Lato", sans-serif;
 
-.content{
-    .textTOne{
-    font-family: Lato;
-    font-weight: 900;
-    font-size: 80px;
-    line-height: 80px;
-    letter-spacing: -4%;
-    color: #005F4B;
-    width: 1120;
-    height: 160;
-    top: 188.01px;
-    left: 590px;
-    width: 50%;
+    p {
+        font-weight: 400;
+        font-size: clamp(18px, 2.5vw, 35px);
+        color: #242424;
+        margin: 20px auto;
+    }
 
-}
-.textTOnet{
-    font-family: Lato;
-    font-weight: 900;
-    font-size: 80px;
-    line-height: 80px;
-    letter-spacing: -4%;
-    color: #005F4B;
-    width: 1120;
-    height: 160;
-    top: 188.01px;
-    left: 590px;
-    width: 100%;
+    h3 {
+        font-weight: 500;
+        color: #005f4b;
+        font-size: clamp(22px, 3.5vw, 35px);
+
+        margin: 20px auto;
+
+    }
+
+    h2 {
+        font-weight: 700;
+        font-size: clamp(26px, 3.5vw, 55px);
+        color: #005f4b;
+        margin-top: 30px;
+    }
 
 }
-.textT{
-    width: 46%;
-    height: auto;
-    color: #242424;
-    font-size: 30px;
-}
-
-.textTkuu{
-    width: 46%;
-    height: auto;
-    color: #242424;
-    font-size: 30px;
-}
-.textTfuu{
-    width: 49%;
-    height: auto;
-    color: #242424;
-    font-size: 30px;
-}
-.textTluu{
-    width: 51%;
-    height: auto;
-    color: #242424;
-    font-size: 30px;
-}
-.textTpuu{
-    width: 50%;
-    height: auto;
-    color: #242424;
-    font-size: 30px;
-}
-.textBrit{
-    font-family: Lato;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 60px;
-    letter-spacing: -2%;
-    width: 959px;
-    height: 60;
-    top: 398.01px;
-    left: 590px;
-    color:  #005F4B;
-}
-.dinna{
-    font-family: Lato;
-    font-weight: 500;
-    font-size: 35px;
-    line-height: 35px;
-    letter-spacing: -2%;
-    width: 275;
-    height: 40;
-    top: 2686.01px;
-    left: 590px;
-    color: #242424;
-}
-.textix{
-    font-family: Lato;
-    font-weight: 900;
-    font-size: 63px;
-    line-height: 80px;
-    letter-spacing: -4%;
-    color: #005F4B;
-    width: 1120;
-    height: 160;
-    top: 188.01px;
-    left: 590px;
-    width: 100%;
-}
-.tabletin{
-  width: 60%;
-  border-collapse: collapse;
-  tr{
-    font-size: 35px;
-    color: #242424;
-  }
-  th,
-  td{
-    padding: 0.75rem;
-    border: 3px solid #005F4B;
-  }
-
-  thead{
-    
-  }
- 
-}
-}
-

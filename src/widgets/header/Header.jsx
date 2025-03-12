@@ -1,30 +1,22 @@
 import { useState, useEffect } from "react";
-import { BiSolidPhoneCall } from "react-icons/bi";
-import { RiMapPinFill } from "react-icons/ri";
-import { WiTime3 } from "react-icons/wi";
-import { LuInstagram } from "react-icons/lu";
-import { FaTwitter, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa6";
 import "./header.scss";
+import "./styles/burgerMenu.scss"
 import logo from "../../shared/images/logo.svg";
-import { NavLink } from "react-router-dom";
+import { TopHeader } from "./components/TopHeader";
+import { Navigation } from "./components/Navigation";
+import { activeMode, deactivateMode, useVisually } from "../../app/redux/slices/visually";
+import { useDispatch } from "react-redux";
 import { Search } from "../../features";
-
-const headerMenu = [
-  { name: "Главное ", path: "/" },
-  { name: "Об академии ", path: "/about-academy" },
-  { name: "Руководство ", path: "/guide" },
-  { name: "Образование ", path: "/education" },
-  { name: "Наука ", path: "/science" },
-  { name: "Деятельность ", path: "/activity " },
-  { name: "Студенты ", path: "/students" },
-  { name: "Абитуриентам ", path: "/applicants" },
-];
+import { useTranslation } from "react-i18next";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const dispatch = useDispatch();
+  const { active } = useVisually();
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -43,7 +35,7 @@ export const Header = () => {
   }, [isOpen, isSearchVisible]);
 
   useEffect(() => {
-    if (isOpen || isSearchVisible) { // Изменено условие
+    if (isOpen || isSearchVisible) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -52,7 +44,7 @@ export const Header = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, isSearchVisible]); 
+  }, [isOpen, isSearchVisible]);
 
   const handleMenuItemClick = () => {
     setIsOpen(false);
@@ -64,24 +56,11 @@ export const Header = () => {
     setIsOpen(false);
   };
 
-  const renderMenu = () => (
-    headerMenu.map((page) => (
-      <NavLink
-        key={page.name}
-        to={page.path}
-        className={({ isActive }) =>
-          isActive ? "header_bottom_link nav-active" : "header_bottom_link"
-        }
-        onClick={handleMenuItemClick}
-      >
-        {page.name}
-      </NavLink>
-    ))
-  );
+  const { t, i18n } = useTranslation();
+  const handleChangeLang = ({ target: { value } }) => {
+    i18n.changeLanguage(value);
+  };
 
-
-
-  
   return (
     <div className="header">
       {isSearchVisible && (
@@ -90,81 +69,108 @@ export const Header = () => {
         </div>
       )}
 
-      <div className="header_top">
-        <div className="container">
-          <div>
-            <BiSolidPhoneCall className="header_top_icon" />
-            <a href="">+996704589591</a>
-          </div>
-          <div>
-            <RiMapPinFill className="header_top_icon" />
-            <a href="https://go.2gis.com/vkwNw">г.Бишкек-ул. А.Юнусова 134</a>
-          </div>
-          <div>
-            <WiTime3 className="header_top_icon" />
-            <p>Понедельник-Суббота 10:00-22:00</p>
-          </div>
-          <div>
-            <LuInstagram className="header_top_icon" />
-            <FaTwitter className="header_top_icon" />
-            <FaFacebook className="header_top_icon" />
-            <FaWhatsapp className="header_top_icon" />
-          </div>
-        </div>
-      </div>
+      <TopHeader />
+
       <div className="header_bottom">
         <div className="container header_bottom_group">
-          <img src={logo} className="logo" alt="logo" />
-          <nav className="desktop-menu">
-            {renderMenu()}
-          </nav>
+          <div className=" header_bottom_group_logo">
+
+            <img src={logo} className="logo" alt="logo" />
+          </div>
+          <Navigation
+            className="desktop-menu"
+            onMenuItemClick={handleMenuItemClick}
+          />
+
           <div className="header-desktop-controls">
-            <select>
-              <option value="en">En</option>
-              <option value="kg">Kg</option>
-              <option value="ru">Ru</option>
+            <select
+              onChange={handleChangeLang}
+
+            >
+              <option value="en">{t("En")}</option>
+              <option value="ru">{t("Ru")}</option>
+              <option value="kg">{t("Ky")}</option>
             </select>
             <div className="header-desktop-controls-icon">
-
-
               <IoSearch
                 className="header_bottom_group_icon"
                 onClick={handleSearchOpen}
               />
-              <FaEyeSlash className="header_bottom_icon" />
-            </div>
-          </div>
+              <div>
+                {!active ? (
+                  <FaEyeSlash onClick={() => {
+                    dispatch(activeMode())
+                    // mainTextSpeech('Режим для слабозрячих включен');
+                  }} className="header_bottom_group_icon" />
 
-          <div className="burger-menu">
-            <input
-              id="menu__toggle"
-              type="checkbox"
-              checked={isOpen}
-              onChange={() => setIsOpen(!isOpen)}
-            />
-            <label className="menu__btn" htmlFor="menu__toggle">
-              <span></span>
-            </label>
-            <div className={`menu__box ${isOpen ? 'open' : ''}`}>
-              <div className="mobile-header">
-                <img src={logo} className="logo" alt="logo" />
-                <div className="header-controls">
-                  <select>
-                    <option value="en">En</option>
-                    <option value="kg">Kg</option>
-                    <option value="ru">Ru</option>
-                  </select>
-                  <IoSearch
-                    className="header_bottom_icon"
-                    onClick={handleSearchOpen}
-                  />
-                  <FaEyeSlash className="header_bottom_icon" />
-                </div>
-
+                ) : (
+                  <button className="activeBtn" onClick={() => {
+                    dispatch(deactivateMode());
+                    // mainTextSpeech('Режим для слабозрячих выключен');
+                  }}>
+                    <FaEyeSlash className="header_bottom_group_icon" />
+                  </button>
+                )}
               </div>
-              <nav className="mobile-menu">
-                {renderMenu()}
-              </nav>
+            </div>
+
+            <div className="burger-menu">
+              <input
+                id="menu__toggle"
+                type="checkbox"
+                checked={isOpen}
+                onChange={() => setIsOpen(!isOpen)}
+              />
+
+              <label className="menu__btn" htmlFor="menu__toggle">
+                <span></span>
+              </label>
+
+              <div className={`menu__box ${isOpen ? 'open' : ''}`}>
+                <div className="mobile-header">
+                  <img src={logo} className="logo" alt="logo" />
+                  <div className="header-controls">
+                    <select>
+                      <option value="en">En</option>
+                      <option value="kg">Kg</option>
+                      <option value="ru">Ru</option>
+                    </select>
+                    <IoSearch
+                      className="header_bottom_group_icon"
+                      onClick={handleSearchOpen}
+                    />
+                    <div>
+                      {!active ? (
+                        <FaEyeSlash onClick={() => {
+                          dispatch(activeMode())
+                          // mainTextSpeech('Режим для слабозрячих включен');
+                        }} className="header_bottom_group_icon" />
+
+                      ) : (
+                        <button className="activeBtn" onClick={() => {
+                          dispatch(deactivateMode());
+                          // mainTextSpeech('Режим для слабозрячих выключен');
+                        }}>
+                          <FaEyeSlash className="header_bottom_group_icon" />
+                        </button>
+                      )}
+                      <input
+                        id="menu__toggle"
+                        type="checkbox"
+                        checked={isOpen}
+                        onChange={() => setIsOpen(!isOpen)}
+                      />
+                      <label className="menu__btn" htmlFor="menu__toggle">
+                        <span></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <Navigation
+                  className="mobile-menu"
+                  onMenuItemClick={handleMenuItemClick}
+                />
+              </div>
             </div>
           </div>
         </div>

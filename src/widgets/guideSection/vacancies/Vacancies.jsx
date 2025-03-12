@@ -11,12 +11,15 @@ export const Vacancies = () => {
         return positions || [];
     });
 
-
     return (
         <div className="vacancies">
             <div className="container">
                 {vacanciesList.map((vacancy, index) => (
-                    <div className="vacancies_content_info" key={index} onClick={() => setOpenIndex(openIndex === index ? null : index)}>
+                    <div
+                        className="vacancies_content_info"
+                        key={index}
+                        onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    >
                         <h3>{vacancy.title}</h3>
                         <h4>Обязанности:</h4>
 
@@ -31,10 +34,10 @@ export const Vacancies = () => {
                         <AnimatePresence initial={false}>
                             {openIndex === index && (
                                 <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: 'auto', opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
+                                    initial={{ opacity: 0, y: 20 }} // Элемент начинается с opacity 0 и сдвигом вниз
+                                    animate={{ opacity: 1, y: 0 }}  // Плавно появляется и приходит на свою позицию
+                                    exit={{ opacity: 0, y: 20 }}    // При закрытии элемент плавно уходит вниз
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }} // Плавное изменение
                                     className="vacancies_content_info_expanded"
                                 >
                                     <ul className="vacancies_content_info_list">
@@ -80,7 +83,7 @@ export const Vacancies = () => {
                             <p>02.02.2025 15:23      Бишкек</p>
                             <button onClick={(e) => {
                                 e.stopPropagation();
-                                setOpenIndex(openIndex === index ? null : index);
+                                setOpenIndex(openIndex === index ? null : index); 
                             }}>
                                 {openIndex === index ? 'Свернуть' : 'Раскрыть'}
                             </button>

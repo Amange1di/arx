@@ -1,5 +1,5 @@
 .activetyBaner {
-    font-family: Lato, sans-serif;
+    font-family: "Lato", sans-serif;
     margin: 80px auto;
     max-width: 1400px;
     padding: 0 40px;
@@ -7,7 +7,7 @@
 
     h1 {
         font-weight: 900;
-        font-size: clamp(30px, 5vw, 70px);
+        font-size: clamp(20px, 5vw, 70px);
         line-height: 1.2;
         margin-bottom: 30px;
         color: rgba(0, 95, 75, 1);
@@ -24,31 +24,46 @@
 
         p {
             font-weight: 300;
-            font-size: clamp(24px, 2.5vw, 35px);
+            font-size: clamp(18px, 2.5vw, 35px);
             color: #005F4B;
             line-height: 1.6;
             padding: 20px 0;
         }
     }
 }
-
-@media (max-width: 768px) {
-    .activetyBaner {
-        margin: 40px auto;
-        padding: 0 20px;
-
-        h1 {
-            text-align: start;
-         
-        }
-
+@media screen and (max-width: 768px) {
+    .activetyBaner {    
         div {
-            margin-top: 40px;
-            padding-left: 20px;
-border-left: none;
+            margin-top: 60px;
+            border-left: 4px solid #005F4B;
+            padding-left: 30px;
+    
+    
             p {
-                font-size: clamp(18px, 2.5vw, 35px);
+                font-weight: 300;
+                font-size: clamp(25px, 2.5vw, 35px);
+                color: #005F4B;
+                line-height: 1.6;
+                padding: 20px 0;
             }
         }
     }
+}
+@media screen and (max-width: 576px) {
+    .activetyBaner {
+
+
+        div {
+            margin-top: 0px;
+            border-left: none;
+            padding: 0;
+
+            p {
+                padding: 0;
+                font-size: clamp(16px, 3.5vw, 35px);
+
+            }
+        }
+    }
+
 }

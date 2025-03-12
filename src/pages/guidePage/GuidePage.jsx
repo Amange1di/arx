@@ -23,7 +23,7 @@ export const GuidePage = () => {
         setSelectedSub={(value) => dispatch(setSelectedSub(value))}
         list={navElements}
       />
-      <div className="content">
+      <div className="container">
         <h2 className='title_h2'>
           {selectedSub !== null && navElements?.[selected]?.twoLink?.[selectedSub]?.link
             ? navElements[selected].twoLink[selectedSub].link

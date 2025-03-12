@@ -9,26 +9,32 @@
 
   .baner-content {
     margin: 0 auto;
-    width: 95%;
 
     .text_img {
       gap: 1vw;
-      width: 90%;
       display: flex;
 
       .text-ban {
         width: 60%;
+          
+      .title-desc {
+        font-size: 25px;
+        color: white;
+        margin-top: 5%;
+        font-family: sans-serif, "Lato";
+      }
       }
 
       #banner-image {
-        width: 40%;
+        width: 50%;
         height: auto;
-        margin-top: 3vw;
         object-fit: cover;
       }
 
-    }
 
+
+
+    }
     #title-banner {
       width: 100%;
       font-size: 70px;
@@ -36,17 +42,21 @@
       font-family: sans-serif, "Lato";
     }
 
-    #title-desc {
-      font-size: 20px;
-      margin-top: 5%;
-      font-family: sans-serif, "Lato";
-    }
+
   }
 
   @media (max-width: 1200px) {
     .baner-content {
       #title-banner {
         font-size: 55px;
+      }
+      .text_img{
+        .text-ban{
+          .title-desc{
+            font-size: 20px;
+          }
+        }
+
       }
     }
   }
@@ -55,18 +65,22 @@
     .baner-content {
       .text_img {
         #banner-image {
-          width: 35%;
-          height: 45%;
+            width: 35%;
+            height: 45%;
+        }
+
+        .text-ban{
+          .title-desc{
+            font-size: 15px;
+          }
         }
       }
 
       #title-banner {
         font-size: 50px;
+        
       }
 
-      #title-desc{
-        font-size: 15px;
-      }
     }
   }
 
@@ -80,10 +94,15 @@
         
         .text-ban {
           width: 100%;
+
+          .title-desc{
+            font-size: 12px;
+          }
         }
   
         #banner-image {
           width: 40%;
+          
          
         }
       }

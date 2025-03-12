@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import './navigations.scss';
-import hideIcon from "../../shared/images/hideIcon.svg";
-import openIcon from "../../shared/images/openIcon.svg";
 import { AnimatePresence, motion } from 'framer-motion';
+import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 
 export const Navigations = ({
   list = [],
@@ -68,20 +67,17 @@ export const Navigations = ({
         onClick={() => setIsNavOpen(!isNavOpen)}
       >
         {page}
-        <img
-          src={isNavOpen ? hideIcon : openIcon}
-          alt={isNavOpen ? 'Hide menu' : 'Show menu'}
-        />
+        {isNavOpen ? <SlArrowUp /> : <SlArrowDown />}
       </button>
 
       <AnimatePresence>
         {isNavOpen && (
           <motion.aside
             className='nav-container visible'
-            initial={{ height: 0 }}
-            animate={{ height: 'auto' }}
-            exit={{ height: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             {list.map((item, index) => (
               <div key={index} className='nav-item'>
@@ -95,38 +91,40 @@ export const Navigations = ({
                 >
                   {item.link}
                   {item.twoLink?.length > 0 && (
-                    <img
-                      className='open'
-                      src={openEventId === index ? openIcon : hideIcon}
-                      alt={openEventId === index ? 'Hide submenu' : 'Show submenu'}
-                    />
+                    <div className="">
+
+                      {openEventId === index ? <SlArrowUp /> : <SlArrowDown />}
+                    </div>
                   )}
                 </button>
-
                 <AnimatePresence>
                   {openEventId === index && item.twoLink?.length > 0 && (
-                    <motion.ul
-                      className='sub-links'
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                    <motion.div
+                      className="sub-links"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
                     >
-                      {item.twoLink.map((subItem, subIndex) => (
-                        <li key={subIndex}>
-                          <button
-                            type="button"
-                            onClick={() => handleSubClick(subIndex, index)}
-                            className={`sub-nav-element ${selected === index && selectedSub === subIndex ? 'active' : ''
-                              }`}
-                          >
-                            {subItem.link}
-                          </button>
-                        </li>
-                      ))}
-                    </motion.ul>
+                      <motion.ul>
+                        {item.twoLink.map((subItem, subIndex) => (
+                          <li key={subIndex}>
+                            <button
+                              type="button"
+                              onClick={() => handleSubClick(subIndex, index)}
+                              className={`sub-nav-element ${selected === index && selectedSub === subIndex ? 'active' : ''}`}
+                            >
+                              {subItem.link}
+                            </button>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    </motion.div>
                   )}
                 </AnimatePresence>
+
+
+
               </div>
             ))}
           </motion.aside>

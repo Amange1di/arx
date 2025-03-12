@@ -12,41 +12,41 @@ export const fetchPageData = createAsyncThunk(
 
 const initialState = {
   navElements: [
-    {
-        "link": "О нас",
-        "twoLink": [
             {
-                "link": "Стратегия Развития"
+                "link": "О нас",
+                "twoLink": [
+                    {
+                        "link": "Стратегия Развития"
+                    },
+                    {
+                        "link": "Миссия"
+                    },
+                    {
+                        "link": "История"
+                    }
+                ]
             },
             {
-                "link": "Миссия"
+                "link": "Руководство"
             },
             {
-                "link": "История"
+                "link": "Документы",
+                "twoLink": [
+                    {
+                        "link": "Лицензия"
+                    },
+                    {
+                        "link": "Акретация"
+                    }
+                ]
+            },
+            {
+                "link": "Научные Журнал"
             }
-        ]
-    },
-    {
-        "link": "Руководство"
-    },
-    {
-        "link": "Документы",
-        "twoLink": [
-            {
-                "link": "Лицензия"
-            },
-            {
-                "link": "Акретация"
-            }
-        ]
-    },
-    {
-        "link": "Научные Журнал"
-    }
-],
+        ],
   selected: null,
   selectedSub: null,
-  page: 'Наука',
+  page: 'О Академии',
   isLoading: false,
   isError: null,
 };

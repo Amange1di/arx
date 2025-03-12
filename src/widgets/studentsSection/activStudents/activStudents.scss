@@ -1,80 +1,104 @@
-    .blocks {
-        width: 100% !important;
-        height: 550px;
-        top: 750px;
-        background-color: rgba(34, 34, 34, 1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 50px;
+.activStudents {
+    &_block {
+        font-family: "Lato", sans-serif;
+        background: #222222;
+        padding: 50px;
+        color: #fff;
+        width: 90%;
+        margin: 30px auto;
 
-        .miniblocks {
-            width: 800px;
-            height: 400px;
+        &>div {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: start;
-            position: relative;
+            align-items: flex-start;
+            gap: 30px;
+            justify-content: space-between;
+        }
 
-            h1 {
-                background: rgba(34, 34, 34, 1);
-                color: #fff;
-                width: 550px;
-                height: 30px;
-                font-family: Lato;
-                font-weight: 500;
-                font-size: 28px;
-                line-height: 30px;
-                letter-spacing: -2%;
-                margin-left: 15px;
-            }
+        &>div.content {
+            display: block;
 
-            .imagg {
-                width: 220px;
-                height: 320px;
-                position: absolute;
-                top: 25px;
-                left: 600px;
-            }
-
-            p {
-                background: rgba(34, 34, 34, 1);
-                color: #fff;
-                width: 600px;
-                height: 320px;
-                font-family: Lato;
-                font-weight: 400;
-                font-size: 20px;
-                line-height: 30px;
-                letter-spacing: 0%;
-                margin-left: 20px;
-            }
-
-            .molodej{
-                background: rgba(34, 34, 34, 1);
-                color: #fff;
-                width: 550px;
-                height: 320px;
-                font-family: Lato;
-                font-weight: 400;
-                font-size: 20px;
-                line-height: 30px;
-                letter-spacing: 0%;
-                margin-left: 20px;
-            }
-
-            .param {
-                background: rgba(34, 34, 34, 1);
-                color: #fff;
-                width: 750px;
-                height: 320px;
-                font-family: Lato;
-                font-weight: 300;
-                font-size: 20px;
-                line-height: 30px;
-                letter-spacing: 0%;
+            &.with-image {
+                display: flex;
+                align-items: flex-start;
+                gap: 30px;
+                justify-content: space-between;
             }
         }
+
+        h3 {
+            font-weight: 500;
+            font-size: clamp(18px, 2.5vw, 35px);
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: clamp(16px, 2.5vw, 24px);
+
+        }
+
+        &_img {
+            display: none;
+
+            .with-image & {
+                display: block;
+                height: 300px;
+                min-width: 200px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                }
+            }
+        }
+
+        img {
+            max-width: 260px;
+            max-height: 489px;
+
+        }
     }
+}
+
+@media screen and (max-width:1200px) {
+    .activStudents {
+        &_block {
+            width: 95%;
+            padding: 20px;
+
+            &>div {
+                flex-direction: column;
+            }
+
+            .content.with-image {
+                flex-direction: column;
+            }
+
+            &_img {
+                .with-image & {
+                    width: 100%;
+                    height: 250px;
+                    margin-top: 20px;
+                }
+
+                min-width: 100%;
+                height: 250px;
+                margin-top: 20px;
+                max-width: 100% !important;
+                max-height: 489px;
+            }
+
+            img {
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+
+                object-fit: fill;
+            }
+
+        }
+    }
+}

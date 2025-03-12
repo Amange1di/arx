@@ -15,7 +15,7 @@ export const JurnalComp = () => {
   ]
 
   return (
-    <div className="container">
+    <div>
       <section className="JurnalComp">
         <div className="comp-grid">
 

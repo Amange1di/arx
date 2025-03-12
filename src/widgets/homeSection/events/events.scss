@@ -2,8 +2,6 @@
   padding: 40px 0;
 
   #events-title {
-    margin-bottom: 20px;
-    margin-left: 10%;
     font-family: sans-serif, "Lato";
     color: rgba(0, 95, 75, 1);
   }
@@ -11,7 +9,7 @@
   .events-container {
     display: flex;
     justify-content: center;
-
+    width: 100%;
   }
 
   .event-card {
@@ -19,7 +17,7 @@
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 80vw;
+
     margin-top: 20px;
   }
 
@@ -42,7 +40,7 @@
     font-family: sans-serif, "Lato";
   }
 
-  .event-title {
+  .events-title {
     font-size: 20px;
     color: #002366;
     font-weight: bold;

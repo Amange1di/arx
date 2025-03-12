@@ -3,7 +3,9 @@
     bottom: 0;
     width: 100%;
     background-color: #005F4B;
+    font-family: "Helvetica" , sans-serif;
 }
+
 
 .footer-container {
     display: flex;
@@ -56,7 +58,7 @@
     height: 41px;
     gap: 0px;
     opacity: 0px;
-
+    
 
     font-family: Helvetica;
     font-size: 30px;
@@ -135,7 +137,7 @@
     justify-content: center;
     align-items: center;
 
-    font-family: Reforma Grotesk Medium;
+    font-family: sans-serif, 'Reforma Grotesk Medium';
     font-size: 20px;
     font-weight: 400;
     line-height: 23.44px;
@@ -149,6 +151,11 @@
     display: flex;
     flex-direction: row;
 }
+
+.footer-navigation-2 {
+    margin-left: 5vw;
+}
+
 
 
 @media (max-width: 1200px) {
@@ -165,8 +172,8 @@
         width: auto;
 
         .logo-circle {
-            width: 130px;
-            height: 130px;
+            width: 118px;
+            height: 118px;
         }
 
         .footer-navigation {
@@ -182,6 +189,7 @@
         }
 
         .footer-navigation-2 {
+           transform: translateX();
             a {
                 font-size: 18px;
             }
@@ -192,7 +200,7 @@
         }
 
         .footer-contact {
-            width: 220px;
+            width: 210px;
 
             .contact-info {
                 li {
@@ -242,12 +250,12 @@
         }
 
         .footer-contact {
-            width: 210px;
+            width: 200px;
 
             .contact-info {
                 li {
                     font-size: 15px;
-                    width: 210px;
+                    width: 197px;
                 }
             }
 
@@ -334,44 +342,3 @@
     }
 }
 
-//   @media (max-width:960px) {
-//     .logo-circle{
-//         width: 130px;
-//         height: 130px;
-//     }
-//     .logo-circle h1{
-//         font-size: 15px;
-//     }
-//   }
-
-//   @media (max-width:917px) {
-//     .logo-circle{
-//     display: none;
-//     }
-//     .logo-circle h1{
-//         display: none;
-//     }
-//   }
-// @media (max-width: 841px) {
-//     .footer-container {
-//         flex-direction: column; 
-//         align-items: flex-start;
-//     }
-
-//     .footer-title {
-//         margin-bottom: 10px;
-//     }
-//     .footer-bottom{
-
-//     }
-// }
-// @media (max-width: 490px) {
-//     .link-li {
-//         font-size: 20px;
-//     }
-
-//     .footer-container {
-//         margin: 0;
-//         padding: 10px;
-//     }
-// }

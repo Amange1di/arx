@@ -1,33 +1,23 @@
-import React from 'react'
-import imagg  from "../../../shared/images/imagg.png";
 import "./activStudents.scss";
-export const ActivStudents = () => {
-   const dataActiv = [
-          {
-              id: "1",
-              name: "Социальная мобильность и молодежь",
-              description: "'Психология группы и поведение в условиях кризиса' — статья в журнале 'Social Psychology Review', исследующая поведение групп в экстремальных ситуациях. Научный труд — это результат научной работы, который вносит вклад в развитие какой-либо области знаний. Научные труды могут быть разнообразными по формату, содержанию и направленности. Это могут быть исследования, опубликованные статьи, книги, диссертации и другие работы, в которых систематизированы новые знания, идеи или теории. Они являются основным способом передачи научных результатов в академическом сообществе."
-          },
-          {
-              id: "2",
-              name: "Социальная мобильность и молодежь",
-              img: imagg, 
-              description2: "'Психология группы и поведение в условиях кризиса' — статья в журнале 'Social Psychology Review', исследующая поведение групп в экстремальных ситуациях. Научный труд — это результат научной работы, который вносит вклад в развитие какой-либо области знаний. Научные труды могут быть разнообразными по формату, содержанию и направленности. Это могут быть исследования, опубликованные статьи, книги, диссертации и другие работы, в которых систематизированы новые знания, идеи или теории. Они являются основным способом передачи научных результатов в академическом сообществе.",
-          }
-      ];
-  
-      return (
-          <div className=''>
-              {dataActiv.map((item) => (
-                  <div className="blocks" key={item.id}>
-                      <div className="miniblocks">
-                          <h1>{item.name}</h1>
-                          {item.img && <img className='imagg' src={item.img} alt={item.name} />} {/* Проверка на наличие изображения */}
-                          <p>{item.description}</p>
-                          <p className='molodej'>{item.description2}</p>
-                      </div>
-                  </div>
-              ))}
-          </div>
-      );
+
+export const ActivStudents = ({ data }) => {
+    if (!data?.length) return null;
+
+    return (
+        <div className='activStudents'>
+            {data.map((item, index) => (
+                <div className="activStudents_block" key={index}>
+                    <h3>{item.name}</h3>
+                    <div className={`content ${item.img ? 'with-image' : ''}`}>
+                        <p>{item.description}</p>
+                        {item.img && (
+                            <div className="activStudents_block_img">
+                                <img src={item.img} alt={item.name} />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 }

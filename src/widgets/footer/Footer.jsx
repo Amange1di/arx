@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
-import phone from "../../features/images/phone.svg";
-import email from "../../features/images/email.svg";
-import adress from "../../shared/images/footer/adres.png";
 import logo from '../../features/images/logo_footer.png';
-import "./footer.scss";
+import Geeks from '../../features/images/Geeks.png';
+import "./Footer.scss";
+import { BiSolidPhoneCall } from "react-icons/bi";
+import { RiMapPinFill } from "react-icons/ri";
+import { MdOutlineMailOutline } from "react-icons/md";
+
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+      const { t } = useTranslation(); 
+  
   return (
     <footer className="footer">
       <div className="footer-container container">
@@ -13,21 +18,21 @@ export const Footer = () => {
         <div className="footer-navigation">
           <div className="footer-list">
           
-              <h3 className="footer-title">Навигация</h3>
+              <h3 className="footer-title">{t("Навигация")}</h3>
               <li className="link-li">
-                <Link to="/about">О нас</Link>
+                <Link to="/about-academy">{t("Об академии")}</Link>
               </li>
               <li className="link-li">
-                <Link to="/gallery">Галерея</Link>
+                <Link to="/gallery">{t("Галерея")}</Link>
               </li>
               <li className="link-li">
-                <Link to="/about-academy">Об академии</Link>
+                <Link to="/academy">{t("Новости")}</Link>
               </li>
               <li className="link-li">
-                <Link to="/events">Мероприятия</Link>
+                <Link to="/events">{t("Мероприятия")}</Link>
               </li>
               <li className="link-li">
-                <Link to="/activity">Награды</Link>
+                <Link to="/activity">{t("Деятельность")}</Link>
               </li>
            
           </div>
@@ -36,34 +41,34 @@ export const Footer = () => {
         <div className="footer-navigation-2">
             <h3 className="footer-title">ㅤ</h3>
             <li className="link-li">
-              <Link to="/management">Руководство</Link>
+              <Link to="/management">{t("Руководство")}</Link>
             </li>
             <li className="link-li">
-              <Link to="/students">Студенты</Link>
+              <Link to="/students">{t("Студенты")}</Link>
             </li>
             <li className="link-li">
-              <Link to="/education">Образование</Link>
+              <Link to="/education">{t("Образование")}</Link>
             </li>
             <li className="link-li">
-              <Link to="/research">Иследование</Link>
+              <Link to="/research">{t("Иследование")}</Link>
             </li>
-            <li className="link-li">
-              <Link to="/">Вернуться обратно</Link>
+            <li className="link-li" id="go-back">
+              <Link to="/">{t("Вернуться обратно")}</Link>
             </li>
         </div>
         </div>
         
         <div className="footer-contact">
-          <h3 className="footer-title-2">Контакты</h3>
+          <h3 className="footer-title-2">{t("Контакты")}</h3>
           <ul className="contact-info">
             <li className="link-li-2">
-              <img src={phone} alt="" /> +996704589591
+              <BiSolidPhoneCall/> +996704589591
             </li>
             <li className="link-li-2">
-              <img src={email} alt="" /> shadow201@gmail.com
+              <MdOutlineMailOutline/> shadow201@gmail.com
             </li>
             <li className="link-li-2">
-              <img src={adress} alt="" /> М. Аматова 15
+              <RiMapPinFill /> М. Аматова 15
             </li>
           </ul>
         </div>
@@ -73,7 +78,8 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="footer-bottom">Made by<p>ㅤGeeks Pro</p></div>
-    </footer>
-  );
-};
+    
+      <div className="footer-bottom" ><p>Made by <strong>Geeks Pro</strong></p>ㅤ<img src={Geeks} alt="geeks_logo ❤" /></div>
+  </footer>
+  )
+}

@@ -6,6 +6,7 @@ import applicantsReducer from './slices/applicantsSlice';
 import studentsReducer from './slices/studentsSlice';
 import scienceReducer from "./slices/scienceSlice"
 import navReducer from './slices/navSlice';
+import visuallyReducer from "./slices/visually";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     applicants: applicantsReducer,
     students: studentsReducer,
     science: scienceReducer,
+    visually: visuallyReducer,
   },
 });
 

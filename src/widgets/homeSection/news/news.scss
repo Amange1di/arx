@@ -4,7 +4,6 @@
 
   .text-news-head {
     display: flex;
-    width: 90%;
     margin: 0 auto;
     justify-content: space-between;
 
@@ -22,7 +21,7 @@
   }
 
   .news-grid {
-    width: 90%;
+   
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

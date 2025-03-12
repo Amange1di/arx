@@ -8,7 +8,7 @@ export const Jurnal = () => {
         centerMode: false, 
         arrows: false,
         infinite: true, 
-        slidesToShow: 6, 
+        slidesToShow: 4, 
         slidesToScroll: 1,
         speed: 500, 
         autoplay: false,
@@ -17,6 +17,33 @@ export const Jurnal = () => {
         swipeToSlide: true,      
         variableWidth: true,
         responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            },
+          },
+          {
+            breakpoint: 980,
+            settings: {
+              slidesToShow: 2.5,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            },
+          },
+          {
+            breakpoint: 780,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            },
+          },
           {
             breakpoint: 576,
             settings: {

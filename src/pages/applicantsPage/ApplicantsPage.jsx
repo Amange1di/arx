@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchApplicantsData, setSelected } from '../../app/redux/slices/applicantsSlice';
 import { Navigations } from '../../features';
-import { EnrollAcademy, AdmissionCommittee } from '../../widgets';
+import { EnrollAcademy, } from '../../widgets';
 
 export const ApplicantsPage = () => {
   const dispatch = useDispatch();
@@ -15,16 +15,8 @@ export const ApplicantsPage = () => {
     };
   }, [dispatch]);
 
-  const getComponent = () => {
-    switch (selected) {
-      case 0:
-        return <EnrollAcademy />;
-      case 1:
-        return <AdmissionCommittee />;
-      default:
-        return null;
-    }
-  };
+
+  const applicantsData = navElements?.[selected];
 
   return (
     <div className='pageNavigation'>
@@ -34,9 +26,13 @@ export const ApplicantsPage = () => {
         setSelected={(value) => dispatch(setSelected(value))}
         list={navElements}
       />
-      <div className="content">
-        <h2 className='title_h2'>{navElements[selected]?.link || 'Абитуриентам'}</h2>
-        {getComponent()}
+      <div className="container">
+        {applicantsData && (
+          <>
+            <h2 className='title_h2'>{applicantsData.link}</h2>
+            <EnrollAcademy applicants={applicantsData} />
+          </>
+        )}
       </div>
     </div>
   );

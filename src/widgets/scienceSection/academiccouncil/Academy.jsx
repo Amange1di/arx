@@ -1,6 +1,6 @@
 import "./academy.scss";
 
-export const Academy = () => {
+ export const Academy = () => {
   return (
     <div className="academy">
       <div className="container">
@@ -34,5 +34,3 @@ export const Academy = () => {
     </div>
   );
 };
-
-export default Academy;

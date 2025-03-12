@@ -53,3 +53,10 @@ body.search-open {
         transform: translateY(0);
     }
 }
+@media (max-width: 576px) {
+    .search {
+        input {
+            width: 90%;
+        }
+    }
+}
