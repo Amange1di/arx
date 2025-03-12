@@ -24,6 +24,7 @@ export { JurnalComp } from "./homeSection/sliderAcademy/JurnalComp"
 export { SliderHome } from "./homeSection/sliderHome/SliderHome"
 export {JurnalVuzSl} from "./homeSection/sliderPartner/JurnalVuzSl"
 export { LinkSlider } from './homeSection/sliderLinks/LinkSlider';
+
 export { JurnalVuz } from "./homeSection/sliderPartner/JurnalVuz"
 export { Education } from "./homeSection/stepeni/Education"
 
