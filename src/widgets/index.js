@@ -39,4 +39,3 @@ export { Scientific } from "./scienceSection/scientificjournals/Scientific"
 
 export { Cpo } from "./educationSection/cpo/Cpo"
 export { Student } from "./studentsSection/Student"
-export {LinkSlider} from "./homeSection/sliderLinks/LinkSlider"

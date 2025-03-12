@@ -4,11 +4,10 @@ import {
   Events, 
   Jurnal, 
   JurnalVuzSl, 
-  LinkSlider, 
   News, 
   SliderHome 
 } from "../../widgets"
-
+ import  LinkSlider from "../../widgets/homeSection/sliderLinks/LinkSlider"
 export const HomePage = () => {
   return (
     <div>
