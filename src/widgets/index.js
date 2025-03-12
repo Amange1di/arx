@@ -24,7 +24,6 @@ export { JurnalComp } from "./homeSection/sliderAcademy/JurnalComp"
 export { SliderHome } from "./homeSection/sliderHome/SliderHome"
 export {JurnalVuzSl} from "./homeSection/sliderPartner/JurnalVuzSl"
 export { LinkSlider } from './homeSection/sliderLinks/LinkSlider';
-export { LinkSliderLinks } from "./homeSection/sliderLinks/LinkSliderLinks"
 export { JurnalVuz } from "./homeSection/sliderPartner/JurnalVuz"
 export { Education } from "./homeSection/stepeni/Education"
 
@@ -40,4 +39,3 @@ export {Scientific} from "./scienceSection/scientificjournals/Scientific"
 
  export {Cpo} from "./educationSection/cpo/Cpo"
 export {Student} from "./studentsSection/Student"
-export {Science} from "./scienceSection/Science"
