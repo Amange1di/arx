@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from '../../features/images/logo_footer.png';
 import Geeks from '../../features/images/Geeks.png';
-import "./Footer.scss";
+import "./footer.scss";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { RiMapPinFill } from "react-icons/ri";
 import { MdOutlineMailOutline } from "react-icons/md";
