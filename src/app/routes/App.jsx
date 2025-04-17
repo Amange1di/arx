@@ -1,7 +1,9 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import '../styles/App.scss';
 import '../styles/visualy.scss';
+
 import {
+  NewsPage,
   HomePage,
   AboutAcademyPage,
   GuidePage,
@@ -9,12 +11,13 @@ import {
   SciencePage,
   ActivityPage,
   StudentsPage,
-  ApplicantsPage, 
-  GalleryPage
+  ApplicantsPage,
+  GalleryPage,
+  Jurnal
 } from "../../pages";
-  
 
-import { Footer, Header, } from '../../widgets';
+
+import { Footer, Header, ActivStudents, NewsDetail, JurnalDetail, JurnalSection } from '../../widgets';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useVisually } from '../redux/slices/visually';
@@ -22,6 +25,7 @@ import { VisuallyImpaired } from '../../entities';
 
 const routesArr = [
   { path: '/', element: <HomePage /> },
+  { path: '/students-detail/:id', element: <ActivStudents /> },
   { path: '/about-academy', element: <AboutAcademyPage /> },
   { path: '/guide', element: <GuidePage /> },
   { path: '/education', element: <EducationPage /> },
@@ -30,14 +34,19 @@ const routesArr = [
   { path: '/students', element: <StudentsPage /> },
   { path: '/applicants', element: <ApplicantsPage /> },
   { path: '/gallery', element: <GalleryPage /> },
+  { path: '/news', element: <NewsPage /> },
+  { path: '/newsDetail', element: <NewsDetail /> },
+  { path: '/Jurnal', element: <Jurnal /> },
+  { path: '/JurnalSection', element: <JurnalSection /> },
+  { path: '/JurnalDetail', element: <JurnalDetail /> },
 ];
 
-  
+
 
 function App() {
 
   const { font, theme, letterSpacing, lineSpacing, fontSize, picture } = useVisually();
-  
+
   useEffect(() => {
     const body = document.body;
     if (!body) return;
@@ -98,7 +107,7 @@ function App() {
   }, [theme, letterSpacing, lineSpacing, font, fontSize, picture]);
 
   // Синтез речи
-  const { speech, active } = useSelector((state) => state.visually);    
+  const { speech, active } = useSelector((state) => state.visually);
 
   const readPageContent = () => {
     const content = document.body.innerText;
@@ -112,11 +121,11 @@ function App() {
   };
 
   const mainTextSpeech = (text) => {
-        const talk = new SpeechSynthesisUtterance();
-        talk.lang = 'ru-RU';
-        talk.text = text;
-        window.speechSynthesis.speak(talk);
-    };
+    const talk = new SpeechSynthesisUtterance();
+    talk.lang = 'ru-RU';
+    talk.text = text;
+    window.speechSynthesis.speak(talk);
+  };
 
 
   useEffect(() => {
@@ -127,16 +136,32 @@ function App() {
     }
   }, [speech]);
   //
+
+  const ScrollToTop = ({ children }) => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        // behavior: 'smooth'
+      })
+    }, [pathname]);
+    return children;
+  };
+
   return (
     <BrowserRouter>
-      {active && <VisuallyImpaired mainTextSpeech={mainTextSpeech} />}
-      <Header />
-      <Routes>
-        {routesArr.map((item, index) => (
-          <Route key={index} path={item.path} element={item.element} />
-        ))}
-      </Routes>
-      <Footer />
+      <ScrollToTop>
+
+        {active && <VisuallyImpaired mainTextSpeech={mainTextSpeech} />}
+        <Header />
+        <Routes>
+          {routesArr.map((item, index) => (
+            <Route key={index} path={item.path} element={item.element} />
+          ))}
+        </Routes>
+        <Footer />
+      </ScrollToTop>
+
     </BrowserRouter>
   );
 }

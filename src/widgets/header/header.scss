@@ -35,7 +35,7 @@
       }
     }
 
-   
+
 
     &_link {
       text-decoration: none;
@@ -65,7 +65,7 @@
         color: #fff;
         transition: all 0.3s ease;
         margin: 0 8px;
-
+font-size: 12px;
         &:hover {
           color: #ffcc00;
         }
@@ -94,8 +94,9 @@
       color: #fff;
       border: none;
       padding: 5px;
-outline: none;
+      outline: none;
       cursor: pointer;
+      text-transform: uppercase;
 
       option {
         background: #005F4B;
@@ -112,13 +113,15 @@ outline: none;
       align-items: center;
     }
   }
-.mobile-header{
-  display: flex;
-  align-items: center;
-  .menu__btn{
-    margin-top: -20px;
+
+  .mobile-header {
+    display: flex;
+    align-items: center;
+
+    .menu__btn {
+      margin-top: -20px;
+    }
   }
-}
 
 }
 
@@ -175,7 +178,7 @@ outline: none;
     .header-desktop-controls {
       position: static;
 
-      select {
+      .desktop_select {
         display: none;
       }
 
@@ -213,12 +216,7 @@ outline: none;
       }
     }
 
-    .header-desktop-controls {
-      select {
-        display: none;
-      }
-
-    }
+   
 
 
   }
@@ -257,7 +255,7 @@ outline: none;
 
       .header_bottom_link {
         padding: 10px 15px;
-        width: 45%;
+        width: 95%;
       }
     }
   }

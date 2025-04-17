@@ -6,10 +6,7 @@ export const Table = ({ data }) => {
     return (
 
         <section className="education__container-table">
-            <header className="education__container-table__header">
-                <h2 className="education__container-table__subtitle">Специальности</h2>
-            </header>
-
+     
             <table className="education__container-table__table">
                 <thead className="education__container-table__table-head">
                     <tr className="education__container-table__table-row">
@@ -24,10 +21,10 @@ export const Table = ({ data }) => {
                     {data.map((item) => (
                         <tr className="education__container-table__table-row" key={item.id}>
                             <th className="education__container-table__table-cell static"></th>
-                            <td className="education__container-table__table-cell">{item.name}</td>
-                            <td className="education__container-table__table-cell">{item.status}</td>
-                            <td className="education__container-table__table-cell">{item.form}</td>
-                            <td className="education__container-table__table-cell">{item.year}</td>
+                            <td className="education__container-table__table-cell">{item.name_speciality_education}</td>
+                            <td className="education__container-table__table-cell">{item.status_education}</td>
+                            <td className="education__container-table__table-cell">{item.form_education}</td>
+                            <td className="education__container-table__table-cell">{item.perioud_education}</td>
                         </tr>
                     ))}
                 </tbody>

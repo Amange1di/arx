@@ -322,7 +322,9 @@
                             { "img": "https://www.alagoas24horas.com.br/wp-content/uploads/2018/05/NoDiadaLnguaPortuguesaconheaaspossibilidadesdocursodeLetras.jpg"},
                             { "img": "https://www.alagoas24horas.com.br/wp-content/uploads/2018/05/NoDiadaLnguaPortuguesaconheaaspossibilidadesdocursodeLetras.jpg"},
                             { "img": "https://www.alagoas24horas.com.br/wp-content/uploads/2018/05/NoDiadaLnguaPortuguesaconheaaspossibilidadesdocursodeLetras.jpg"},
+                            { "img": "https://www.alagoas24horas.com.br/wp-content/uploads/2018/05/NoDiadaLnguaPortuguesaconheaaspossibilidadesdocursodeLetras.jpg"},``
                             { "img": "https://www.alagoas24horas.com.br/wp-content/uploads/2018/05/NoDiadaLnguaPortuguesaconheaaspossibilidadesdocursodeLetras.jpg"}
+
                         ]
                     },
                     {
@@ -351,7 +353,6 @@
         "navElements": [
             {
                 "id": 0,
-                "link": "Образование",
                 "title": "Добро пожаловать в мир знаний !",
                 "title_h2": "Факультет исламского права (фикх)",
                 "description": "Основателями академии стали доктор Ибрагим аль-Фахри и его ученица Амира Халид. Доктор Ибрагим, известный теолог и историк, посвятил свою жизнь изучению ислама и его влияния на культуру и науку. Он мечтал о месте, где бы студенты могли углубленно изучать свою веру и одновременно развивать критическое мышление и научный подход. Амира Халид, обладая страстью к образованию и инновациям, сыграла ключевую роль в организации учебного процесса. Её идеи о сочетании классического образования с современными методами преподавания стали основой для многих программ академии."

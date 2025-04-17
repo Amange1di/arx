@@ -1,8 +1,7 @@
 .activetyBaner {
     font-family: "Lato", sans-serif;
     margin: 80px auto;
-    max-width: 1400px;
-    padding: 0 40px;
+    padding: 0 40px 0 0;
     position: relative;
 
     h1 {
@@ -31,14 +30,17 @@
         }
     }
 }
+
+
+
 @media screen and (max-width: 768px) {
-    .activetyBaner {    
+    .activetyBaner {
         div {
             margin-top: 60px;
             border-left: 4px solid #005F4B;
             padding-left: 30px;
-    
-    
+
+
             p {
                 font-weight: 300;
                 font-size: clamp(25px, 2.5vw, 35px);
@@ -48,7 +50,10 @@
             }
         }
     }
+
+   
 }
+
 @media screen and (max-width: 576px) {
     .activetyBaner {
 
@@ -65,5 +70,4 @@
             }
         }
     }
-
 }

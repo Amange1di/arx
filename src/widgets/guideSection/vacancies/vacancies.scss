@@ -30,7 +30,6 @@
                     line-height: 1.4;
 
                     &:before {
-                        content: "•";
                         position: absolute;
                         left: -20px;
                         top: 50%;
@@ -42,13 +41,18 @@
             &_contacts {
                 margin: 20px 0;
                 display: flex;
-                align-items: center;
+                align-items: start;
+                flex-direction: column;
                 gap: 30px;
 
                 .email a,
                 .tel a {
                     text-decoration: none;
                     font-size: 25px;
+                }
+
+                .email {
+                    color: #1A4277;
                 }
 
                 .tel {

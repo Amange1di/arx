@@ -3,14 +3,12 @@
 
 
   .text-news-head {
+    z-index: 10;
     display: flex;
-    margin: 0 auto;
+    margin-top: 7%;
     justify-content: space-between;
+    align-items: end;
 
-    .view-all{
-      font-family: sans-serif, "Lato";
-      color: rgba(26, 66, 119, 1);
-    }
 
     #title-head {
       color: rgba(0, 95, 75, 1);
@@ -18,14 +16,32 @@
       margin-bottom: 10px;
       font-family: sans-serif, "Lato";
     }
+
+    .view-all{
+      height: 30px;
+      color: rgba(26, 66, 119, 1);
+
+      &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
 
   .news-grid {
-   
+    position: relative;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+
+    .fon__news{
+      max-width: none;
+      width: 70%;
+      object-fit: cover;
+      position: absolute;
+      transform: translate(40%, 20%);
+    }
 
     .news-card {
       color: rgba(0, 95, 75, 1);
@@ -33,6 +49,11 @@
       border-radius: 5px;
       background-color: #fff;
       padding: 5px;
+      z-index: 10;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .date{
         font-family: sans-serif, "Lato";
@@ -45,14 +66,22 @@
       }
 
       .flex-i {
+        align-items: center;
         display: flex;
         justify-content: space-between;
+
         width: 100%;
 
         .flower {
           width: 25%;
           height: auto;
-          margin-left: 32%;
+        }
+
+        .view-all{
+          font-family: sans-serif, "Lato";
+          color: rgba(26, 66, 119, 1);
+          height: 15px;
+          cursor: pointer;
         }
       }
 
@@ -174,6 +203,11 @@
   @media (max-width: 768px) {
     .news-grid {
       grid-template-columns: repeat(2, 1fr);
+
+      .fon__news{
+        transform: translate(0%, 200%);
+        width: 100%;
+      }
       .news-card {
         .flex-i {
 
@@ -223,6 +257,10 @@
 
     .news-grid {
       grid-template-columns: repeat(1, 1fr);
+
+      .fon__news{
+        display: none;
+      }
       .news-card {
         .flex-i {
           justify-content: space-between;
@@ -260,3 +298,4 @@
     }
   }
 }
+

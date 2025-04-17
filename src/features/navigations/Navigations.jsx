@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import './navigations.scss';
 import { AnimatePresence, motion } from 'framer-motion';
-import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
+import { useTranslation } from 'react-i18next';
+import { useLocation } from "react-router-dom";
 
 export const Navigations = ({
   list = [],
@@ -9,11 +11,16 @@ export const Navigations = ({
   setSelected,
   selectedSub = null,
   setSelectedSub = null,
-  page = ''
+  page = '',
+  res = false,
+  selectedIndex = null
 }) => {
+  const location = useLocation();
+  const [selectedState, setSelectedState] = useState(null);
   const [openEventId, setOpenEventId] = useState(null);
   const [isNavOpen, setIsNavOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -22,114 +29,123 @@ export const Navigations = ({
   }, []);
 
   useEffect(() => {
-    if (selected !== null && list[selected]?.twoLink?.length > 0) {
-      setOpenEventId(selected);
+    if (selectedIndex !== null) {
+      setSelectedState(selectedIndex);
     }
-  }, [selected, list]);
+  }, [selectedIndex]);
+
+  useEffect(() => {
+    if (location.state) {
+      const { selectedIndex: locationSelectedIndex, navElements } = location.state;
+      if (locationSelectedIndex !== undefined) {
+        setSelectedState(locationSelectedIndex);
+      }
+    }
+  }, [location.state]);
+
+  const navigationList = location.state?.navElements || list;
 
   const handleMainCategoryClick = (index) => {
-    const hasSubMenu = list[index].twoLink?.length > 0;
+    const hasSubMenu = navigationList[index]?.twoLink?.length > 0;
+    setSelectedState(index);
+    setSelected?.(index);
+    setSelectedSub?.(hasSubMenu ? 0 : null);
+    setOpenEventId((prev) => (prev === index ? null : index));
+    isMobile && setIsNavOpen(!isNavOpen);
+  };
 
-    if (hasSubMenu) {
-      setOpenEventId(openEventId === index ? null : index);
-      setSelected(index);
-      if (setSelectedSub) {
-        setSelectedSub(0);
-      }
-    } else {
-      setSelected(index);
+  const handleSubClick = (subIndex, mainIndex) => {
+    setSelectedState(mainIndex);
+    setSelected?.(mainIndex);
+    setSelectedSub?.(subIndex);
+    isMobile && setIsNavOpen(false);
+  };
+
+  const handleButtonClick = () => {
+    setIsNavOpen(!isNavOpen);
+    if (res) {
+      setSelected?.(null);
       if (setSelectedSub) {
         setSelectedSub(null);
       }
       setOpenEventId(null);
     }
-
-    if (isMobile) {
-      setIsNavOpen(!isNavOpen);
-    }
-  };
-
-  const handleSubClick = (subIndex, mainIndex) => {
-    setSelected(mainIndex);
-    if (setSelectedSub) {
-      setSelectedSub(subIndex);
-    }
-    if (isMobile) {
-      setIsNavOpen(false);
-    }
   };
 
   return (
     <div className='navigations'>
-      <button
-        type="button"
-        className='navigations_btn'
-        onClick={() => setIsNavOpen(!isNavOpen)}
-      >
-        {page}
-        {isNavOpen ? <SlArrowUp /> : <SlArrowDown />}
-      </button>
+      <div className="navigation_group">
+        <button
+          type="button"
+          className='navigations_btn'
+          onClick={handleButtonClick}
+        >
+          {/* {page} */}
+          {t(page)}
+          <span>
+            {isNavOpen ? <SlArrowUp /> : <SlArrowDown />}
+          </span>
+        </button>
 
-      <AnimatePresence>
-        {isNavOpen && (
-          <motion.aside
-            className='nav-container visible'
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-          >
-            {list.map((item, index) => (
-              <div key={index} className='nav-item'>
-                <button
-                  type="button"
-                  onClick={() => handleMainCategoryClick(index)}
-                  className={`nav-element ${item.twoLink?.length > 0
-                    ? selected === index && selectedSub === null ? 'active' : ''
-                    : selected === index ? 'active' : ''
-                    }`}
-                >
-                  {item.link}
-                  {item.twoLink?.length > 0 && (
-                    <div className="">
+        <AnimatePresence>
+          {isNavOpen && (
+            <motion.aside
+              className='nav-container visible'
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            >
+              {navigationList.map((item, index) => {
+                const isMainActive = selectedState === index;
+                const isOpen = openEventId === index;
 
-                      {openEventId === index ? <SlArrowUp /> : <SlArrowDown />}
-                    </div>
-                  )}
-                </button>
-                <AnimatePresence>
-                  {openEventId === index && item.twoLink?.length > 0 && (
-                    <motion.div
-                      className="sub-links"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                return (
+                  <div key={index} className='nav-item'>
+                    <button
+                      type="button"
+                      onClick={() => handleMainCategoryClick(index)}
+                      className={`nav-element ${isMainActive ? 'active' : ''}`}
                     >
-                      <motion.ul>
-                        {item.twoLink.map((subItem, subIndex) => (
-                          <li key={subIndex}>
-                            <button
-                              type="button"
-                              onClick={() => handleSubClick(subIndex, index)}
-                              className={`sub-nav-element ${selected === index && selectedSub === subIndex ? 'active' : ''}`}
-                            >
-                              {subItem.link}
-                            </button>
-                          </li>
-                        ))}
-                      </motion.ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      {t(item.link || item.title || item.type)}
+                      {item.twoLink?.length > 0 && (
+                        <span>{isOpen ? <SlArrowUp /> : <SlArrowDown />}</span>
+                      )}
+                    </button>
 
+                    <AnimatePresence>
+                      {isOpen && item.twoLink?.length > 0 && (
+                        <motion.div
+                          className="sub-links"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 20 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        >
+                          <motion.ul>
+                            {item.twoLink.map((subItem, subIndex) => (
+                              <li key={subIndex}>
+                                <button
+                                  type="button"
+                                  onClick={() => handleSubClick(subIndex, index)}
+                                  className={`sub-nav-element ${selectedSub === subIndex ? 'active' : ''}`}
+                                >
+                                  {t(subItem.link || subItem.title)}
+                                </button>
+                              </li>
 
-
-              </div>
-            ))}
-          </motion.aside>
-        )}
-      </AnimatePresence>
+                            ))}
+                          </motion.ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </motion.aside>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

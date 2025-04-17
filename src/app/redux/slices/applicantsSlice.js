@@ -4,92 +4,15 @@ import StoreService from '../../../shared/api/service';
 export const fetchApplicantsData = createAsyncThunk(
     'applicants/fetchData',
     async () => {
-
         const response = await StoreService.getApplicantsData();
         console.log('Applicants data:', response);
-        return response;
-
+        return response.academics;
     }
 );
 
 const initialState = {
-    page: 'Абитуриентам',
-  navElements: [
-            {
-                "id": 1,
-                "link": "Поступить в Академию",
-                "data": {
-                    "intro": "Хотите стать студентом Исламской академии? Мы приглашаем вас присоединиться к сообществу, где знания, духовное развитие и братство играют ключевую роль.",
-                    "requirements": {
-                        "title": "Кто может поступить?",
-                        "items": [
-                            "Абитуриенты, окончившие среднее образование",
-                            "Те, кто стремится к углублённому изучению исламских наук",
-                            "Желающие овладеть арабским языком и религиозными дисциплинами"
-                        ]
-                    },
-                    "admissionSteps": {
-                        "title": "Этапы поступления",
-                        "documents": {
-                            "title1": "Подготовка документов",
-                            "items": [
-                                "Паспорт",
-                                "Аттестат о среднем образовании",
-                                "Свидетельство о религиозном образовании (если имеется)"
-                            ]
-                        },
-                        "exams": {
-                            "title1": "Вступительные испытания",
-                            "items": [
-                                "Собеседование с приёмной комиссией",
-                                "Проверка знаний арабского языка",
-                                "Тестирование по основам ислама"
-                            ]
-                        },
-                        "enrollment": {
-                            "title1": "Зачисление и начало учёбы",
-                            "dates": "Сроки подачи документов:  11 март 2025",
-                            "educationForms": [
-                                "Форма обучения: Очная/дистанционная"
-                            ]
-                        },
-                        "location": {
-                            "title": "Контакты для консультации:",
-                            "workingHours": "Пн-Сб: 9:00-20:00",
-                            "contacts": {
-                                "phone": "+7 (XXX) XXX-XX-XX",
-                                "email": "admission@academy.com"
-                            }
-                        }
-                    }
-                }
-            },
-            {
-                "id": 2,
-                "link": "Приёмная Комиссия",
-                "data": {
-                    "description": "Приёмная комиссия Исламской академии сопровождает абитуриентов на всех этапах поступления, помогая с оформлением документов и подготовкой к вступительным испытаниям.",
-                    "services": {
-                        "title": "Мы помогаем",
-                        "items": [
-                            "Разъяснить правила поступления",
-                            "Проверить комплект документов",
-                            "Организовать вступительные экзамены",
-                            "Дать консультации по учебному процессу"
-                        ]
-                    },
-                    "location": {
-                        "title": "Контакты для консультации:",
-                        "address": "г.Бишкек-ул. А.Юнусова 134",
-                        "workingHours": "Пн-Сб: 9:00-20:00",
-                        "contacts": {
-                            "phone": "+7 (XXX) XXX-XX-XX",
-                            "email": "admission@academy.com"
-                        }
-                    }
-                }
-            }
-        ],
+    page: '',
+    navElements: [],
     selected: null,
     loading: false,
     error: null
@@ -107,12 +30,22 @@ const applicantsSlice = createSlice({
         builder
             .addCase(fetchApplicantsData.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(fetchApplicantsData.fulfilled, (state, action) => {
                 state.loading = false;
-                state.page = action.payload.page;
-                state.navElements = action.payload.navElements;
-                state.selected = 0;
+
+                const { page, data } = action.payload;
+
+                state.page = page || '';
+                state.navElements = Array.isArray(data)
+                    ? data.map(item => ({
+                        ...item,
+                        link: item.title
+                    }))
+                    : [];
+                state.selected = state.navElements.length > 0 ? 0 : null;
+                state.error = null;
             })
             .addCase(fetchApplicantsData.rejected, (state, action) => {
                 state.loading = false;

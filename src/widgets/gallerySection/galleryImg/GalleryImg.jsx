@@ -1,25 +1,58 @@
-import "./gallery.scss"
+import "./gallery.scss";
 import { useState, useEffect } from "react";
-import gallery from "../../../shared/images/gallery.png";
+import axios from "axios";
 
-const facedata = [
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-    { gallery: gallery, p: "20.10.2024" },
-];
-const isThreeImages = facedata.length === 3;
 export const GalleryImg = () => {
+    const [images, setImages] = useState([]);
+    const [galleryData, setGalleryData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+    const [selectedDay, setSelectedDay] = useState("");
+    const [selectedMonth, setSelectedMonth] = useState("");
+    const [selectedYear, setSelectedYear] = useState("");
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 780);
+
+    useEffect(() => {
+        const getImages = async () => {
+            try {
+                const response = await axios.get("http://92.118.114.178/ru/api/v1/gellaryphotos/");
+                setImages(response.data);
+                setGalleryData(response.data);
+
+            } catch (error) {
+                console.error("Ошибка при загрузке изображений:", error);
+            }
+        };
+
+        getImages();
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 1200);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    useEffect(() => {
+        const filterGallery = () => {
+            let filtered = galleryData;
+            if (selectedDay) {
+                filtered = filtered.filter(item => item.date.split(".")[0] === selectedDay);
+            }
+            if (selectedMonth) {
+                filtered = filtered.filter(item => item.date.split(".")[1] === selectedMonth);
+            }
+            if (selectedYear) {
+                filtered = filtered.filter(item => item.date.split(".")[2] === selectedYear);
+            }
+            setFilteredData(filtered);
+        };
+
+        filterGallery();
+    }, [selectedDay, selectedMonth, selectedYear, galleryData]);
+
+
     const imageSizes = [
         { width: 287, height: 220 },
         { width: 665, height: 430 },
@@ -41,77 +74,56 @@ export const GalleryImg = () => {
         { width: 287, height: 220 },
     ];
 
-    const getImageSize = () => {
-        if (facedata.length === 1) {
-            return { width: 665, height: 430 };
-        } else if (facedata.length === 2 || facedata.length === 3) {
-            return { width: 413, height: 520 };
-        } else if (facedata.length === 4) {
-            return { width: 287, height: 220 };
-        } else {
-            return imageSizes;
-        }
-    };
-
-    const imageSize = getImageSize();
-
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 780);
-
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 780);
-        };
-
-
-        window.addEventListener("resize", handleResize);
-
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    const isThreeImages = images.length === 3;
 
     return (
         <div className="gallery container">
-            <div className={`gallery container ${isThreeImages ? "gallery--three-images" : ""}`}></div>
-            <div className="gallery_select">
+            <div className={`gallery ${isThreeImages ? "gallery--three-images" : ""}`}></div>
+
+            <div className="gallery_select container">
                 <div>
-                    <select>
-                        <option>День</option>
+                    <select onChange={(e) => setSelectedDay(e.target.value)}>
+                        <option value="">День</option>
+                        {[...new Set(galleryData.map(item => item.date.split(".")[0]))].map(day => (
+                            <option key={day} value={day}>{day}</option>
+                        ))}
                     </select>
-                    <select>
-                        <option>Месяц</option>
+                    <select onChange={(e) => setSelectedMonth(e.target.value)}>
+                        <option value="">Месяц</option>
+                        {[...new Set(galleryData.map(item => item.date.split(".")[1]))].map(month => (
+                            <option key={month} value={month}>{month}</option>
+                        ))}
                     </select>
-                    <select>
-                        <option>Год</option>
+                    <select onChange={(e) => setSelectedYear(e.target.value)}>
+                        <option value="">Год</option>
+                        {[...new Set(galleryData.map(item => item.date.split(".")[2]))].map(year => (
+                            <option key={year} value={year}>{year}</option>
+                        ))}
                     </select>
                 </div>
             </div>
 
             <div className="gallery_group">
-                {facedata.map((item, index) => (
+                {filteredData.map((item, index) => (
                     <div
                         className={`gallery_card 
-                        ${index % 2 === 0 ? "gallery_card--large" : "gallery_card--small"} 
-                        ${(index === 5 || index === 6 || index === 7 || index === 8) ? "gallery_card--one" : ""} 
-                        ${(index === 3 || index === 4 || index === 11 || index === 12) ? "gallery_card--two" : ""} 
-                        ${index === 10 ? "gallery_card--tri" : ""}`}
-
-
-                        key={index}
+                            ${index % 2 === 0 ? "gallery_card--large" : "gallery_card--small"} 
+                            ${(index === 5 || index === 6 || index === 7 || index === 8) ? "gallery_card--one" : ""} 
+                            ${(index === 3 || index === 4 || index === 11 || index === 12) ? "gallery_card--two" : ""} 
+                            ${index === 10 ? "gallery_card--tri" : ""}`
+                        }
+                        key={item.id}
                         style={{
-                            width: imageSizes[index]?.width || "auto"
-                            ,
+                            width: imageSizes[index]?.width || "auto",
                             height: imageSizes[index]?.height || "auto",
                             marginTop: imageSizes[index]?.offset && !isSmallScreen ? "330px" : "",
-
                         }}
                     >
-                        <img className="gallery_img" src={item.gallery} alt="gallery" />
-                        <p className="gallery_data">{item.p}</p>
+                        <img className="gallery_img" src={item.photo} alt="gallery" />
+                        <p className="gallery_data">{item.date}</p>
                     </div>
                 ))}
             </div>
         </div>
     );
 };
-

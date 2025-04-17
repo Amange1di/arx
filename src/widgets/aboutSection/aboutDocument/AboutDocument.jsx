@@ -16,14 +16,10 @@ export const AboutDocument = ({ items }) => {
              <a className="about-document__block-right-download" href={item.link_download}>скачать <HiDownload/></a>
           </div>
         </div>
-      ))
-
-      }
+      ))}
     </section>
-  )
-}
-
-
+  );
+};
 
 AboutDocument.propTypes = {
     items: PropTypes.arrayOf(

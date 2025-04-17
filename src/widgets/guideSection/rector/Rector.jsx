@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
 import './rector.scss';
-// import defaultPhoto from '../../../shared/images/rector.png';
 
 export const Rector = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { selectedSub } = useSelector((state) => state.guide);
     const rectorData = useSelector(
-        (state) => state.guide.navElements?.[0]?.twoLink?.[selectedSub]?.data
+        (state) => {
+            return state.guide.navElements?.[0]?.twoLink?.[selectedSub]?.data;
+        }
     );
-
+    
     return (
         <section className="rector">
             <div className="container">
@@ -22,8 +23,8 @@ export const Rector = () => {
                         />
                         <div className="rector_content_img_text">
                             <h3>{rectorData?.name}</h3>
-                            <h3>{rectorData?.position}</h3>
-                            <h4>{rectorData?.degree}</h4>
+                            <h3>{rectorData?.title}</h3>
+                            <h4>{rectorData?.title}</h4>
                         </div>
                     </div>
 
@@ -31,59 +32,49 @@ export const Rector = () => {
                         className="rector_content_info"
                         onClick={() => setIsOpen(!isOpen)}
                     >
-                        <h4>Научные труды ректора</h4>
                         {!isOpen && rectorData?.description && (
                             <>
-                                <p>{rectorData?.description}</p>
-                                <ul className="rector_content_info_list">
-                                    {rectorData?.scientificWorks?.slice(0, 3).map((work, index) => (
-                                        <li key={index}>{work}</li>
-                                    ))}
-                                </ul>
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: rectorData.description.slice(0, 262) + (rectorData.description.length > 150 ? '' : '')
+                                    }}
+                                ></p>
                             </>
                         )}
 
                         <AnimatePresence initial={false}>
                             {isOpen && rectorData && (
                                 <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: 'auto', opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 20 }}
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     className="rector_content_info_expanded"
                                 >
-                                    <p>{rectorData?.description}</p>
+                                    <p dangerouslySetInnerHTML={{ __html: rectorData.description }}></p>
 
-                                    <h4>Основные труды:</h4>
-                                    <ul className="rector_content_info_list">
-                                        {rectorData?.scientificWorks?.map((work, index) => (
-                                            <li key={index}>{work}</li>
-                                        ))}
-                                    </ul>
-                                    <h4>Выступления и публикации</h4>
-                                    <p>{rectorData?.description}</p>
-
-                                    <h4>Контакты для связи:</h4>
+                                    <h4>{rectorData.contact}</h4>
                                     <div className="rector_content_info_contacts">
                                         <div>
                                             <p className="email">
-                                                <a href={`mailto:${rectorData?.contacts?.email}`}>
-                                                    {rectorData?.contacts?.email}
+                                                <a href={`mailto:${rectorData?.email}`}>
+                                                    {rectorData?.email}
                                                 </a>
                                             </p>
                                             <p className="tel">
-                                                <a href={`tel:${rectorData?.contacts?.phone}`}>
-                                                    {rectorData?.contacts?.phone}
+                                                <a href={`tel:${rectorData?.phone}`}>
+                                                    {rectorData?.phone}
                                                 </a>
                                             </p>
                                         </div>
+                                        <a href={rectorData.link} className='rector_content_info_contacts_btn'>Открыть PDF</a>
                                     </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
 
                         <div className="rector_content_info_footer">
-                            <p>12.21.2121</p>
+                            <p>{rectorData.date_publication}</p>
                             <button
                                 onClick={(e) => {
                                     e.stopPropagation();

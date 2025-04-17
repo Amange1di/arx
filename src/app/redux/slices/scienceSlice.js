@@ -2,37 +2,19 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import StoreService from '../../../shared/api/service';
 
 export const fetchScienceData = createAsyncThunk(
-    'science/fetchData',
+    'ology/fetchData',
     async () => {
         const response = await StoreService.getScienceData();
+
+        console.log('ology  data:', response);
+
         return response;
     }
 );
 
 const initialState = {
-    page: 'Наука',
-    navElements: [
-            {
-                "link": "Ученый Совет"
-            },
-            {
-                "link": "Научно -  центр развития образования"
-            },
-            {
-                "link": "Научные Труды"
-            },
-            {
-                "link": "Научные Журнал",
-                "twoLink": [
-                    {
-                        "link": "Журнал исламской академии"
-                    },
-                    {
-                        "link": "Журнал партнерских ВУЗов"
-                    }
-                ]
-            }
-        ],
+    page: '',
+    navElements: [],
     selected: 0,
     selectedSub: null,
     isLoading: false,
@@ -58,22 +40,24 @@ const scienceSlice = createSlice({
             })
             .addCase(fetchScienceData.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.page = action.payload.page;
-                state.navElements = action.payload.navElements;
-
-                // Находим первый элемент с подменю
-                const firstWithSubmenu = action.payload.navElements.findIndex(
-                    item => item.twoLink?.length > 0
-                );
-
-                // Если найден элемент с подменю, устанавливаем его
-                if (firstWithSubmenu !== -1) {
-                    state.selected = firstWithSubmenu;
-                    state.selectedSub = 0;
-                } else {
-                    state.selected = 0;
-                    state.selectedSub = null;
-                }
+                const payload = action.payload.societies || {};
+                state.page = payload.page || '';
+                state.navElements = Array.isArray(payload.navElements)
+                    ? payload.navElements.map((item) => ({
+                        ...item,
+                        link: item.title, 
+                        cards: Array.isArray(item.cards)
+                            ? item.cards.map((card) => ({
+                                ...card,
+                                title: card.title || 'Без названия', 
+                                description: card.description || '',
+                                number: card.number || '',
+                                email: card.email || '',
+                                link: card.title || '' 
+                            }))
+                            : [] 
+                    }))
+                    : [];
             })
             .addCase(fetchScienceData.rejected, (state, action) => {
                 state.isLoading = false;

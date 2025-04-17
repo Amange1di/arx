@@ -2,13 +2,38 @@
   font-family: Arial, sans-serif;
   color: #333;
   width: 100%;
-  padding: 2rem;
-  background: linear-gradient(180deg, #106F5B 28.8%, #F5F5DC 100%);
+
+  background: linear-gradient(180deg, #106F5B 28.8%, #F5F5DC 100%) ;
   background-size: cover;
   height: 100%;
 
+
+
+  .home-fon{
+    margin: 0 auto;
+    background-image: url('../../../shared/images/homeImages//fon-full.png'),;
+    background-size: 70%, 90%;
+    background-position: top -300px right -200px, bottom 0px left 0px;
+    background-repeat: no-repeat, no-repeat;
+
+  }
+
+
   .baner-content {
     margin: 0 auto;
+   position: relative;
+
+   
+
+
+    .fon__title{
+      display: block;
+      max-width: none;
+      width: 60%;
+      object-fit: cover;
+      position: absolute;
+      transform: translate(-10%, -75%);
+    }
 
     .text_img {
       gap: 1vw;
@@ -16,6 +41,7 @@
 
       .text-ban {
         width: 60%;
+
           
       .title-desc {
         font-size: 25px;
@@ -29,6 +55,7 @@
         width: 50%;
         height: auto;
         object-fit: cover;
+        z-index: 1;
       }
 
 
@@ -86,6 +113,18 @@
 
   @media (max-width: 768px) {
     .baner-content {
+
+        .fon__banner{
+          transform: translate(32%, -8%);
+          width: 80%;
+          overflow: hidden;
+        }
+
+        .fon__title{
+          transform: translate(-120%);
+          width: 100%;
+        }
+
       .text_img {
         display: flex;
         flex-direction: row-reverse; 
@@ -120,6 +159,18 @@
   @media (max-width: 576px) {
 
     .baner-content {
+
+      
+      .fon__banner{
+        transform: translate(-45%, 40%);
+        width: 200%;
+        overflow: hidden;
+      }
+
+      .fon__title{
+        display: none;
+      }
+        
       .text_img {
         flex-direction:column-reverse; 
 

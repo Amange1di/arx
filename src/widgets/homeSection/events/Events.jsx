@@ -1,40 +1,38 @@
 import Mer from "../../../shared/images/homeImages/mer.jpg";
-import "./events.scss"; 
+import FonFull from '../../../shared/images/homeImages/fon-full.png';
+import "./events.scss";
 
-const eventData = [
-  {
-    id: 1,
-    date: "Октябрь 16, | 10:00 - 12:00",
-    title: "Встреча с учеными исламского мира",
-    location: "Адрес: Центральный зал, город Ош.",
-    description:
-      "На этой неделе наша академия имела честь принять выдающихся ученых из разных уголков исламского мира. В рамках серии лекций и дискуссий они поделились своими знаниями о важности исламского образования в современном обществе. В рамках серии лекций и дискуссий они поделились своими знаниями о важности исламского образования в современном обществе",
-    image: Mer,
-  },
-];
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchBannerData } from '../../../app/redux/slices/homeSlice';
+import { useEffect } from "react";
 
 export const Events = () => {
+  const dispatch = useDispatch();
+  const { banner } = useSelector((state) => state.home);
+
+  useEffect(() => {
+    dispatch(fetchBannerData());
+  }, [dispatch]);
+
   return (
     <section className="events-section">
       <div className="container">
-        <h2 className="op" id="events-title">ПРЕДЛАГАЕМ К ПРОСМОТРУ</h2>
+        <h2 className="op" id="events-title">{banner?.[0]?.title_we_suggest_you_watch_it}</h2> 
 
         <div className="events-container">
-          {eventData.map((event) => (
-            <div className="event-card" key={event.id}>
-              <img src={event.image} alt="Event" className="event-image" />
+          {banner?.map((event, index) => (
+            <div className="event-card" key={index}>
+              <img src={event.image_obj} alt="Event" className="event-image" /> 
               <div className="event-content">
-                <p className="event-date">{event.date}</p>
-                <h3 className="event-title">{event.title}</h3>
-                <p className="event-location">{event.location}</p>
-                <p className="event-description">{event.description}</p>
-
-                <a href="#" className="read-more">Читать больше →</a>
+                <p className="event-date">{event.obj_date}</p> 
+                <h3 className="event-title">{event.title_obj}</h3> 
+                <p className="event-description" dangerouslySetInnerHTML={{ __html: event.description_obj }}></p> 
               </div>
             </div>
           ))}
+          <img src={FonFull} alt="" className="fon__event" />
         </div>
       </div>
     </section>
   );
-}
+};

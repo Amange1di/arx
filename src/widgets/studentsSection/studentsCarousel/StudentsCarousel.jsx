@@ -1,31 +1,37 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
-import './studentsCarousel.scss'
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import './studentsCarousel.scss';
 
 export const StudentsCarousel = ({ items }) => {
-  const settings = {
-    arrows: false,
-    centerMode: true,
-    infinite: true,
-    centerPadding: "0px",
-    slidesToShow: 3,
-    speed: 500,
-    autoplay: true,
-    autoplaySpeed: 2000,
-  };
+  const limitedItems = items.slice(0, 3); // Ограничиваем до 3 картинок
 
   return (
-    <div className="studentsCarousel">
-
-      <Slider {...settings}>
-        {items.map((item, index) => (
-          <div className="slide" key={index}>
-            <img src={item.img} className="slide-image" />
-          </div>
+    <div className="student-slider">
+      <Swiper
+        modules={[EffectCoverflow, Autoplay]}
+        effect="coverflow"
+        grabCursor={true}
+        centeredSlides={true}
+        loop={true}
+        slidesPerView={2}
+        spaceBetween={0}
+        autoplay={{ delay: 20000, disableOnInteraction: false }}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2,
+          slideShadows: false,
+        }}
+      >
+        {limitedItems.map((item, index) => (
+          <SwiperSlide key={index} className="student-slide">
+            <img src={item} alt={`Slide ${index}`} className="student-image" />
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </div>
-  )
-}
+  );
+};

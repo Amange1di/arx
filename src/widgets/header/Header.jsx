@@ -10,6 +10,7 @@ import { activeMode, deactivateMode, useVisually } from "../../app/redux/slices/
 import { useDispatch } from "react-redux";
 import { Search } from "../../features";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +18,14 @@ export const Header = () => {
   const dispatch = useDispatch();
   const { active } = useVisually();
 
+  const { t, i18n } = useTranslation();
+
+  const handleChangeLang = ({ target: { value } }) => {
+    i18n.changeLanguage(value);
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -56,11 +65,6 @@ export const Header = () => {
     setIsOpen(false);
   };
 
-  const { t, i18n } = useTranslation();
-  const handleChangeLang = ({ target: { value } }) => {
-    i18n.changeLanguage(value);
-  };
-
   return (
     <div className="header">
       {isSearchVisible && (
@@ -75,7 +79,10 @@ export const Header = () => {
         <div className="container header_bottom_group">
           <div className=" header_bottom_group_logo">
 
-            <img src={logo} className="logo" alt="logo" />
+            <Link to="/">
+              <img
+                src={logo} className="logo" alt="logo" />
+            </Link>
           </div>
           <Navigation
             className="desktop-menu"
@@ -83,13 +90,14 @@ export const Header = () => {
           />
 
           <div className="header-desktop-controls">
-            <select
+            <select className="desktop_select"
               onChange={handleChangeLang}
-
+              value={i18n.language}
+              // defaultValue={i18n.language}
             >
               <option value="en">{t("En")}</option>
+              <option value="ky">{t("Ky")}</option>
               <option value="ru">{t("Ru")}</option>
-              <option value="kg">{t("Ky")}</option>
             </select>
             <div className="header-desktop-controls-icon">
               <IoSearch
@@ -128,12 +136,16 @@ export const Header = () => {
 
               <div className={`menu__box ${isOpen ? 'open' : ''}`}>
                 <div className="mobile-header">
-                  <img src={logo} className="logo" alt="logo" />
+                  <Link onClick={handleMenuItemClick} to="/">
+                    <img
+                      src={logo} className="logo" alt="logo" />
+                  </Link>
+
                   <div className="header-controls">
-                    <select>
-                      <option value="en">En</option>
-                      <option value="kg">Kg</option>
-                      <option value="ru">Ru</option>
+                    <select onChange={handleChangeLang} value={i18n.language} defaultValue={i18n.language}>
+                      <option value="ky">{t("Ky")}</option>
+                      <option value="en">{t("En")}</option>
+                      <option value="ru">{t("Ru")}</option>
                     </select>
                     <IoSearch
                       className="header_bottom_group_icon"

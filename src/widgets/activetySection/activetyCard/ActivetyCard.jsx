@@ -14,7 +14,7 @@ export const ActivetyCard = ({ cards = [] }) => {
           <div className="activetyCard_bloc_text">
             <h2>{item.date}</h2>
             <h3>{item.title}</h3>
-            <p>{item.description}</p>
+            <p  dangerouslySetInnerHTML={{ __html: item?.description || '' }}></p>
             <h4>{item.location}</h4>
           </div>
         </div>

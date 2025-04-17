@@ -27,19 +27,21 @@ import {
   useVisually,
 } from "../../app/redux/slices/visually";
 import Modal from "./Modal";
+import { useTranslation } from "react-i18next";
 
 // import faImage from "@fortawesome/fontawesome-free-regular";
 export const VisuallyImpaired = ({ mainTextSpeech }) => {
   const { hide } = useVisually();
   const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     <React.Fragment>
       {hide && (
         <div className="visually">
           <div className="visually__content">
-            <p>Размер шрифта</p>
+            <p>{t("Размер шрифта")}</p>
             <div>
               <button onClick={() => {
                 dispatch(decreaseFontSize())
@@ -52,7 +54,7 @@ export const VisuallyImpaired = ({ mainTextSpeech }) => {
             </div>
           </div>
           <div className="visually__content" id="visually__content">
-            <p>Цвета сайта</p>
+            <p>{t("Цвета сайта")}</p>
             <div>
               <button
                 id="visually__content-light"
@@ -102,7 +104,7 @@ export const VisuallyImpaired = ({ mainTextSpeech }) => {
             </div>
           </div>
           <div className="visually__content">
-            <p>Изображения</p>
+            <p>{t("Изображения")}</p>
             <div>
               <button onClick={() => {
                 dispatch(showPictures());
@@ -125,7 +127,7 @@ export const VisuallyImpaired = ({ mainTextSpeech }) => {
             </div>
           </div>
           <div className="visually__content">
-            <p>Синтез речи</p>
+            <p>{t("Синтез речи")}</p>
             <div>
               <button onClick={() => {
                 dispatch(unplugSpeech())
@@ -140,7 +142,7 @@ export const VisuallyImpaired = ({ mainTextSpeech }) => {
             </div>
           </div>
           <div className="visually__content">
-            <p>настройки</p>
+            <p>{t("настройки")}</p>
             <div>
               <button onClick={() => setModal(!modal)}>
                 <FontAwesomeIcon icon={faGear} />
@@ -149,7 +151,7 @@ export const VisuallyImpaired = ({ mainTextSpeech }) => {
                 dispatch(deactivateMode())
                 mainTextSpeech('Обычная версия сайта')
               }}>
-                обычная версия
+                {t("обычная версия")}
               </button>
               <button onClick={() => {
                 dispatch(setHide());

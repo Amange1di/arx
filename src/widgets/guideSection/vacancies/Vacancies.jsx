@@ -6,10 +6,14 @@ import './vacancies.scss';
 export const Vacancies = () => {
     const [openIndex, setOpenIndex] = useState(null);
 
-    const vacanciesList = useSelector(state => {
-        const positions = state.guide.navElements?.find(el => el.id === 3)?.data?.positions;
-        return positions || [];
+    const vacanciesList = useSelector((state) => {
+        const jobElement = state.guide.navElements?.find((element) => element.link === 'Job');
+        return jobElement?.data || [];
     });
+
+    if (!vacanciesList || vacanciesList.length === 0) {
+        return <p>Вакансий нет</p>;
+    }
 
     return (
         <div className="vacancies">
@@ -20,13 +24,13 @@ export const Vacancies = () => {
                         key={index}
                         onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     >
-                        <h3>{vacancy.title}</h3>
+                        <h3 dangerouslySetInnerHTML={{ __html: vacancy?.description || 'Описание отсутствует' }}></h3>
                         <h4>Обязанности:</h4>
 
                         {openIndex !== index && (
                             <ul className="vacancies_content_info_list">
-                                {vacancy.responsibilities?.slice(0, 2).map((duty, i) => (
-                                    <li key={i}>{duty}</li>
+                                {vacancy.responsibilities?.split('<br />').slice(0, 2).map((duty, i) => (
+                                    <li key={i} dangerouslySetInnerHTML={{ __html: duty }} />
                                 ))}
                             </ul>
                         )}
@@ -34,57 +38,42 @@ export const Vacancies = () => {
                         <AnimatePresence initial={false}>
                             {openIndex === index && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 20 }} // Элемент начинается с opacity 0 и сдвигом вниз
-                                    animate={{ opacity: 1, y: 0 }}  // Плавно появляется и приходит на свою позицию
-                                    exit={{ opacity: 0, y: 20 }}    // При закрытии элемент плавно уходит вниз
-                                    transition={{ duration: 0.3, ease: 'easeInOut' }} // Плавное изменение
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 20 }}
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     className="vacancies_content_info_expanded"
                                 >
                                     <ul className="vacancies_content_info_list">
-                                        {vacancy.responsibilities?.map((duty, i) => (
-                                            <li key={i}>{duty}</li>
-                                        ))}
+                                        {vacancy.responsibilities && (
+                                            <li
+                                                key={index}
+                                                dangerouslySetInnerHTML={{ __html: vacancy.responsibilities }}
+                                            />
+                                        )}
                                     </ul>
 
-                                    <h4>Требования:</h4>
-                                    <ul className="vacancies_content_info_list">
-                                        {vacancy.requirements?.map((req, i) => (
-                                            <li key={i}>{req}</li>
-                                        ))}
-                                    </ul>
-
-                                    <h4>Условия:</h4>
-                                    <ul className="vacancies_content_info_list">
-                                        {vacancy.conditions?.map((condition, i) => (
-                                            <li key={i}>{condition}</li>
-                                        ))}
-                                    </ul>
-
-                                    <h4>Контакты для связи:</h4>
+                                    <h4>{vacancy.contact}</h4>
                                     <div className="vacancies_content_info_contacts">
-                                        <div>
-                                            <p className="email">
-                                                <a href={`mailto:${vacancy.contacts?.email}`}>
-                                                    {vacancy.contacts?.email}
-                                                </a>
-                                            </p>
-                                            <p className="tel">
-                                                <a href={`tel:${vacancy.contacts?.phone}`}>
-                                                    {vacancy.contacts?.phone}
-                                                </a>
-                                            </p>
-                                        </div>
+                                        <p className="email">
+                                            <a href={`mailto:${vacancy.email}`}>{vacancy.email}</a>
+                                        </p>
+                                        <p className="tel">
+                                            <a href={`tel:${vacancy.phone}`}>{vacancy.phone}</a>
+                                        </p>
                                     </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
 
                         <div className="vacancies_content_info_footer">
-                            <p>02.02.2025 15:23      Бишкек</p>
-                            <button onClick={(e) => {
-                                e.stopPropagation();
-                                setOpenIndex(openIndex === index ? null : index); 
-                            }}>
+                            <p>{vacancy.date_publication}</p>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setOpenIndex(openIndex === index ? null : index);
+                                }}
+                            >
                                 {openIndex === index ? 'Свернуть' : 'Раскрыть'}
                             </button>
                         </div>

@@ -1,27 +1,29 @@
-import React from 'react';
 import './cpo.scss';
+import { Table } from './Table';
 
-export const MainContent = ({ data }) => {
-    if (!data) return null;
-
+export const MainContent = ({ data = [] }) => {
     return (
         <div className="cpo">
-            {data.title && (
-                <div className="section-block">
-                    <h2>{data.title}</h2>
-                </div>
-            )}
-
-            {data.title_h2 && (
-                <div className="faculty-block">
-                    <h3>{data.title_h2}</h3>
-                </div>
-            )}
-
-            {data.description && (
-                <div className="description-block">
-                    <p className="textT">{data.description}</p>
-                </div>
+            {Array.isArray(data) && data.length > 0 ? (
+                data.map((item, index) => (
+                    <div key={item?.id || index} className="section-block">
+                        {item?.title && ( 
+                            <h2>{item.title}</h2>
+                        )}
+                        {item?.description && ( 
+                            <div className="description-block">
+                                <p className="textT" dangerouslySetInnerHTML={{ __html: item.description }}></p>
+                            </div>
+                        )}
+                        {item?.objects_education && Array.isArray(item.objects_education) && item.objects_education.length > 0 && (
+                            <div className="objects-education">
+                                <Table data={item.objects_education} />
+                            </div>
+                        )}
+                    </div>
+                ))
+            ) : (
+                <p className="no-data">Нет данных для отображения</p>
             )}
         </div>
     );

@@ -7,6 +7,9 @@ import studentsReducer from './slices/studentsSlice';
 import scienceReducer from "./slices/scienceSlice"
 import navReducer from './slices/navSlice';
 import visuallyReducer from "./slices/visually";
+import aboutReducer from './slices/aboutSlice';
+import homeReducer from './slices/homeSlice';
+import gellaryReducer from './slices/gellarySlice';
 
 const store = configureStore({
   reducer: {
@@ -18,8 +21,10 @@ const store = configureStore({
     students: studentsReducer,
     science: scienceReducer,
     visually: visuallyReducer,
+    about: aboutReducer,
+    home: homeReducer,
+    gallery: gellaryReducer,
   },
 });
-
 
 export default store;

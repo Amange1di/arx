@@ -29,6 +29,12 @@
                     font-weight: 700;
                     color: #005F4B;
                     border-top: 2px solid #000;
+                    border-bottom: 2px solid #000;
+
+                }
+
+                h3:nth-of-type(2) {
+                    border-top: none;
                 }
 
                 h4 {
@@ -86,8 +92,11 @@
 
             &_contacts {
                 margin-top: 30px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
 
-                a {
+               .email a {
                     color: #1A4277;
                     text-decoration: none;
                     font-size: 16px;
@@ -98,6 +107,17 @@
                     font-size: 25px;
                     color: #333;
                 }
+
+                &_btn {
+                    font-family: "Lato", sans-serif;
+                    font-weight: 400;
+                    font-size: 22px;
+                    text-decoration: dotted;
+                    
+                    border: none;
+                    border-bottom: 2px solid black;
+                    background: transparent;
+                }
             }
 
             &_footer {
@@ -107,7 +127,7 @@
 
                 button {
                     background: transparent;
-                    color: #004638;
+                    color: #1A4277;
                     border: none;
                     cursor: pointer;
 

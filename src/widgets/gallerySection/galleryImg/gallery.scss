@@ -23,6 +23,7 @@
         align-items: start;
         justify-content: space-between;
         flex-wrap: wrap;
+        margin: 10px;
 
         .gallery_card {
             margin: 50px 10px;
@@ -76,22 +77,10 @@
 }
 
 
-
-
-
-
-
-
-
-
 // Адаптивные стили
 @media (max-width: 1440px) {
     .gallery_select div select {
         font-size: 28px;
-
-
-
-
 
     }
 
@@ -105,303 +94,39 @@
     }
 }
 
-@media (max-width: 1230px) {
-    .gallery_select div select {
-        font-size: 26px;
-        padding: 8px;
-    }
-
-    .gallery_group {
-        padding: 0;
-        display: flex;
-        justify-content: space-around;
-
-
-
-        .gallery_card {
-
-
-            padding: 20px;
-        }
-
-        .gallery_card--one {
-            width: 227px !important;
-        }
-
-        .gallery_card--two {
-            width: 257px !important;
-        }
-
-        .gallery_card--tri {
-            width: 277px !important;
-        }
-
-
-        .gallery_data {
-            font-size: 20px;
-            padding: 8px 16px;
-        }
-    }
-
-
-
-}
-
-@media (max-width: 1024px) {
-        .gallery_card--two {
-            width: 257px !important;
-        }
-
-        .gallery_card--tri {
-            width: 277px !important;
-
-
-        margin-top: 0;
-    }
-
-    .gallery_data {
-        font-size: 18px;
-        padding: 7px 14px;
-    }
-
-  
-    .gallery_card--one {
-        width: 18% !important;
-    }
-
-}
-
-@media (max-width: 1010px) {
-    .gallery .gallery_select div select {
-        padding: 14px;
-        font-size: 22px;
-
-    }
-
-    
-
-    .gallery_group {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2px;
-
-
-
-        .gallery_card {
-            align-self: end;
-            width: 359px !important;
-            height: 296px !important;
-            padding: 10px;
-            margin: 0;
-
-        }
-
-        .gallery_data {
-            font-size: 16px;
-            padding: 10px 12px;
-
-        }
-
-
-    }
-
-
-
-}
-
-@media (max-width: 767px) {
+@media (max-width: 1200px) {
     .gallery_group {
         .gallery_card {
             align-self: end;
-            width: 320px !important;
-            height: 276px !important;
-            padding: 5px;
+            width: 30% !important;
+            height: 326px !important;
             margin: 0;
-
         }
-
-
     }
 }
 
-@media (max-width: 761px) {
+@media (max-width: 992px) {
     .gallery_group {
-
-
-
         .gallery_card {
             align-self: end;
-            width: 339px !important;
-            height: 276px !important;
-            padding: 10px;
+            width: 46% !important;
+            height: 326px !important;
             margin: 0;
-
         }
-
-
-
     }
+}
 
-    @media (max-width: 741px) {
 
-        .gallery_group {
-            .gallery_card {
-                align-self: end;
-                width: 320px !important;
-                height: 276px !important;
-                padding: 5px;
-                margin: 0;
 
-            }
+
+
+@media (max-width: 576px) {
+    .gallery_group {
+        .gallery_card {
+            align-self: end;
+            width: 100% !important;
+            height: 326px !important;
+            margin: 0 auto;
         }
-
-        @media (max-width: 683px) {
-            .gallery_group {
-
-
-
-
-                .gallery_card {
-                    align-self: end;
-                    width: 300px !important;
-                    height: 266px !important;
-                    padding: 5px;
-                    margin: 0;
-
-                }
-
-
-
-            }
-        }
-
-        @media (max-width: 642px) {
-            .gallery_group {
-
-
-
-
-                .gallery_card {
-                    align-self: end;
-                    width: 285px !important;
-                    height: 250px !important;
-                    padding: 5px;
-                    margin: 0;
-
-                }
-
-
-
-
-            }
-        }
-
-        @media (max-width: 612px) {
-            .gallery .gallery_select div select {
-                padding: 11px;
-                font-size: 18px;
-
-            }
-
-         
-
-            .gallery_group {
-
-
-
-
-                .gallery_card {
-                    align-self: end;
-                    width: 255px !important;
-                    height: 220px !important;
-                    padding: 5px;
-                    margin: 0;
-
-                }
-
-
-
-
-            }
-        }
-
-        @media (max-width: 553px) {
-            .gallery .gallery_select div select {
-                padding: 9px;
-                font-size: 16px;
-
-            }
-
-            
-
-            .gallery_group {
-
-
-
-
-                .gallery_card {
-                    align-self: end;
-                    width: 235px !important;
-                    height: 190px !important;
-                    padding: 5px;
-                    margin: 0;
-
-                }
-
-
-
-
-            }
-        }
-
-        @media (max-width: 513px) {
-            .gallery .gallery_select div select {
-                padding: 8px;
-                font-size: 15px;
-            }
-
-            .gallery_group {
-
-
-
-
-                .gallery_card {
-                    align-self: end;
-                    width: 215px !important;
-                    height: 175px !important;
-                    padding: 5px;
-                    margin: 0;
-
-                }
-
-
-
-
-            }
-        }
-
-    }
-
-    @media (max-width: 480px) {
-        .gallery_select div select {
-            font-size: 8px;
-            padding: 1px;
-
-        }
-
-
-        .gallery .gallery_select div select {
-            padding: 1px;
-            font-size: 15px;
-        }
-
-        .gallery_group .gallery_card {
-            flex: 1 1 80%;
-            padding-bottom: 0px;
-            height: 300px !important;
-
-        }
-
-
-    }
+    }    
 }

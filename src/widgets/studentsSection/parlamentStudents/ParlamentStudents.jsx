@@ -1,29 +1,29 @@
 import "./parlamentStudents.scss";
 
-    export const ParlamentStudents = ({ data }) => {
-        if (!data?.length) return null;
-    
-        return (
-            <div className='parlamentStudents'>
-                {data.map((item) => (
-                    <div className="parlamentStudents_block" key={item.id}>
-                        {item.img && (
-                            <div className="parlamentStudents_block_imggroup">
-                                <img src={item.img} alt={item.name} />
-                            </div>
-                        )}
-                        <div className="parlamentStudents_block_text">
-                            <h3>{item.name}</h3>
+export const ParlamentStudents = ({ data, onSelectStudent }) => {
+
+    return (
+        <div className='parlamentStudents'>
+            {data.map((item) =>
+                item.work?.map((workItem) => (
+                    <div
+                        className="parlamentStudents_block"
+                        onClick={() => onSelectStudent?.({ ...workItem, detail: workItem.detail || [] })}
+                        style={{ cursor: 'pointer' }}
+                        key={workItem.id}
+                    >
+                        <div className="parlamentStudents_block_imggroup">
+                            <img src={workItem.img} alt={workItem.name || "Изображение"} />
+                        </div>
+                        <div className="parlamentStudents_block_text ">
+                            <h3>{workItem.name}</h3>
                             <div className="line">
-                                <p>{item.description}</p>
-                                {item.description2 && <p>{item.description2}</p>}
+                                <p>{workItem.description}</p>
                             </div>
                         </div>
                     </div>
-                ))}
-            </div>
-        );
-    };
-    
-
-
+                ))
+            )}
+        </div>
+    );
+};

@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchApplicantsData, setSelected } from '../../app/redux/slices/applicantsSlice';
 import { Navigations } from '../../features';
-import { EnrollAcademy, } from '../../widgets';
+import { EnrollAcademy } from '../../widgets';
 
 export const ApplicantsPage = () => {
   const dispatch = useDispatch();
-  const { navElements, selected, page } = useSelector(state => state.applicants);
+  const { navElements, selected, page,  } = useSelector(state => state.applicants);
 
   useEffect(() => {
     dispatch(fetchApplicantsData());
@@ -15,9 +15,7 @@ export const ApplicantsPage = () => {
     };
   }, [dispatch]);
 
-
   const applicantsData = navElements?.[selected];
-
   return (
     <div className='pageNavigation'>
       <Navigations
@@ -29,7 +27,7 @@ export const ApplicantsPage = () => {
       <div className="container">
         {applicantsData && (
           <>
-            <h2 className='title_h2'>{applicantsData.link}</h2>
+            <h2 className='title_h2'>{applicantsData.title}</h2>
             <EnrollAcademy applicants={applicantsData} />
           </>
         )}

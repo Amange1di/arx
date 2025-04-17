@@ -1,31 +1,16 @@
 import "./science.scss";
 
-export const ScienceCenter = () => {
+export const ScienceCenter = ({ data }) => {
   return (
     <div className="sciense">
       <div className="container">
-      <h1 className="title">Научно-методический центр развития образования</h1>
-      <p className="description">
-      Научно-методический центр развития образования (НМЦРО) Исламской академии – это структурное подразделение, занимающееся разработкой и совершенствованием образовательных программ, методических материалов и научных исследований в сфере исламского образования. </p>
-      <h2 className="subtitle">Наши задачи:</h2>
-      <ul className="list">
-        <li>Разработка современных методик преподавания исламских дисциплин</li>
-        <li>Создание учебных пособий и образовательных стандартов</li>
-        <li>Подготовка преподавателей и повышение их квалификации</li>
-        <li>Внедрение инновационных технологий в учебный процесс</li>
-        <li>Организация семинаров, конференций и круглых столов</li>
-      </ul>
-      <h2 className="subtitle">Наши направления:</h2>
-      <ul className="list">
-        <li>Исламская педагогика и новые подходы в обучении</li>
-        <li>Дистанционные образовательные технологии</li>
-        <li>Разработка учебных планов и программ</li>
-        <li>Междисциплинарные исследования в сфере образования</li>
-      </ul>
-      <h2 className="subtitle">Контакты:</h2>
-      <p className="contact">+7 (XXX) XXX-XX-XX</p>
-     
-      <a href="contact">admission@academy.com</a>
+        {data.map((item) => (
+          <div key={item.id}>
+            <p className="text" dangerouslySetInnerHTML={{ __html: item.description }}></p>
+            {item.number && <p className="contact">{item.number}</p>}
+            {item.email && <a href={`mailto:${item.email}`}>{item.email}</a>}
+          </div>
+        ))}
       </div>
     </div>
   );

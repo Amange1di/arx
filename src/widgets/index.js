@@ -10,21 +10,15 @@ export { Rector } from "./guideSection/rector/Rector"
 export { Departments } from "./guideSection/departments/Departments"
 export { Vacancies } from "./guideSection/vacancies/Vacancies"
 
-export { AboutCarousel } from "./aboutSection/aboutCarousel/AboutCarousel"
-export { AboutDocument } from "./aboutSection/aboutDocument/AboutDocument"
-export { AboutTexts } from "./aboutSection/aboutTexts/AboutTexts"
-export { AboutNavigate } from "./aboutSection/aboutNavigate/AboutNavigate"
-
-
-export { Banner } from "./homeSection/banner/Banner"
-export { Events } from "./homeSection/events/Events"
-export { News } from "./homeSection/news/News"
-export { Jurnal } from './homeSection/sliderAcademy/Jurnal';
-export { JurnalComp } from "./homeSection/sliderAcademy/JurnalComp"
-export { SliderHome } from "./homeSection/sliderHome/SliderHome"
-export { JurnalVuzSl } from "./homeSection/sliderPartner/JurnalVuzSl"
-
-export { JurnalVuz } from "./homeSection/sliderPartner/JurnalVuz"
+export { AboutMain } from './aboutSection/aboutMain/AboutMain';
+ 
+export {Banner} from "./homeSection/banner/Banner"
+export {Events} from "./homeSection/events/Events"
+export {News} from "./homeSection/news/News"
+export {IslamicAcademySlider} from './homeSection/sliders/IslamicAcademySlider/IslamicAcademySlider'
+export {PartnerUniversitiesSlider} from './homeSection/sliders/PartnerUniversitiesSlider/PartnerUniversitiesSlider'
+export { SliderHome } from "./homeSection/sliders/sliderHome/SliderHome"    
+export { LinkSlider } from './homeSection/sliders/sliderLinks/LinkSlider';
 export { Education } from "./homeSection/stepeni/Education"
 
 export { EnrollAcademy } from './applicantsSection/enrollAcademy/EnrollAcademy';
@@ -37,5 +31,9 @@ export { Academy } from "./scienceSection/academiccouncil/Academy"
 export { ScienceCenter } from "./scienceSection/sciencecenter/ScienceCenter"
 export { Scientific } from "./scienceSection/scientificjournals/Scientific"
 
-export { Cpo } from "./educationSection/cpo/Cpo"
-export { Student } from "./studentsSection/Student"
+export {NewsDetail} from './newsSection/NewsDetail'
+
+export {JurnalDetail} from './jurnalSection/JurnalDetail'
+export {JurnalSection} from './jurnalSection/JurnalSection'
+
+

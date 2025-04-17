@@ -3,7 +3,7 @@
     font-family: "Lato", sans-serif;
 
     &_block {
-        width: min(95%, 1400px);
+        width: 90%;
         margin: 20px auto;
         padding: 30px 20px;
         background: #004234;
@@ -15,7 +15,6 @@
             flex: 0 0 350px;
             height: 400px;
             position: relative;
-            border-radius: 8px;
             overflow: hidden;
 
             img {

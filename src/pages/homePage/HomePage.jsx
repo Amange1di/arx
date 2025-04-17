@@ -2,12 +2,13 @@ import {
   Banner, 
   Education, 
   Events, 
-  Jurnal, 
-  JurnalVuzSl, 
+  IslamicAcademySlider,
+  PartnerUniversitiesSlider,
+  LinkSlider, 
   News, 
   SliderHome 
 } from "../../widgets"
-//  import  LinkSlider from "../../widgets/homeSection/sliderLinks/LinkSlider"
+
 export const HomePage = () => {
   return (
     <div>
@@ -15,10 +16,11 @@ export const HomePage = () => {
       <News />
       <Education />
       <Events />
-      <Jurnal />
-      <JurnalVuzSl />
-      {/* <LinkSlider /> */}
+      <IslamicAcademySlider />
+      <PartnerUniversitiesSlider />
+      <LinkSlider />
       <SliderHome />
+      
     </div>
   )
 }

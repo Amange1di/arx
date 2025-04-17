@@ -1,89 +1,52 @@
-import Naws from '../../../shared/images/homeImages/news.jpg'
-import './news.scss'
-import F1 from '../../../shared/images/homeImages/flower.png'
+import  { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchNewsData, fetchBannerData } from '../../../app/redux/slices/homeSlice';
+import { Link } from 'react-router-dom';
+import Naws from '../../../shared/images/homeImages/news.jpg';
+import './news.scss';
+import F1 from '../../../shared/images/homeImages/flower.png';
+import FonFull from '../../../shared/images/homeImages/fon-full.png';
+import { useTranslation } from "react-i18next";
 
 export const News = () => {
+  const dispatch = useDispatch();
+  const { news, banner } = useSelector((state) => state.home); 
+  const { t } = useTranslation();
 
-  const newsData = [
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    },
+  useEffect(() => {
+    dispatch(fetchNewsData());
+    dispatch(fetchBannerData()); 
+  }, [dispatch]);
 
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    },
-
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    },
-
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    },
-
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    },
-
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    },
-
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    },
-
-    {
-      title: 'День открытых дверей',
-      desc: 'На этой неделе наша академия имела честь    принять выдающихся ученых из разных  уголков  исламского мира. В рамках серии лекций и  дискуссий они поделились своими знаниями о  важности исламского образования в современном обществе. ',
-      date: '22.06.2023',
-    }
-  ]
 
   return (
     <div className="container">
       <section className="news">
         <div className="text-news-head">
-          <h2 className="op" id='title-head'>НОВОСТИ</h2>
-          <p className='view-all'>читать больше  →</p>
+        <h2 className="op" id='title-head'>{banner?.[0]?.title_news}</h2>
+        <Link to={'/news'}><p className='view-all'>{t("читать больше")}→</p> </Link>
         </div>
 
-
         <div className="news-grid">
-
-          {newsData.map((item, index) => (
+          {news.map((item, index) => (
             <div key={index} className="news-card">
-              <img src={Naws} className="news-image" />
-              <div className="card-flex">
-                <p className="date" style={{marginTop: '10px'}}>{item.date}</p>
-                <h3 id="title-card" style={{marginTop: '5px'}}>{item.title}</h3>
+              <div className="ol">
+                <img src={Naws} className="news-image" />
+                <div className="card-flex">
+                  <p className="date" style={{ marginTop: '10px' }}>{item.date}</p>
+                  <h3 id="title-card" style={{ marginTop: '5px' }}>{item.title}</h3>
+                </div>
+                <p style={{ marginTop: '5px' }} className='card-desc'>{item.text}</p>
               </div>
-              <p style={{marginTop: '5px'}} className='card-desc'>{item.desc}</p>
               <div className="flex-i">
-              <p style={{ cursor: 'pointer', textAlign: 'start', marginTop: '30px', color: 'rgba(26, 66, 119, 1)'}} className='view-all'>читать больше ↗</p> 
-              <img src={F1} className="flower"/>
+                <Link to={`/newsDetail/${item.id}`}> <p className='view-all'>{t("читать больше")}↗</p> </Link>
+                <img src={F1} className="flower" />
               </div>
             </div>
           ))}
-
+          <img src={FonFull} alt="название говорит сам за себя" className='fon__news' />
         </div>
-
-
       </section>
     </div>
-  )
-}
+  );
+};
