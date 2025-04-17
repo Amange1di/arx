@@ -1,5 +1,4 @@
 
-import React from 'react';
 import NewsImage from '../../shared/images/homeImages/news.jpg';
 import { DetailPage } from '../detailComponent/DetailPage';
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { JurnalCovponent } from './JurnalCovponent'
 
 import './Jurnal.scss'

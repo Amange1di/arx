@@ -1,7 +1,7 @@
 import './Jurnal.scss'
 import Naws from '../../shared/images/homeImages/news.jpg'
 import F1 from '../../shared/images/homeImages/flower.png'
-import FonFull from '../../shared/images/homeImages/Fon-Full.png'
+import FonFull from '../../shared/images/homeImages/fon-full.png'
 import { Link } from 'react-router-dom'
 
 export const JurnalCovponent = () => {
