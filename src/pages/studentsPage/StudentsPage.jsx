@@ -5,7 +5,6 @@ import { Navigations } from '../../features';
 import { ParlamentStudents } from '../../widgets';
 import { StudentsHostel } from '../../widgets/studentsSection/studentsHostel/StudentsHostel';
 import { ActivStudents } from '../../widgets/studentsSection/activStudents/ActivStudents';
-import Request from '../../widgets/studentsSection/Student';
 
 const getContentType = (data) => {
   if (!data || !Array.isArray(data)) return null;
@@ -55,7 +54,6 @@ export const StudentsPage = () => {
         list={navElements}
       />
       <div className="container">
-        <Request />
         <h2 className='title_h2'>
           {selectedSub !== null && currentData?.cards?.[selectedSub]?.title
             ? currentData.cards[selectedSub].title

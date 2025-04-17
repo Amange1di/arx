@@ -1,4 +1,4 @@
-import "./ActivStudents.scss";
+import "./activStudents.scss";
 
 export const ActivStudents = ({ data }) => {
     if (!data) return null;
